@@ -1,0 +1,22 @@
+# Render.com Blueprint for Intalent Marketplace
+services:
+  - type: web
+    name: intalent-algeria
+    runtime: python
+    plan: starter
+    buildCommand: "python seed.py"
+    startCommand: "python server.py"
+    healthCheckPath: /api/health
+    envVars:
+      - key: HOST
+        value: 0.0.0.0
+      - key: INTALENT_DB_PATH
+        value: /data/intalent.db
+      - key: INTALENT_UPLOAD_DIR
+        value: /data/uploads
+      - key: INTALENT_SECRET_KEY
+        generateValue: true
+    disk:
+      name: intalent-sqlite-disk
+      mountPath: /data
+      sizeGB: 1

@@ -1,0 +1,19 @@
+version: "3.9"
+services:
+  intalent:
+    build: .
+    container_name: intalent-marketplace
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      - HOST=0.0.0.0
+      - PORT=8000
+      - INTALENT_DB_PATH=/data/intalent.db
+      - INTALENT_UPLOAD_DIR=/data/uploads
+      - INTALENT_SECRET_KEY=${INTALENT_SECRET_KEY:-change-me-in-production-secret}
+    volumes:
+      - intalent_data:/data
+
+volumes:
+  intalent_data:

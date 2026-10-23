@@ -480,7 +480,7 @@
   };
 
   // =========================================================================
-  // 10. AUTHENTICATION PAGES (LOGIN, REGISTER, FORGOT PASSWORD, OAUTH HONEST STATE)
+  // 10. AUTHENTICATION PAGES — STITCH SCREEN 4 (INSCRIPTION & CHOIX DE PROFIL)
   // =========================================================================
   window.IntalentPages["login"] = async function (main, state) {
     const { escapeHtml, api, showToast, getDashboardRouteForUser } = App();
@@ -488,56 +488,87 @@
     const fbReady = state.oauth_status.facebook_configured;
 
     main.innerHTML = `
-      <div class="container section" style="max-width:520px;">
-        <div class="card-panel">
-          <div style="text-align:center;margin-bottom:20px;">
-            <img src="/assets/logos/logo-dark.png" alt="Intalent" style="height:46px;margin-bottom:10px;">
-            <h1 style="font-size:1.55rem;color:var(--brand-deep);">Sign In to Intalent</h1>
-            <p style="color:var(--text-secondary);font-size:0.9rem;">Access your client, freelancer, business, or admin workspace.</p>
+      <div class="relative py-12 px-4 sm:px-6 flex items-center justify-center overflow-hidden">
+        <div class="fixed top-0 left-0 w-full h-full pointer-events-none -z-10 overflow-hidden">
+          <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-secondary-fixed opacity-30 blur-3xl"></div>
+          <div class="absolute bottom-12 -left-24 w-80 h-80 rounded-full bg-primary-fixed opacity-25 blur-3xl"></div>
+        </div>
+
+        <div class="w-full max-w-[560px] bg-surface-container-lowest rounded-xl shadow-[0_12px_32px_rgba(40,12,66,0.06)] border border-outline-variant/20 overflow-hidden">
+          <div class="px-8 pt-8 pb-6 bg-surface-container-low/50 border-b border-outline-variant/15">
+            <div class="flex bg-surface-container-highest p-1 rounded-lg max-w-xs mx-auto mb-6">
+              <button type="button" onclick="window.IntalentApp.navigate('register')" class="flex-1 py-2 text-sm font-medium text-on-surface-variant hover:text-on-surface transition-colors">
+                Créer un Compte
+              </button>
+              <button type="button" class="flex-1 py-2 text-sm font-semibold rounded-md bg-surface-container-lowest text-primary shadow-sm transition-all">
+                Connexion
+              </button>
+            </div>
+            <div class="text-center">
+              <img src="/assets/logos/logo-dark.png" alt="Intalent" class="h-10 mx-auto mb-3 object-contain">
+              <h1 class="font-headline text-2xl sm:text-3xl font-extrabold text-primary-container tracking-tight">
+                Bon retour sur Intalent
+              </h1>
+              <p class="mt-1.5 text-sm text-on-surface-variant">
+                Accédez à votre espace Freelance, Client, Entreprise ou Administrateur.
+              </p>
+            </div>
           </div>
 
-          <form id="login-form" style="display:flex;flex-direction:column;gap:14px;">
-            <div>
-              <label style="font-size:0.8rem;font-weight:700;">Email or Username</label>
-              <input type="text" name="email" id="login-email" class="input" style="width:100%;" placeholder="you@intalent.dz" required>
-            </div>
-            <div>
-              <div style="display:flex;justify-content:space-between;">
-                <label style="font-size:0.8rem;font-weight:700;">Password</label>
-                <a style="font-size:0.8rem;color:var(--brand-violet);" onclick="window.IntalentApp.navigate('forgot-password')">Forgot password?</a>
+          <div class="p-6 sm:p-8 space-y-6">
+            <form id="login-form" class="space-y-4">
+              <div>
+                <label class="block text-xs font-bold uppercase tracking-wider text-on-surface-variant mb-1.5">Adresse Email Professionnelle</label>
+                <div class="relative">
+                  <span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-lg">mail</span>
+                  <input type="text" name="email" id="login-email" class="w-full pl-10 pr-4 py-2.5 bg-surface-container-lowest border border-outline-variant/40 rounded-lg text-sm text-on-surface placeholder:text-outline focus:outline-none focus:border-secondary focus:ring-2 focus:ring-secondary/15 transition-all" placeholder="vous@intalent.dz" required>
+                </div>
               </div>
-              <input type="password" name="password" id="login-password" class="input" style="width:100%;" placeholder="••••••••" required>
-            </div>
-            <button type="submit" class="btn btn-primary btn-lg" style="width:100%;">Sign In</button>
-          </form>
+              <div>
+                <div class="flex justify-between items-center mb-1.5">
+                  <label class="block text-xs font-bold uppercase tracking-wider text-on-surface-variant">Mot de passe</label>
+                  <a class="text-xs font-semibold text-secondary hover:underline cursor-pointer" onclick="window.IntalentApp.navigate('forgot-password')">Mot de passe oublié ?</a>
+                </div>
+                <div class="relative">
+                  <span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-lg">lock</span>
+                  <input type="password" name="password" id="login-password" class="w-full pl-10 pr-4 py-2.5 bg-surface-container-lowest border border-outline-variant/40 rounded-lg text-sm text-on-surface placeholder:text-outline focus:outline-none focus:border-secondary focus:ring-2 focus:ring-secondary/15 transition-all" placeholder="••••••••" required>
+                </div>
+              </div>
+              <button type="submit" class="w-full py-3.5 px-6 rounded-lg bg-gradient-to-r from-primary-container to-secondary text-on-primary font-headline font-bold text-sm tracking-wide shadow-md hover:shadow-lg hover:opacity-95 transition-all flex items-center justify-center gap-2">
+                <span>Se connecter à mon espace</span>
+                <span class="material-symbols-outlined text-lg">arrow_forward</span>
+              </button>
+            </form>
 
-          <!-- Social OAuth Section -->
-          <div style="margin:20px 0;border-top:1px solid var(--border-color);padding-top:16px;">
-            <div style="font-size:0.78rem;text-transform:uppercase;color:var(--text-secondary);font-weight:700;text-align:center;margin-bottom:10px;">Social Sign-In (OAuth 2.0)</div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
-              <button type="button" class="btn btn-outline btn-sm" onclick="window.IntalentApp.handleOAuthClick('Google', ${gReady})">
-                🌐 Google ${gReady ? '' : '(Setup Needed)'}
+            <div class="relative flex py-1 items-center">
+              <div class="flex-grow border-t border-outline-variant/30"></div>
+              <span class="flex-shrink mx-4 text-xs font-semibold uppercase tracking-wider text-outline">Ou continuer avec</span>
+              <div class="flex-grow border-t border-outline-variant/30"></div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+              <button type="button" onclick="window.IntalentApp.handleOAuthClick('Google', ${gReady})" class="flex items-center justify-center gap-2.5 py-2.5 px-4 bg-surface-container-lowest border border-outline-variant/40 rounded-lg text-xs font-semibold text-on-surface hover:bg-surface-container-low transition-colors">
+                <span>🌐 Google ${gReady ? '' : '(Config)'}</span>
               </button>
-              <button type="button" class="btn btn-outline btn-sm" onclick="window.IntalentApp.handleOAuthClick('Facebook', ${fbReady})">
-                📘 Facebook ${fbReady ? '' : '(Setup Needed)'}
+              <button type="button" onclick="window.IntalentApp.handleOAuthClick('Facebook', ${fbReady})" class="flex items-center justify-center gap-2.5 py-2.5 px-4 bg-surface-container-lowest border border-outline-variant/40 rounded-lg text-xs font-semibold text-on-surface hover:bg-surface-container-low transition-colors">
+                <span>📘 Facebook ${fbReady ? '' : '(Config)'}</span>
               </button>
+            </div>
+
+            <!-- Instant Demo Login Helpers for QA Testing -->
+            <div class="bg-surface-container-low p-4 rounded-xl border border-outline-variant/20">
+              <div class="text-xs font-bold uppercase tracking-wider text-primary-container mb-2.5 flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-secondary text-base">bolt</span>
+                Comptes Démo Rapides (1-Clic) :
+              </div>
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                <button type="button" class="px-2.5 py-1.5 rounded-lg bg-white border border-outline-variant/30 text-xs font-bold text-primary hover:border-secondary hover:text-secondary transition-all" onclick="document.getElementById('login-email').value='client@intalent.dz';document.getElementById('login-password').value='Password123!';">Client</button>
+                <button type="button" class="px-2.5 py-1.5 rounded-lg bg-white border border-outline-variant/30 text-xs font-bold text-primary hover:border-secondary hover:text-secondary transition-all" onclick="document.getElementById('login-email').value='amine@intalent.dz';document.getElementById('login-password').value='Password123!';">Freelance Pro</button>
+                <button type="button" class="px-2.5 py-1.5 rounded-lg bg-white border border-outline-variant/30 text-xs font-bold text-primary hover:border-secondary hover:text-secondary transition-all" onclick="document.getElementById('login-email').value='business@intalent.dz';document.getElementById('login-password').value='Password123!';">Entreprise</button>
+                <button type="button" class="px-2.5 py-1.5 rounded-lg bg-white border border-outline-variant/30 text-xs font-bold text-primary hover:border-secondary hover:text-secondary transition-all" onclick="document.getElementById('login-email').value='admin@intalent.dz';document.getElementById('login-password').value='AdminPassword123!';">Admin</button>
+              </div>
             </div>
           </div>
-
-          <!-- Instant Demo Login Helpers for QA Testing -->
-          <div style="background:var(--brand-pale);padding:14px;border-radius:var(--radius-sm);font-size:0.82rem;">
-            <div style="font-weight:800;color:var(--brand-deep);margin-bottom:8px;">One-Click QA / Demo Account Fill:</div>
-            <div style="display:flex;gap:6px;flex-wrap:wrap;">
-              <button type="button" class="btn btn-outline btn-sm" onclick="document.getElementById('login-email').value='client@intalent.dz';document.getElementById('login-password').value='Password123!';">Client</button>
-              <button type="button" class="btn btn-outline btn-sm" onclick="document.getElementById('login-email').value='amine@intalent.dz';document.getElementById('login-password').value='Password123!';">Pro Freelancer</button>
-              <button type="button" class="btn btn-outline btn-sm" onclick="document.getElementById('login-email').value='business@intalent.dz';document.getElementById('login-password').value='Password123!';">Business</button>
-              <button type="button" class="btn btn-outline btn-sm" onclick="document.getElementById('login-email').value='admin@intalent.dz';document.getElementById('login-password').value='AdminPassword123!';">Admin</button>
-            </div>
-          </div>
-
-          <p style="text-align:center;font-size:0.88rem;margin-top:16px;">
-            New to Intalent? <a style="color:var(--brand-violet);font-weight:700;" onclick="window.IntalentApp.navigate('register')">Create an Account</a>
-          </p>
         </div>
       </div>
     `;
@@ -578,58 +609,172 @@
 
   window.IntalentPages["register"] = async function (main, state) {
     const { escapeHtml, api, showToast, getDashboardRouteForUser } = App();
+    let selectedRole = "freelancer";
+
     main.innerHTML = `
-      <div class="container section" style="max-width:580px;">
-        <div class="card-panel">
-          <div style="text-align:center;margin-bottom:20px;">
-            <img src="/assets/logos/logo-dark.png" alt="Intalent" style="height:44px;margin-bottom:8px;">
-            <h1 style="font-size:1.55rem;color:var(--brand-deep);">Join Intalent Algeria</h1>
-            <p style="color:var(--text-secondary);font-size:0.9rem;">Create your account as a Client, Freelancer, or Business.</p>
+      <div class="relative py-10 px-4 sm:px-6 flex items-center justify-center overflow-hidden">
+        <div class="fixed top-0 left-0 w-full h-full pointer-events-none -z-10 overflow-hidden">
+          <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-secondary-fixed opacity-30 blur-3xl"></div>
+          <div class="absolute bottom-12 -left-24 w-80 h-80 rounded-full bg-primary-fixed opacity-25 blur-3xl"></div>
+        </div>
+
+        <div class="w-full max-w-[660px] bg-surface-container-lowest rounded-xl shadow-[0_12px_32px_rgba(40,12,66,0.06)] border border-outline-variant/20 overflow-hidden">
+          <div class="px-8 pt-8 pb-6 bg-surface-container-low/50 border-b border-outline-variant/15">
+            <div class="flex bg-surface-container-highest p-1 rounded-lg max-w-xs mx-auto mb-6">
+              <button type="button" class="flex-1 py-2 text-sm font-semibold rounded-md bg-surface-container-lowest text-primary shadow-sm transition-all">
+                Créer un Compte
+              </button>
+              <button type="button" onclick="window.IntalentApp.navigate('login')" class="flex-1 py-2 text-sm font-medium text-on-surface-variant hover:text-on-surface transition-colors">
+                Connexion
+              </button>
+            </div>
+            <div class="text-center">
+              <h1 class="font-headline text-2xl sm:text-3xl font-extrabold text-primary-container tracking-tight">
+                Rejoignez l'élite du digital en Algérie
+              </h1>
+              <p class="mt-2 text-sm text-on-surface-variant max-w-md mx-auto">
+                Sélectionnez votre profil pour personnaliser votre espace de travail et vos outils de paiement DZD.
+              </p>
+            </div>
           </div>
 
-          <form id="register-form" style="display:flex;flex-direction:column;gap:14px;">
+          <div class="p-6 sm:p-8 space-y-6">
             <div>
-              <label style="font-size:0.8rem;font-weight:700;">Select Primary Account Type</label>
-              <select name="role" class="select" style="width:100%;" required>
-                <option value="client">Client — Hire freelancers & purchase services</option>
-                <option value="freelancer">Freelancer — Publish services & earn in DZD</option>
-                <option value="business">Business — Manage company hiring, briefs & team</option>
-              </select>
-            </div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-              <div>
-                <label style="font-size:0.8rem;font-weight:700;">Full Name</label>
-                <input type="text" name="full_name" class="input" style="width:100%;" placeholder="Karim Benali" required>
+              <label class="block text-xs font-bold uppercase tracking-wider text-on-surface-variant mb-3">
+                1. Choisissez votre profil principal
+              </label>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5" id="stitch-role-cards">
+                <div data-role="freelancer" class="role-card group relative flex flex-col justify-between p-4 rounded-xl border-2 border-secondary bg-secondary-fixed/20 cursor-pointer transition-all">
+                  <div class="flex items-start justify-between mb-3">
+                    <div class="w-10 h-10 rounded-lg bg-secondary text-on-secondary flex items-center justify-center shadow-sm">
+                      <span class="material-symbols-outlined text-xl">laptop_mac</span>
+                    </div>
+                    <span class="material-symbols-outlined text-secondary text-xl role-check" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                  </div>
+                  <div>
+                    <div class="font-headline font-bold text-sm text-primary-container">Je suis Freelance</div>
+                    <p class="text-xs text-on-surface-variant mt-1 leading-relaxed">Vendre mes services et recevoir mes paiements en DZD</p>
+                  </div>
+                </div>
+
+                <div data-role="client" class="role-card group relative flex flex-col justify-between p-4 rounded-xl border border-outline-variant/40 bg-surface-container-lowest hover:border-secondary/60 hover:bg-surface-container-low/40 cursor-pointer transition-all">
+                  <div class="flex items-start justify-between mb-3">
+                    <div class="w-10 h-10 rounded-lg bg-surface-container-high text-primary group-hover:bg-secondary/10 group-hover:text-secondary flex items-center justify-center transition-colors">
+                      <span class="material-symbols-outlined text-xl">person_search</span>
+                    </div>
+                    <span class="material-symbols-outlined text-outline-variant text-xl role-check">radio_button_unchecked</span>
+                  </div>
+                  <div>
+                    <div class="font-headline font-bold text-sm text-on-surface">Je suis Client</div>
+                    <p class="text-xs text-on-surface-variant mt-1 leading-relaxed">Commander des prestations et recruter des talents vérifiés</p>
+                  </div>
+                </div>
+
+                <div data-role="business" class="role-card group relative flex flex-col justify-between p-4 rounded-xl border border-outline-variant/40 bg-surface-container-lowest hover:border-secondary/60 hover:bg-surface-container-low/40 cursor-pointer transition-all">
+                  <div class="flex items-start justify-between mb-3">
+                    <div class="w-10 h-10 rounded-lg bg-surface-container-high text-primary group-hover:bg-secondary/10 group-hover:text-secondary flex items-center justify-center transition-colors">
+                      <span class="material-symbols-outlined text-xl">domain</span>
+                    </div>
+                    <span class="material-symbols-outlined text-outline-variant text-xl role-check">radio_button_unchecked</span>
+                  </div>
+                  <div>
+                    <div class="font-headline font-bold text-sm text-on-surface">Entreprise & Recruteur</div>
+                    <p class="text-xs text-on-surface-variant mt-1 leading-relaxed">Gérer des équipes, projets sur-mesure & facturation pro</p>
+                  </div>
+                </div>
               </div>
-              <div>
-                <label style="font-size:0.8rem;font-weight:700;">Username</label>
-                <input type="text" name="username" class="input" style="width:100%;" placeholder="karim_dev" required>
-              </div>
             </div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-              <div>
-                <label style="font-size:0.8rem;font-weight:700;">Email Address</label>
-                <input type="email" name="email" class="input" style="width:100%;" placeholder="karim@example.dz" required>
+
+            <form id="register-form" class="space-y-4 pt-2">
+              <input type="hidden" name="role" id="register-role-input" value="freelancer">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-semibold text-on-surface mb-1.5">Nom Complet</label>
+                  <div class="relative">
+                    <span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-lg">badge</span>
+                    <input type="text" name="full_name" class="w-full pl-10 pr-4 py-2.5 bg-surface-container-lowest border border-outline-variant/40 rounded-lg text-sm text-on-surface placeholder:text-outline focus:outline-none focus:border-secondary transition-all" placeholder="ex: Amine Benali" required>
+                  </div>
+                </div>
+                <div>
+                  <label class="block text-xs font-semibold text-on-surface mb-1.5">Nom d'utilisateur</label>
+                  <div class="relative">
+                    <span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-lg">alternate_email</span>
+                    <input type="text" name="username" class="w-full pl-10 pr-4 py-2.5 bg-surface-container-lowest border border-outline-variant/40 rounded-lg text-sm text-on-surface placeholder:text-outline focus:outline-none focus:border-secondary transition-all" placeholder="amine_dz" required>
+                  </div>
+                </div>
               </div>
-              <div>
-                <label style="font-size:0.8rem;font-weight:700;">Wilaya</label>
-                <select name="wilaya" class="select" style="width:100%;">
-                  ${state.wilayas.map(w => `<option value="${w.code} - ${escapeHtml(w.name)}" ${w.code === '16' ? 'selected' : ''}>${w.code} - ${escapeHtml(w.name)}</option>`).join("")}
-                </select>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-semibold text-on-surface mb-1.5">Adresse Email Professionnelle</label>
+                  <div class="relative">
+                    <span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-lg">mail</span>
+                    <input type="email" name="email" class="w-full pl-10 pr-4 py-2.5 bg-surface-container-lowest border border-outline-variant/40 rounded-lg text-sm text-on-surface placeholder:text-outline focus:outline-none focus:border-secondary transition-all" placeholder="amine.benali@domaine.dz" required>
+                  </div>
+                </div>
+                <div>
+                  <label class="block text-xs font-semibold text-on-surface mb-1.5">Wilaya de résidence (58 Wilayas)</label>
+                  <div class="relative">
+                    <span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-lg pointer-events-none">location_on</span>
+                    <select name="wilaya" class="w-full pl-10 pr-9 py-2.5 bg-surface-container-lowest border border-outline-variant/40 rounded-lg text-sm text-on-surface focus:outline-none focus:border-secondary transition-all">
+                      ${state.wilayas.map(w => `<option value="${escapeHtml(w.name)}" ${w.code === '16' ? 'selected' : ''}>${w.code} - ${escapeHtml(w.name)}</option>`).join("")}
+                    </select>
+                  </div>
+                </div>
               </div>
+
+              <div>
+                <div class="flex justify-between items-center mb-1.5">
+                  <label class="block text-xs font-semibold text-on-surface">Mot de passe (minimum 6 caractères)</label>
+                  <span class="text-[11px] font-medium text-emerald-700">Sécurisé • Chiffrement SHA-256</span>
+                </div>
+                <div class="relative">
+                  <span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-lg">lock</span>
+                  <input type="password" name="password" class="w-full pl-10 pr-4 py-2.5 bg-surface-container-lowest border border-outline-variant/40 rounded-lg text-sm text-on-surface placeholder:text-outline focus:outline-none focus:border-secondary transition-all" placeholder="••••••••••••" required>
+                </div>
+                <div class="grid grid-cols-4 gap-1.5 mt-2">
+                  <div class="h-1 rounded-full bg-emerald-600"></div>
+                  <div class="h-1 rounded-full bg-emerald-600"></div>
+                  <div class="h-1 rounded-full bg-emerald-600"></div>
+                  <div class="h-1 rounded-full bg-surface-container-highest"></div>
+                </div>
+              </div>
+
+              <button type="submit" class="w-full py-3.5 px-6 rounded-lg bg-gradient-to-r from-primary-container to-secondary text-on-primary font-headline font-bold text-sm tracking-wide shadow-md hover:shadow-lg hover:opacity-95 transition-all flex items-center justify-center gap-2">
+                <span>Créer mon compte Intalent</span>
+                <span class="material-symbols-outlined text-lg">arrow_forward</span>
+              </button>
+            </form>
+          </div>
+
+          <div class="px-8 py-4 bg-surface-container-low border-t border-outline-variant/15 flex flex-wrap items-center justify-between gap-4 text-xs text-on-surface-variant">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-secondary text-base" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+              <span>Paiements 100% garantis via Escrow Algérie (CIB / Edahabia)</span>
             </div>
-            <div>
-              <label style="font-size:0.8rem;font-weight:700;">Password (minimum 6 characters)</label>
-              <input type="password" name="password" class="input" style="width:100%;" placeholder="••••••••" required>
-            </div>
-            <button type="submit" class="btn btn-primary btn-lg" style="width:100%;">Create My Account →</button>
-          </form>
-          <p style="text-align:center;font-size:0.88rem;margin-top:16px;">
-            Already have an account? <a style="color:var(--brand-violet);font-weight:700;" onclick="window.IntalentApp.navigate('login')">Sign In</a>
-          </p>
+            <a onclick="window.IntalentApp.navigate('login')" class="font-bold text-secondary hover:underline cursor-pointer">Déjà inscrit ? Connexion →</a>
+          </div>
         </div>
       </div>
     `;
+
+    document.querySelectorAll("#stitch-role-cards .role-card").forEach(card => {
+      card.addEventListener("click", () => {
+        selectedRole = card.getAttribute("data-role");
+        document.getElementById("register-role-input").value = selectedRole;
+        document.querySelectorAll("#stitch-role-cards .role-card").forEach(c => {
+          const isSel = c.getAttribute("data-role") === selectedRole;
+          c.className = isSel
+            ? "role-card group relative flex flex-col justify-between p-4 rounded-xl border-2 border-secondary bg-secondary-fixed/20 cursor-pointer transition-all"
+            : "role-card group relative flex flex-col justify-between p-4 rounded-xl border border-outline-variant/40 bg-surface-container-lowest hover:border-secondary/60 hover:bg-surface-container-low/40 cursor-pointer transition-all";
+          const check = c.querySelector(".role-check");
+          if (check) {
+            check.textContent = isSel ? "check_circle" : "radio_button_unchecked";
+            check.className = isSel ? "material-symbols-outlined text-secondary text-xl role-check" : "material-symbols-outlined text-outline-variant text-xl role-check";
+          }
+        });
+      });
+    });
 
     document.getElementById("register-form").addEventListener("submit", async (e) => {
       e.preventDefault();

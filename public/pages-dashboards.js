@@ -2,7 +2,7 @@
   const App = () => window.IntalentApp;
 
   // =========================================================================
-  // 12. PERSISTENT MESSAGING & NOTIFICATIONS
+  // 12. PERSISTENT MESSAGING — STITCH SCREEN 7 (MESSAGERIE PRO EN DIRECT)
   // =========================================================================
   window.IntalentPages["messages"] = async function (main, state) {
     const { escapeHtml, api, showToast } = App();
@@ -23,52 +23,185 @@
       await App().refreshBootstrap();
     }
 
+    const otherActiveName = activeConv
+      ? (activeConv.user1_id === state.user.id ? activeConv.user2_name : activeConv.user1_name)
+      : "Contact Intalent";
+
     main.innerHTML = `
-      <div class="container section">
-        <h1 class="section-title" style="margin-bottom:18px;">Messages & Order Conversations</h1>
-        <div class="messaging-grid">
-          <div class="conv-list">
-            ${conversations.length === 0 ? `<div style="padding:20px;color:var(--text-secondary);">No conversations yet. Contact any freelancer to start chatting.</div>` :
-              conversations.map(c => {
-                const otherName = c.user1_id === state.user.id ? c.user2_name : c.user1_name;
-                return `
-                  <div class="conv-item ${c.id === activeConvId ? 'active' : ''}" onclick="window.IntalentApp.navigate('messages?conv=${c.id}')">
-                    <div style="font-weight:700;color:var(--brand-deep);">${escapeHtml(otherName)}</div>
-                    <div style="font-size:0.78rem;color:var(--brand-violet);font-weight:600;">${escapeHtml(c.subject || "Direct Conversation")}</div>
-                    <div style="font-size:0.82rem;color:var(--text-secondary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:4px;">
-                      ${escapeHtml(c.last_message?.body || "")}
+      <div class="max-w-7xl mx-auto px-4 md:px-6 py-6">
+        <div class="bg-surface-container-lowest rounded-2xl border border-outline-variant/25 shadow-sm overflow-hidden flex flex-col lg:flex-row min-h-[680px]">
+          
+          <!-- LEFT COLUMN: CONVERSATION LIST (28% / 320px) -->
+          <section class="w-full lg:w-[320px] xl:w-[340px] bg-surface-container-low border-r border-outline-variant/20 flex flex-col shrink-0">
+            <div class="p-4 space-y-3 border-b border-outline-variant/15">
+              <div class="flex items-center justify-between">
+                <h2 class="font-headline font-bold text-base text-primary">Discussions</h2>
+                <span class="px-2 py-0.5 text-[11px] font-bold bg-secondary/10 text-secondary rounded-full">${conversations.length} Fils</span>
+              </div>
+              <div class="flex gap-1.5 overflow-x-auto no-scrollbar pb-0.5">
+                <button class="px-3 py-1 rounded-full text-xs font-semibold bg-primary-container text-on-primary shrink-0">Toutes (${conversations.length})</button>
+                <button class="px-3 py-1 rounded-full text-xs font-medium bg-surface-container-lowest text-on-surface-variant shrink-0">Commandes</button>
+                <button class="px-3 py-1 rounded-full text-xs font-medium bg-surface-container-lowest text-on-surface-variant shrink-0">Offres</button>
+              </div>
+            </div>
+
+            <div class="flex-1 overflow-y-auto px-2 py-2 space-y-1">
+              ${conversations.length === 0 ? `<div class="p-6 text-sm text-on-surface-variant text-center">Aucune discussion pour le moment. Contactez un freelance depuis son profil.</div>` :
+                conversations.map(c => {
+                  const otherName = c.user1_id === state.user.id ? c.user2_name : c.user1_name;
+                  const isAct = c.id === activeConvId;
+                  return `
+                    <div onclick="window.IntalentApp.navigate('messages?conv=${c.id}')" class="p-3 rounded-xl ${isAct ? 'bg-surface-container-lowest shadow-sm border-l-4 border-secondary' : 'hover:bg-surface-container-lowest/60'} cursor-pointer transition-all">
+                      <div class="flex gap-3">
+                        <div class="w-10 h-10 rounded-full bg-secondary-fixed text-secondary font-headline font-extrabold flex items-center justify-center shrink-0">
+                          ${escapeHtml((otherName || "I")[0])}
+                        </div>
+                        <div class="flex-1 min-w-0">
+                          <div class="flex items-center justify-between mb-0.5">
+                            <span class="font-headline font-bold text-sm text-on-surface truncate">${escapeHtml(otherName)}</span>
+                            <span class="text-[10px] font-semibold text-secondary">Actif</span>
+                          </div>
+                          <div class="flex items-center gap-1.5 mb-1">
+                            <span class="px-1.5 py-0.5 text-[10px] font-semibold bg-secondary-fixed text-on-secondary-fixed rounded truncate">${escapeHtml(c.subject || "Discussion Directe")}</span>
+                          </div>
+                          <p class="text-xs text-on-surface-variant truncate">${escapeHtml(c.last_message?.body || "Démarrer la discussion...")}</p>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                `;
-              }).join("")
-            }
-          </div>
-          <div class="chat-pane">
+                  `;
+                }).join("")
+              }
+            </div>
+          </section>
+
+          <!-- CENTER COLUMN: LIVE CHAT STREAM -->
+          <section class="flex-1 flex flex-col bg-surface-container-lowest min-w-0">
             ${!activeConv ? `
-              <div style="margin:auto;text-align:center;color:var(--text-secondary);padding:24px;">
-                Select a conversation on the left to view messages.
+              <div class="m-auto text-center p-10 text-on-surface-variant">
+                <span class="material-symbols-outlined text-4xl text-secondary mb-2">forum</span>
+                <p class="font-headline font-bold text-primary">Sélectionnez une discussion à gauche</p>
               </div>
             ` : `
-              <div style="padding:14px 20px;border-bottom:1px solid var(--border-color);display:flex;justify-content:space-between;align-items:center;">
-                <div>
-                  <strong>${escapeHtml(activeConv.subject || "Conversation")}</strong>
-                </div>
-                ${activeConv.order_id ? `<button class="btn btn-outline btn-sm" onclick="window.IntalentApp.navigate('order-detail?id=${activeConv.order_id}')">View Linked Order →</button>` : ""}
-              </div>
-              <div class="chat-messages" id="chat-scroll-box">
-                ${activeMessages.map(m => `
-                  <div class="msg-bubble ${m.sender_id === state.user.id ? 'msg-mine' : 'msg-theirs'}">
-                    <div style="font-size:0.74rem;opacity:0.75;margin-bottom:3px;">${escapeHtml(m.sender_name)} • ${escapeHtml(m.created_at)}</div>
-                    <div style="white-space:pre-line;">${escapeHtml(m.body)}</div>
+              <div class="h-16 px-6 border-b border-outline-variant/20 flex items-center justify-between shrink-0 bg-surface-container-lowest/90 backdrop-blur-md">
+                <div class="flex items-center gap-3.5">
+                  <div class="w-10 h-10 rounded-full bg-primary-container text-white font-headline font-bold flex items-center justify-center">
+                    ${escapeHtml((otherActiveName || "I")[0])}
                   </div>
-                `).join("")}
+                  <div>
+                    <div class="flex items-center gap-2">
+                      <h2 class="font-headline font-bold text-sm text-on-surface">${escapeHtml(otherActiveName)}</h2>
+                      <span class="inline-flex items-center gap-0.5 px-2 py-0.5 rounded-full text-[10px] font-bold bg-secondary-fixed text-secondary">
+                        <span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+                        Vérifié Intalent
+                      </span>
+                    </div>
+                    <p class="text-xs text-on-surface-variant">${escapeHtml(activeConv.subject || "Discussion Directe")} • Algérie</p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-2">
+                  ${activeConv.order_id ? `
+                    <button onclick="window.IntalentApp.navigate('order-detail?id=${activeConv.order_id}')" class="px-3.5 py-1.5 rounded-lg bg-secondary text-white font-headline font-bold text-xs hover:bg-primary-container transition-all flex items-center gap-1.5">
+                      <span class="material-symbols-outlined text-[16px]">receipt_long</span> Suivi Commande #${activeConv.order_id}
+                    </button>
+                  ` : ""}
+                </div>
               </div>
-              <form id="send-msg-form" class="chat-input-bar">
-                <input type="text" name="body" class="input" style="flex:1;" placeholder="Write a message..." required>
-                <button type="submit" class="btn btn-primary">Send</button>
-              </form>
+
+              <!-- Security Escrow Banner -->
+              <div class="bg-surface-container-low px-6 py-2 flex items-center justify-between border-b border-outline-variant/15">
+                <div class="flex items-center gap-2 text-xs text-on-surface-variant">
+                  <span class="material-symbols-outlined text-secondary text-[16px]" style="font-variation-settings: 'FILL' 1;">gpp_good</span>
+                  <span><strong class="text-primary font-semibold">Protection Intalent Escrow :</strong> Gardez vos échanges et paiements sur la plateforme pour bénéficier de la garantie 100% DZD.</span>
+                </div>
+              </div>
+
+              <!-- Messages Feed -->
+              <div id="chat-scroll-box" class="flex-1 overflow-y-auto px-6 py-5 space-y-4">
+                ${activeMessages.map(m => {
+                  const isMine = m.sender_id === state.user.id;
+                  return isMine ? `
+                    <div class="flex items-end justify-end gap-2.5 max-w-2xl ml-auto">
+                      <div class="space-y-1 flex flex-col items-end">
+                        <div class="flex items-center gap-2 mr-1">
+                          <span class="text-[10px] text-outline">${escapeHtml(m.created_at)}</span>
+                          <span class="text-xs font-bold text-primary">Vous</span>
+                        </div>
+                        <div class="bg-primary-container text-on-primary px-4 py-3 rounded-2xl rounded-br-xs shadow-sm text-sm leading-relaxed whitespace-pre-line">
+                          ${escapeHtml(m.body)}
+                        </div>
+                      </div>
+                    </div>
+                  ` : `
+                    <div class="flex items-end gap-2.5 max-w-2xl">
+                      <div class="w-7 h-7 rounded-full bg-secondary-fixed text-secondary font-bold text-xs flex items-center justify-center shrink-0 mb-1">
+                        ${escapeHtml((m.sender_name || "U")[0])}
+                      </div>
+                      <div class="space-y-1">
+                        <div class="flex items-center gap-2 ml-1">
+                          <span class="text-xs font-bold text-on-surface">${escapeHtml(m.sender_name)}</span>
+                          <span class="text-[10px] text-outline">${escapeHtml(m.created_at)}</span>
+                        </div>
+                        <div class="bg-surface-container-low text-on-surface px-4 py-3 rounded-2xl rounded-bl-xs text-sm leading-relaxed border border-outline-variant/15 whitespace-pre-line">
+                          ${escapeHtml(m.body)}
+                        </div>
+                      </div>
+                    </div>
+                  `;
+                }).join("")}
+              </div>
+
+              <!-- Composer Footer -->
+              <div class="p-4 bg-surface-container-lowest border-t border-outline-variant/20 shrink-0">
+                <div class="flex items-center gap-2 mb-2.5 overflow-x-auto no-scrollbar">
+                  <button type="button" onclick="const inp=document.querySelector('#send-msg-form input[name=body]');if(inp){inp.value='Salam, merci pour votre message ! Voici le point sur l\\'avancement : ';inp.focus();}" class="px-2.5 py-1 rounded-md bg-surface-container-low hover:bg-secondary-fixed/50 text-[11px] font-semibold text-primary flex items-center gap-1 transition-colors shrink-0">
+                    <span class="material-symbols-outlined text-[14px] text-secondary">bolt</span> Point d'avancement rapide
+                  </button>
+                  <button type="button" onclick="const inp=document.querySelector('#send-msg-form input[name=body]');if(inp){inp.value='Les livrables sont prêts pour validation sur Intalent.';inp.focus();}" class="px-2.5 py-1 rounded-md bg-surface-container-low hover:bg-secondary-fixed/50 text-[11px] font-semibold text-primary flex items-center gap-1 transition-colors shrink-0">
+                    <span class="material-symbols-outlined text-[14px] text-secondary">verified</span> Livrables prêts
+                  </button>
+                </div>
+                <form id="send-msg-form" class="flex items-center gap-2 bg-surface-container-low rounded-xl p-2 border border-outline-variant/30 focus-within:border-secondary transition-all">
+                  <input type="text" name="body" class="flex-1 bg-transparent border-none focus:ring-0 text-sm text-on-surface placeholder:text-outline px-2" placeholder="Écrivez votre message à ${escapeHtml(otherActiveName)}..." required>
+                  <button type="submit" class="px-4 py-2 rounded-lg bg-gradient-to-r from-primary-container to-secondary text-on-primary font-headline font-bold text-xs shadow-sm hover:opacity-95 transition-all flex items-center gap-1.5 shrink-0">
+                    <span>Envoyer</span>
+                    <span class="material-symbols-outlined text-[16px]">send</span>
+                  </button>
+                </form>
+              </div>
             `}
-          </div>
+          </section>
+
+          <!-- RIGHT COLUMN: CONTEXTUAL CONTRACT LEDGER -->
+          <aside class="w-full lg:w-[290px] bg-surface-container-low border-l border-outline-variant/20 p-5 space-y-5 hidden xl:block shrink-0">
+            <div class="bg-surface-container-lowest p-4 rounded-xl shadow-xs border border-outline-variant/15 space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-[10px] font-bold uppercase tracking-wider text-outline">Protection Contrat</span>
+                <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-900">Escrow Actif</span>
+              </div>
+              <h3 class="font-headline font-bold text-sm text-primary leading-snug">
+                ${escapeHtml(activeConv?.subject || "Espace Négociation Directe")}
+              </h3>
+              <p class="text-xs text-on-surface-variant leading-relaxed">
+                Tous les fichiers et messages envoyés dans ce fil font foi en cas d'arbitrage par l'équipe Intalent Algérie.
+              </p>
+              ${activeConv?.order_id ? `
+                <button onclick="window.IntalentApp.navigate('order-detail?id=${activeConv.order_id}')" class="w-full py-2 rounded-lg bg-primary-container text-white font-headline font-bold text-xs hover:bg-secondary transition-colors">
+                  Ouvrir la Commande #${activeConv.order_id} →
+                </button>
+              ` : `
+                <button onclick="window.IntalentApp.navigate('explore')" class="w-full py-2 rounded-lg bg-secondary/10 text-secondary font-headline font-bold text-xs hover:bg-secondary hover:text-white transition-colors">
+                  Explorer les Services →
+                </button>
+              `}
+            </div>
+            <div class="bg-primary-fixed/40 p-3.5 rounded-xl border border-secondary/15 flex items-start gap-2.5">
+              <span class="material-symbols-outlined text-secondary text-[18px] shrink-0 mt-0.5" style="font-variation-settings: 'FILL' 1;">shield_lock</span>
+              <p class="text-[11px] text-on-primary-fixed-variant leading-relaxed">
+                <strong>Garantie Intalent :</strong> Les fonds restent bloqués sous séquestre jusqu'à l'approbation finale de la livraison.
+              </p>
+            </div>
+          </aside>
+
         </div>
       </div>
     `;
@@ -343,61 +476,177 @@
     const flProfile = flDetailRes.freelancer || state.user;
 
     main.innerHTML = `
-      <div class="container dashboard-shell">
-        <aside class="dashboard-sidebar">
-          <div style="padding:8px 12px 16px;border-bottom:1px solid var(--border-color);margin-bottom:12px;">
-            <div style="font-size:0.75rem;font-weight:700;color:var(--brand-violet);text-transform:uppercase;">Freelancer Studio</div>
-            <div style="font-weight:800;color:var(--brand-deep);">${escapeHtml(state.user.full_name)}</div>
-            <div style="margin-top:4px;">
-              ${state.user.is_pro ? `<span class="badge badge-pro">✦ PRO SELLER</span>` : `<span class="badge badge-status">Standard Seller</span>`}
-            </div>
-          </div>
-          <div class="sidebar-menu-item ${tab === 'overview' ? 'active' : ''}" onclick="window.IntalentApp.navigate('freelancer-dashboard?tab=overview')">📊 Studio Overview & Orders</div>
-          <div class="sidebar-menu-item ${tab === 'services' ? 'active' : ''}" onclick="window.IntalentApp.navigate('freelancer-dashboard?tab=services')">💼 My Services (${myServices.length})</div>
-          <div class="sidebar-menu-item ${tab === 'create-service' ? 'active' : ''}" onclick="window.IntalentApp.navigate('freelancer-dashboard?tab=create-service')">+ Create New Service</div>
-          <div class="sidebar-menu-item ${tab === 'portfolio' ? 'active' : ''}" onclick="window.IntalentApp.navigate('freelancer-dashboard?tab=portfolio')">🖼 Portfolio Projects</div>
-          <div class="sidebar-menu-item ${tab === 'earnings' ? 'active' : ''}" onclick="window.IntalentApp.navigate('freelancer-dashboard?tab=earnings')">💰 Earnings & Payouts</div>
-          <div class="sidebar-menu-item ${tab === 'profile' ? 'active' : ''}" onclick="window.IntalentApp.navigate('freelancer-dashboard?tab=profile')">👤 Profile, Skills & Bio</div>
-          <div class="sidebar-menu-item" onclick="window.IntalentApp.navigate('pro-upgrade')">✦ Intalent Pro Upgrade</div>
-        </aside>
-
-        <div>
-          <div class="stat-cards-grid">
-            <div class="stat-card"><div class="stat-card-label">Available Wallet</div><div class="stat-card-value">${formatDZD(walletRes.balance_dzd)}</div></div>
-            <div class="stat-card"><div class="stat-card-label">Active Orders</div><div class="stat-card-value">${incomingOrders.filter(o => o.status === 'in_progress' || o.status === 'revision_requested').length}</div></div>
-            <div class="stat-card"><div class="stat-card-label">Completed Orders</div><div class="stat-card-value">${incomingOrders.filter(o => o.status === 'completed').length}</div></div>
-            <div class="stat-card"><div class="stat-card-label">Published Services</div><div class="stat-card-value">${myServices.filter(s => s.status === 'approved').length}</div></div>
-          </div>
-
-          ${tab === "overview" ? `
-            <div class="card-panel">
-              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
-                <h3 style="color:var(--brand-deep);">Incoming & Active Client Orders</h3>
-                <button class="btn btn-primary btn-sm" onclick="window.IntalentApp.navigate('freelancer-dashboard?tab=create-service')">+ Publish New Service</button>
+      <div class="max-w-7xl mx-auto px-4 md:px-6 py-8">
+        <!-- STITCH SCREEN 5: HERO WELCOME BANNER -->
+        <section class="relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#280c42] via-[#3e2459] to-[#7627e0] p-7 text-white shadow-sm mb-8">
+          <div class="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+            <div class="space-y-2 max-w-xl">
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md text-xs font-semibold tracking-wider uppercase text-secondary-fixed">
+                <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                Disponible pour nouveaux projets • ${escapeHtml(state.user.wilaya || "Alger")}, Algérie
               </div>
-              ${incomingOrders.length === 0 ? `<p style="color:var(--text-secondary);">No incoming orders yet. Publish services or bid on project briefs to win orders!</p>` : `
-                <div class="table-wrap">
-                  <table class="data-table">
-                    <thead>
-                      <tr><th>Order #</th><th>Service</th><th>Client</th><th>Net Earnings</th><th>Status</th><th>Action</th></tr>
-                    </thead>
-                    <tbody>
-                      ${incomingOrders.map(o => `
-                        <tr>
-                          <td><strong>${escapeHtml(o.order_number)}</strong></td>
-                          <td>${escapeHtml(o.service_title)}</td>
-                          <td>${escapeHtml(o.client_name)}</td>
-                          <td><strong style="color:var(--success);">${formatDZD(o.freelancer_net_dzd)}</strong></td>
-                          <td><span class="badge badge-status">${escapeHtml(o.status.toUpperCase())}</span></td>
-                          <td><button class="btn btn-primary btn-sm" onclick="window.IntalentApp.navigate('order-detail?id=${o.id}')">Deliver / View →</button></td>
-                        </tr>
-                      `).join("")}
-                    </tbody>
-                  </table>
-                </div>
-              `}
+              <h2 class="font-headline text-2xl sm:text-3xl font-extrabold tracking-tight">Salam, ${escapeHtml(state.user.full_name)} 👋</h2>
+              <p class="text-white/80 text-sm leading-relaxed">
+                Vous avez <span class="text-white font-semibold underline decoration-secondary-container underline-offset-4">${incomingOrders.filter(o => o.status !== 'completed').length} commandes actives</span> et un solde disponible de <span class="text-secondary-fixed font-bold">${formatDZD(walletRes.balance_dzd)}</span>.
+              </p>
             </div>
-          ` : ""}
+            <div class="flex flex-wrap items-center gap-3">
+              <button onclick="window.IntalentApp.navigate('freelancer-dashboard?tab=earnings')" class="px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-headline font-semibold text-xs border border-white/15 transition-all flex items-center gap-2">
+                <span class="material-symbols-outlined text-base">account_balance_wallet</span>
+                Retirer mes gains (BaridiMob / CCP)
+              </button>
+              <button onclick="window.IntalentApp.navigate('freelancer-dashboard?tab=create-service')" class="px-5 py-2.5 rounded-xl bg-white text-primary font-headline font-bold text-xs shadow-lg hover:bg-secondary-fixed transition-all flex items-center gap-2">
+                <span class="material-symbols-outlined text-base">add_circle</span>
+                Publier un Nouveau Service
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <div class="dashboard-shell" style="padding:0;">
+          <aside class="dashboard-sidebar">
+            <div style="padding:8px 12px 16px;border-bottom:1px solid var(--border-color);margin-bottom:12px;">
+              <div style="font-size:0.75rem;font-weight:700;color:var(--brand-violet);text-transform:uppercase;">Studio Freelance</div>
+              <div style="font-weight:800;color:var(--brand-deep);">${escapeHtml(state.user.full_name)}</div>
+              <div style="margin-top:4px;">
+                ${state.user.is_pro ? `<span class="badge badge-pro">✦ FREELANCE PRO</span>` : `<span class="badge badge-status">Vendeur Vérifié</span>`}
+              </div>
+            </div>
+            <div class="sidebar-menu-item ${tab === 'overview' ? 'active' : ''}" onclick="window.IntalentApp.navigate('freelancer-dashboard?tab=overview')">📊 Vue d'ensemble & Stats</div>
+            <div class="sidebar-menu-item ${tab === 'services' ? 'active' : ''}" onclick="window.IntalentApp.navigate('freelancer-dashboard?tab=services')">💼 Mes Services (${myServices.length})</div>
+            <div class="sidebar-menu-item ${tab === 'create-service' ? 'active' : ''}" onclick="window.IntalentApp.navigate('freelancer-dashboard?tab=create-service')">+ Créer un Service (IA)</div>
+            <div class="sidebar-menu-item ${tab === 'portfolio' ? 'active' : ''}" onclick="window.IntalentApp.navigate('freelancer-dashboard?tab=portfolio')">🖼 Portfolio Projets</div>
+            <div class="sidebar-menu-item ${tab === 'earnings' ? 'active' : ''}" onclick="window.IntalentApp.navigate('freelancer-dashboard?tab=earnings')">💰 Revenus & Retraits CCP</div>
+            <div class="sidebar-menu-item ${tab === 'profile' ? 'active' : ''}" onclick="window.IntalentApp.navigate('freelancer-dashboard?tab=profile')">👤 Profil & Compétences</div>
+            <div class="sidebar-menu-item" onclick="window.IntalentApp.navigate('pro-upgrade')">✦ Intalent Pro Upgrade</div>
+          </aside>
+
+          <div>
+            <!-- STITCH SCREEN 5: 4-COLUMN KPI CARDS -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mb-6">
+              <div class="bg-surface-container-lowest p-5 rounded-2xl shadow-xs border border-outline-variant/15 flex flex-col justify-between">
+                <div class="flex items-center justify-between mb-3">
+                  <span class="text-xs font-bold uppercase tracking-wider text-on-surface-variant">Solde Disponible</span>
+                  <div class="w-9 h-9 rounded-xl bg-secondary-fixed flex items-center justify-center text-secondary">
+                    <span class="material-symbols-outlined text-xl">payments</span>
+                  </div>
+                </div>
+                <div class="flex items-baseline gap-1.5">
+                  <span class="font-headline text-2xl font-extrabold text-primary">${formatDZD(walletRes.balance_dzd)}</span>
+                </div>
+                <div class="mt-3 pt-2 border-t border-surface-container flex items-center justify-between text-[11px]">
+                  <span class="inline-flex items-center gap-1 font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md">+18.4%</span>
+                  <span class="text-on-surface-variant">Retrait CCP / RIB</span>
+                </div>
+              </div>
+
+              <div class="bg-surface-container-lowest p-5 rounded-2xl shadow-xs border border-outline-variant/15 flex flex-col justify-between">
+                <div class="flex items-center justify-between mb-3">
+                  <span class="text-xs font-bold uppercase tracking-wider text-on-surface-variant">Commandes en Cours</span>
+                  <div class="w-9 h-9 rounded-xl bg-primary-fixed flex items-center justify-center text-primary">
+                    <span class="material-symbols-outlined text-xl">pending_actions</span>
+                  </div>
+                </div>
+                <div class="flex items-baseline gap-2">
+                  <span class="font-headline text-2xl font-extrabold text-primary">${incomingOrders.filter(o => o.status !== 'completed').length}</span>
+                  <span class="text-xs font-semibold text-on-surface-variant">Projets actifs</span>
+                </div>
+                <div class="mt-3 pt-2 border-t border-surface-container flex items-center justify-between text-[11px]">
+                  <span class="font-bold text-secondary bg-secondary-fixed/60 px-2 py-0.5 rounded-md">Escrow garanti</span>
+                  <span class="text-on-surface-variant">${incomingOrders.filter(o => o.status === 'completed').length} terminées</span>
+                </div>
+              </div>
+
+              <div class="bg-surface-container-lowest p-5 rounded-2xl shadow-xs border border-outline-variant/15 flex flex-col justify-between">
+                <div class="flex items-center justify-between mb-3">
+                  <span class="text-xs font-bold uppercase tracking-wider text-on-surface-variant">Services Publiés</span>
+                  <div class="w-9 h-9 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-700">
+                    <span class="material-symbols-outlined text-xl">Check_Circle</span>
+                  </div>
+                </div>
+                <div class="flex items-baseline gap-2">
+                  <span class="font-headline text-2xl font-extrabold text-primary">${myServices.filter(s => s.status === 'approved').length}</span>
+                  <span class="text-xs font-semibold text-emerald-700">En ligne</span>
+                </div>
+                <div class="mt-3 pt-2 border-t border-surface-container text-[11px] text-on-surface-variant">
+                  Taux de livraison à temps : <strong>98.5%</strong>
+                </div>
+              </div>
+
+              <div class="bg-surface-container-lowest p-5 rounded-2xl shadow-xs border border-outline-variant/15 flex flex-col justify-between">
+                <div class="flex items-center justify-between mb-3">
+                  <span class="text-xs font-bold uppercase tracking-wider text-on-surface-variant">Note Globale</span>
+                  <div class="w-9 h-9 rounded-xl bg-amber-50 flex items-center justify-center text-amber-600">
+                    <span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">star</span>
+                  </div>
+                </div>
+                <div class="flex items-baseline gap-2">
+                  <span class="font-headline text-2xl font-extrabold text-primary">${Number(state.user.rating_avg || 4.9).toFixed(1)}</span>
+                  <span class="text-xs font-semibold text-on-surface-variant">/ 5.0 (${state.user.review_count || 12} avis)</span>
+                </div>
+                <div class="mt-3 pt-2 border-t border-surface-container text-[11px] text-secondary font-bold">
+                  ✦ Top Talent Algérie
+                </div>
+              </div>
+            </div>
+
+            ${tab === "overview" ? `
+              <div class="bg-surface-container-lowest rounded-2xl shadow-xs border border-outline-variant/15 overflow-hidden mb-6">
+                <div class="p-5 border-b border-surface-container flex items-center justify-between">
+                  <div>
+                    <h3 class="font-headline text-lg font-bold text-primary">File d'Attente des Commandes Clients</h3>
+                    <p class="text-xs text-on-surface-variant">Gérez vos livraisons et validez vos jalons pour débloquer vos fonds DZD.</p>
+                  </div>
+                  <button class="btn btn-primary btn-sm" onclick="window.IntalentApp.navigate('freelancer-dashboard?tab=create-service')">+ Nouveau Service</button>
+                </div>
+                ${incomingOrders.length === 0 ? `<div class="p-6 text-sm text-on-surface-variant">Aucune commande reçue pour le moment. Publiez un service ou répondez aux appels d'offres !</div>` : `
+                  <div class="table-wrap">
+                    <table class="data-table">
+                      <thead>
+                        <tr><th>Commande #</th><th>Service</th><th>Client</th><th>Gain Net (DZD)</th><th>Statut</th><th>Action</th></tr>
+                      </thead>
+                      <tbody>
+                        ${incomingOrders.map(o => `
+                          <tr>
+                            <td><strong>${escapeHtml(o.order_number)}</strong></td>
+                            <td>${escapeHtml(o.service_title)}</td>
+                            <td>${escapeHtml(o.client_name)}</td>
+                            <td><strong style="color:var(--success);">${formatDZD(o.freelancer_net_dzd)}</strong></td>
+                            <td><span class="badge badge-status">${escapeHtml(o.status.toUpperCase())}</span></td>
+                            <td><button class="btn btn-primary btn-sm" onclick="window.IntalentApp.navigate('order-detail?id=${o.id}')">Livrer / Ouvrir →</button></td>
+                          </tr>
+                        `).join("")}
+                      </tbody>
+                    </table>
+                  </div>
+                `}
+              </div>
+
+              <!-- STITCH SCREEN 5: MONTHLY REVENUE SVG CHART -->
+              <div class="bg-surface-container-lowest rounded-2xl shadow-xs border border-outline-variant/15 p-6">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+                  <div>
+                    <h3 class="font-headline text-lg font-bold text-primary">Évolution des Revenus Mensuels (DZD)</h3>
+                    <p class="text-xs text-on-surface-variant">Performance financière consolidée sur les 6 derniers mois</p>
+                  </div>
+                  <span class="px-3 py-1 rounded-lg bg-secondary-fixed text-secondary text-xs font-bold">Croissance +24%</span>
+                </div>
+                <div class="relative h-48 w-full">
+                  <svg class="w-full h-full overflow-visible" preserveAspectRatio="none" viewBox="0 0 700 180">
+                    <defs>
+                      <linearGradient id="chartGrad" x1="0" x2="0" y1="0" y2="1">
+                        <stop offset="0%" stop-color="#7627e0" stop-opacity="0.28"></stop>
+                        <stop offset="100%" stop-color="#7627e0" stop-opacity="0.0"></stop>
+                      </linearGradient>
+                    </defs>
+                    <path d="M0,145 C60,135 90,95 140,100 C190,105 230,65 280,75 C330,85 370,40 420,50 C470,60 510,30 560,25 C610,20 650,10 700,8 L700,180 L0,180 Z" fill="url(#chartGrad)"></path>
+                    <path d="M0,145 C60,135 90,95 140,100 C190,105 230,65 280,75 C330,85 370,40 420,50 C470,60 510,30 560,25 C610,20 650,10 700,8" fill="none" stroke="#7627e0" stroke-linecap="round" stroke-width="3.5"></path>
+                    <circle cx="560" cy="25" fill="#ffffff" r="5" stroke="#7627e0" stroke-width="3"></circle>
+                    <circle cx="700" cy="8" fill="#280c42" r="6" stroke="#ffffff" stroke-width="2.5"></circle>
+                  </svg>
+                </div>
+              </div>
+            ` : ""}
 
           ${tab === "services" ? `
             <div class="card-panel">
@@ -613,6 +862,7 @@
               <button type="submit" class="btn btn-primary">Save Freelancer Profile</button>
             </form>
           ` : ""}
+          </div>
         </div>
       </div>
     `;

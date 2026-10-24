@@ -423,6 +423,10 @@
             </a>
             <a onclick="window.IntalentApp.navigate('business-solutions')" class="cursor-pointer hidden lg:inline-block font-label-lg text-label-lg ${state.route === 'business-solutions' ? 'text-secondary font-bold' : 'text-on-surface-variant hover:text-on-surface'} transition-colors">${t("business")}</a>
             <a onclick="window.IntalentApp.navigate('projects')" class="cursor-pointer hidden xl:inline-block font-label-lg text-label-lg ${state.route === 'projects' ? 'text-secondary font-bold' : 'text-on-surface-variant hover:text-on-surface'} transition-colors">${t("projects")}</a>
+            <a onclick="window.IntalentApp.navigate('mobile-app')" class="cursor-pointer inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-secondary-fixed/70 text-primary-container hover:bg-secondary hover:text-white font-label-md text-xs font-extrabold transition-all shadow-2xs">
+              <span class="material-symbols-outlined text-[15px]">android</span>
+              <span>App APK</span>
+            </a>
 
             <!-- Currency DZD & Language Switcher Pill -->
             <div class="hidden sm:flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md border border-outline-variant">

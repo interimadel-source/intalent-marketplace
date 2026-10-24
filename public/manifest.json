@@ -1,0 +1,28 @@
+{
+  "name": "Intalent Algérie — Freelance & Business Marketplace",
+  "short_name": "Intalent DZ",
+  "description": "منصة العمل الحر والخدمات الرقمية الأولى في الجزائر بالدينار الجزائري (DZD) عبر 58 ولاية — متوفرة بالعربية، الفرنسية والإنجليزية.",
+  "start_url": "/mobile.html",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#25083F",
+  "theme_color": "#25083F",
+  "lang": "fr",
+  "dir": "auto",
+  "categories": ["business", "productivity", "finance"],
+  "icons": [
+    {
+      "src": "/assets/logos/logo-white-purple.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/logos/logo-white-purple.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

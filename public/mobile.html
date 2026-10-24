@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#25083F" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>Intalent Mobile App — FR | AR | EN</title>
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="icon" type="image/png" href="/assets/logos/logo-dark.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --brand-deep: #25083F;
+      --brand-dark: #2B0B45;
+      --brand-violet: #8B43F5;
+      --brand-lavender: #C879F5;
+      --brand-pale: #F7F1FC;
+    }
+    body {
+      font-family: 'Inter', 'Noto Sans Arabic', sans-serif;
+      background-color: #F7F1FC;
+      color: #29252F;
+      margin: 0;
+      padding-bottom: 84px;
+      -webkit-tap-highlight-color: transparent;
+    }
+    h1, h2, h3, .font-headline {
+      font-family: 'Plus Jakarta Sans', 'Noto Sans Arabic', sans-serif;
+    }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- TOP APP BAR (INTALENT DEEP PURPLE #25083F) -->
+  <header class="sticky top-0 z-40 bg-gradient-to-r from-[#25083F] via-[#2B0B45] to-[#461278] text-white px-4 pt-3 pb-3.5 shadow-md">
+    <div class="flex items-center justify-between gap-2">
+      <div class="flex items-center gap-2.5">
+        <img src="/assets/logos/logo-white-purple.png" alt="Intalent" class="h-8 w-auto object-contain rounded-md" />
+        <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-[#8B43F5]/40 border border-[#C879F5]/40 text-[#F7F1FC]">
+          DZ • DZD
+        </span>
+      </div>
+
+      <!-- 3-LANGUAGE SWITCHER (FR | AR | EN) -->
+      <div class="flex items-center gap-1 bg-white/10 p-1 rounded-full border border-white/15">
+        <button onclick="setLang('fr')" id="lang-btn-fr" class="px-2.5 py-1 rounded-full text-[11px] font-bold transition-all bg-[#8B43F5] text-white">FR</button>
+        <button onclick="setLang('ar')" id="lang-btn-ar" class="px-2.5 py-1 rounded-full text-[11px] font-bold transition-all text-white/80">العربية</button>
+        <button onclick="setLang('en')" id="lang-btn-en" class="px-2.5 py-1 rounded-full text-[11px] font-bold transition-all text-white/80">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN SCROLLABLE VIEWPORT -->
+  <main id="mobile-viewport" class="flex-1 px-4 py-4 max-w-lg mx-auto w-full space-y-5"></main>
+
+  <!-- SERVICE / ORDER MODAL SHEET -->
+  <div id="mobile-sheet" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs hidden items-end justify-center">
+    <div id="mobile-sheet-body" class="bg-white w-full max-w-lg rounded-t-3xl p-5 max-h-[88vh] overflow-y-auto shadow-2xl"></div>
+  </div>
+
+  <!-- BOTTOM NAVIGATION BAR (5 TABS) -->
+  <nav class="fixed bottom-0 inset-x-0 z-40 bg-white/95 backdrop-blur-md border-t border-[#E9E2EF] shadow-[0_-6px_24px_rgba(37,8,63,0.08)]">
+    <div class="max-w-lg mx-auto grid grid-cols-5 h-16">
+      <button onclick="switchTab('home')" id="nav-home" class="flex flex-col items-center justify-center gap-0.5 text-[#8B43F5] font-bold">
+        <span class="material-symbols-outlined text-[22px]">home</span>
+        <span class="text-[10px]" data-i18n="nav_home">Accueil</span>
+      </button>
+      <button onclick="switchTab('explore')" id="nav-explore" class="flex flex-col items-center justify-center gap-0.5 text-[#77717F]">
+        <span class="material-symbols-outlined text-[22px]">travel_explore</span>
+        <span class="text-[10px]" data-i18n="nav_explore">Explorer</span>
+      </button>
+      <button onclick="switchTab('orders')" id="nav-orders" class="flex flex-col items-center justify-center gap-0.5 text-[#77717F]">
+        <span class="material-symbols-outlined text-[22px]">receipt_long</span>
+        <span class="text-[10px]" data-i18n="nav_orders">Commandes</span>
+      </button>
+      <button onclick="switchTab('messages')" id="nav-messages" class="flex flex-col items-center justify-center gap-0.5 text-[#77717F]">
+        <span class="material-symbols-outlined text-[22px]">chat</span>
+        <span class="text-[10px]" data-i18n="nav_messages">Messages</span>
+      </button>
+      <button onclick="switchTab('profile')" id="nav-profile" class="flex flex-col items-center justify-center gap-0.5 text-[#77717F]">
+        <span class="material-symbols-outlined text-[22px]">person</span>
+        <span class="text-[10px]" data-i18n="nav_profile">Profil</span>
+      </button>
+    </div>
+  </nav>
+
+  <script>
+    const MOBILE_I18N = {
+      fr: {
+        dir: "ltr",
+        nav_home: "Accueil",
+        nav_explore: "Explorer",
+        nav_orders: "Commandes",
+        nav_messages: "Messages",
+        nav_profile: "Profil",
+        hero_badge: "PLATEFORME N°1 EN ALGÉRIE • 58 WILAYAS",
+        hero_title: "Trouvez l'élite des talents freelances en DZD",
+        hero_sub: "Paiement garanti par Escrow Algérie (CIB, Edahabia, BaridiMob / CCP).",
+        search_ph: "Rechercher un service (ex: React, Logo, SEO)...",
+        categories_title: "Catégories Populaires",
+        featured_title: "Services Pro Recommandés",
+        all_wilayas: "Toutes les 58 Wilayas",
+        order_btn: "Commander",
+        from_price: "À partir de",
+        orders_title: "Suivi de mes Commandes",
+        escrow_tag: "Garantie Escrow DZD Active",
+        messages_title: "Messagerie Directe",
+        send_btn: "Envoyer",
+        msg_ph: "Écrivez votre message...",
+        wallet_label: "Solde Portefeuille Disponible",
+        withdraw_btn: "Retirer via BaridiMob / CCP",
+        demo_switch_title: "Connexion Rapide (Comptes Démo Pré-remplis)",
+        open_web_btn: "Ouvrir la version Web complète"
+      },
+      ar: {
+        dir: "rtl",
+        nav_home: "الرئيسية",
+        nav_explore: "استكشاف",
+        nav_orders: "الطلبات",
+        nav_messages: "الرسائل",
+        nav_profile: "حسابي",
+        hero_badge: "المنصة الأولى في الجزائر • 58 ولاية",
+        hero_title: "وظّف نخبة المستقلين في الجزائر بالدينار (DZD)",
+        hero_sub: "دفع آمن ومضمون 100% عبر البطاقة الذهبية Edahabia و CIB و BaridiMob.",
+        search_ph: "ابحث عن خدمة (مثال: برمجة، تصميم شعار، تسويق)...",
+        categories_title: "الأقسام الأكثر طلباً",
+        featured_title: "خدمات احترافية موصى بها",
+        all_wilayas: "كل 58 ولاية جزائرية",
+        order_btn: "اطلب الآن",
+        from_price: "ابتداءً من",
+        orders_title: "متابعة طلباتي ومشاريعي",
+        escrow_tag: "حماية الضمان المالي DZD مفعّلة",
+        messages_title: "المحادثات الفورية",
+        send_btn: "إرسال",
+        msg_ph: "اكتب رسالتك هنا...",
+        wallet_label: "الرصيد المتاح للسحب",
+        withdraw_btn: "سحب الأرباح عبر بريدي موب / CCP",
+        demo_switch_title: "دخول سريع بالحسابات الجاهزة (مملوءة بالبيانات)",
+        open_web_btn: "فتح النسخة الكاملة للمنصة"
+      },
+      en: {
+        dir: "ltr",
+        nav_home: "Home",
+        nav_explore: "Explore",
+        nav_orders: "Orders",
+        nav_messages: "Messages",
+        nav_profile: "Profile",
+        hero_badge: "#1 MARKETPLACE IN ALGERIA • 58 WILAYAS",
+        hero_title: "Hire Verified Algerian Freelance Talent in DZD",
+        hero_sub: "100% protected DZD Escrow payments via CIB, Edahabia & BaridiMob.",
+        search_ph: "Search services (e.g., Web App, Brand Logo, SEO)...",
+        categories_title: "Top Categories",
+        featured_title: "Featured Pro Services",
+        all_wilayas: "All 58 Algerian Wilayas",
+        order_btn: "Order Now",
+        from_price: "Starting at",
+        orders_title: "My Orders & Deliveries",
+        escrow_tag: "100% DZD Escrow Protection",
+        messages_title: "Live Order Messaging",
+        send_btn: "Send",
+        msg_ph: "Write your message...",
+        wallet_label: "Available Wallet Balance",
+        withdraw_btn: "Withdraw via BaridiMob / CCP",
+        demo_switch_title: "1-Tap Demo Account Switcher (Pre-filled Data)",
+        open_web_btn: "Open Full Desktop Website"
+      }
+    };
+
+    const mState = {
+      lang: localStorage.getItem("intalent_lang") || "fr",
+      tab: "home",
+      token: localStorage.getItem("intalent_token") || "",
+      user: null,
+      categories: [],
+      services: [],
+      orders: [],
+      conversations: [],
+      searchQuery: "",
+      categorySlug: ""
+    };
+
+    function t(key) {
+      return (MOBILE_I18N[mState.lang] && MOBILE_I18N[mState.lang][key]) || MOBILE_I18N.fr[key] || key;
+    }
+
+    function formatDZD(num) {
+      const n = Number(num || 0).toLocaleString("fr-DZ");
+      return mState.lang === "ar" ? `${n} د.ج` : `${n} DZD`;
+    }
+
+    async function apiFetch(path, opts = {}) {
+      const headers = Object.assign({ "Content-Type": "application/json" }, opts.headers || {});
+      if (mState.token) headers["Authorization"] = "Bearer " + mState.token;
+      const res = await fetch(path, Object.assign({}, opts, { headers }));
+      return res.json();
+    }
+
+    async function initMobileApp() {
+      applyLangUI();
+      try {
+        const boot = await apiFetch("/api/bootstrap");
+        mState.user = boot.user;
+        mState.categories = boot.categories || [];
+        // Auto sign-in to Amine Pro demo account if guest so the user immediately sees messages & orders!
+        if (!mState.user) {
+          await quickLogin("amine@intalent.dz", "Password123!", false);
+        }
+        const svcRes = await apiFetch("/api/services");
+        mState.services = svcRes.services || [];
+      } catch (e) {
+        console.error(e);
+      }
+      renderCurrentTab();
+    }
+
+    async function quickLogin(email, password, rerender = true) {
+      try {
+        const res = await apiFetch("/api/auth/login", {
+          method: "POST",
+          body: JSON.stringify({ email, password })
+        });
+        if (res.token) {
+          mState.token = res.token;
+          localStorage.setItem("intalent_token", res.token);
+          mState.user = res.user;
+          if (rerender) renderCurrentTab();
+        }
+      } catch (e) {}
+    }
+
+    function setLang(lang) {
+      mState.lang = lang;
+      localStorage.setItem("intalent_lang", lang);
+      applyLangUI();
+      renderCurrentTab();
+    }
+
+    function applyLangUI() {
+      const cfg = MOBILE_I18N[mState.lang] || MOBILE_I18N.fr;
+      document.documentElement.lang = mState.lang;
+      document.documentElement.dir = cfg.dir;
+      ["fr", "ar", "en"].forEach((l) => {
+        const btn = document.getElementById("lang-btn-" + l);
+        if (btn) {
+          btn.className = l === mState.lang
+            ? "px-2.5 py-1 rounded-full text-[11px] font-bold transition-all bg-[#8B43F5] text-white shadow-xs"
+            : "px-2.5 py-1 rounded-full text-[11px] font-bold transition-all text-white/80";
+        }
+      });
+      document.querySelectorAll("[data-i18n]").forEach((el) => {
+        el.textContent = t(el.getAttribute("data-i18n"));
+      });
+    }
+
+    function switchTab(tab) {
+      mState.tab = tab;
+      ["home", "explore", "orders", "messages", "profile"].forEach((id) => {
+        const btn = document.getElementById("nav-" + id);
+        if (btn) {
+          btn.className = id === tab
+            ? "flex flex-col items-center justify-center gap-0.5 text-[#8B43F5] font-bold"
+            : "flex flex-col items-center justify-center gap-0.5 text-[#77717F]";
+        }
+      });
+      renderCurrentTab();
+    }
+
+    function getCatName(c) {
+      if (mState.lang === "ar") return c.name_ar || c.name;
+      if (mState.lang === "fr") return c.name_fr || c.name;
+      return c.name;
+    }
+
+    async function renderCurrentTab() {
+      const vp = document.getElementById("mobile-viewport");
+      if (!vp) return;
+
+      if (mState.tab === "home") {
+        vp.innerHTML = `
+          <!-- HERO CARD -->
+          <div class="rounded-2xl bg-gradient-to-br from-[#25083F] via-[#2B0B45] to-[#8B43F5] text-white p-5 shadow-lg relative overflow-hidden">
+            <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/15 text-[10px] font-bold uppercase tracking-wider mb-2.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#C879F5]"></span>
+              ${t("hero_badge")}
+            </div>
+            <h1 class="font-headline text-xl font-extrabold leading-snug mb-1.5">${t("hero_title")}</h1>
+            <p class="text-xs text-white/80 mb-4 leading-relaxed">${t("hero_sub")}</p>
+            <div class="flex items-center bg-white rounded-xl p-1.5 shadow-inner">
+              <span class="material-symbols-outlined text-[#77717F] px-2 text-lg">search</span>
+              <input id="m-home-search" type="text" placeholder="${t("search_ph")}" class="flex-1 text-xs text-[#29252F] bg-transparent focus:outline-none" />
+              <button onclick="mState.searchQuery=document.getElementById('m-home-search').value;switchTab('explore');" class="px-3 py-2 rounded-lg bg-[#8B43F5] text-white text-xs font-bold">
+                OK
+              </button>
+            </div>
+          </div>
+
+          <!-- CATEGORIES HORIZONTAL PILLS -->
+          <div>
+            <div class="flex items-center justify-between mb-2.5">
+              <h2 class="font-headline font-bold text-sm text-[#25083F]">${t("categories_title")}</h2>
+            </div>
+            <div class="flex gap-2.5 overflow-x-auto no-scrollbar pb-1">
+              ${mState.categories.map(c => `
+                <button onclick="mState.categorySlug='${c.slug}';switchTab('explore');" class="shrink-0 px-3.5 py-2.5 rounded-xl bg-white border border-[#E9E2EF] shadow-2xs flex items-center gap-2 text-xs font-bold text-[#25083F] active:scale-95 transition-transform">
+                  <span class="w-2 h-2 rounded-full bg-[#8B43F5]"></span>
+                  <span>${getCatName(c)}</span>
+                </button>
+              `).join("")}
+            </div>
+          </div>
+
+          <!-- FEATURED SERVICES -->
+          <div>
+            <div class="flex items-center justify-between mb-2.5">
+              <h2 class="font-headline font-bold text-sm text-[#25083F]">${t("featured_title")}</h2>
+            </div>
+            <div class="space-y-3">
+              ${mState.services.slice(0, 6).map(renderMobileServiceCard).join("")}
+            </div>
+          </div>
+        `;
+      } else if (mState.tab === "explore") {
+        const filtered = mState.services.filter(s => {
+          const matchQ = !mState.searchQuery || s.title.toLowerCase().includes(mState.searchQuery.toLowerCase());
+          const matchC = !mState.categorySlug || s.category_slug === mState.categorySlug;
+          return matchQ && matchC;
+        });
+        vp.innerHTML = `
+          <div class="bg-white p-3.5 rounded-2xl border border-[#E9E2EF] space-y-2.5">
+            <div class="flex items-center gap-2 bg-[#F7F1FC] px-3 py-2 rounded-xl">
+              <span class="material-symbols-outlined text-[#8B43F5] text-lg">search</span>
+              <input id="m-exp-q" type="text" value="${mState.searchQuery}" placeholder="${t("search_ph")}" class="flex-1 bg-transparent text-xs focus:outline-none" />
+              <button onclick="mState.searchQuery=document.getElementById('m-exp-q').value;renderCurrentTab();" class="px-2.5 py-1 rounded-lg bg-[#25083F] text-white text-[11px] font-bold">OK</button>
+            </div>
+            <div class="flex gap-1.5 overflow-x-auto no-scrollbar">
+              <button onclick="mState.categorySlug='';renderCurrentTab();" class="px-3 py-1 rounded-full text-[11px] font-bold ${!mState.categorySlug ? 'bg-[#8B43F5] text-white' : 'bg-[#F7F1FC] text-[#25083F]'} shrink-0">Tous</button>
+              ${mState.categories.map(c => `
+                <button onclick="mState.categorySlug='${c.slug}';renderCurrentTab();" class="px-3 py-1 rounded-full text-[11px] font-bold ${mState.categorySlug === c.slug ? 'bg-[#8B43F5] text-white' : 'bg-[#F7F1FC] text-[#25083F]'} shrink-0">${getCatName(c)}</button>
+              `).join("")}
+            </div>
+          </div>
+          <div class="space-y-3">
+            ${filtered.map(renderMobileServiceCard).join("")}
+          </div>
+        `;
+      } else if (mState.tab === "orders") {
+        const ordRes = await apiFetch("/api/orders");
+        mState.orders = ordRes.orders || [];
+        vp.innerHTML = `
+          <div class="flex items-center justify-between">
+            <h2 class="font-headline font-extrabold text-base text-[#25083F]">${t("orders_title")}</h2>
+            <span class="px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-bold">${t("escrow_tag")}</span>
+          </div>
+          <div class="space-y-3">
+            ${mState.orders.map(o => `
+              <div class="bg-white p-4 rounded-2xl border border-[#E9E2EF] shadow-2xs space-y-2.5">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-extrabold text-[#8B43F5]">${o.order_number}</span>
+                  <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold ${o.status === 'completed' ? 'bg-emerald-100 text-emerald-800' : 'bg-[#F7F1FC] text-[#25083F]'} uppercase">${o.status}</span>
+                </div>
+                <h3 class="font-headline font-bold text-sm text-[#25083F]">${o.service_title}</h3>
+                <div class="flex items-center justify-between text-xs text-[#77717F] pt-2 border-t border-[#E9E2EF]">
+                  <span>Client: <strong class="text-[#29252F]">${o.client_name}</strong></span>
+                  <span class="font-headline font-extrabold text-[#25083F]">${formatDZD(o.total_dzd)}</span>
+                </div>
+              </div>
+            `).join("")}
+          </div>
+        `;
+      } else if (mState.tab === "messages") {
+        const convRes = await apiFetch("/api/conversations");
+        const convs = convRes.conversations || [];
+        let activeMessages = [];
+        let activeConv = convs[0] || null;
+        if (activeConv) {
+          const det = await apiFetch("/api/conversations/" + activeConv.id);
+          activeMessages = det.messages || [];
+        }
+        vp.innerHTML = `
+          <h2 class="font-headline font-extrabold text-base text-[#25083F]">${t("messages_title")}</h2>
+          <div class="flex gap-2 overflow-x-auto no-scrollbar pb-1">
+            ${convs.map((c, idx) => `
+              <div class="px-3.5 py-2 rounded-xl ${idx === 0 ? 'bg-[#25083F] text-white' : 'bg-white text-[#25083F] border border-[#E9E2EF]'} text-xs font-bold shrink-0">
+                ${c.user1_id === (mState.user && mState.user.id) ? c.user2_name : c.user1_name}
+              </div>
+            `).join("")}
+          </div>
+          <div class="bg-white rounded-2xl border border-[#E9E2EF] p-4 space-y-3 max-h-[52vh] overflow-y-auto">
+            ${activeMessages.map(m => {
+              const mine = mState.user && m.sender_id === mState.user.id;
+              return `
+                <div class="flex flex-col ${mine ? 'items-end' : 'items-start'}">
+                  <span class="text-[10px] text-[#77717F] mb-0.5">${m.sender_name}</span>
+                  <div class="px-3.5 py-2.5 rounded-2xl text-xs max-w-[85%] ${mine ? 'bg-[#25083F] text-white' : 'bg-[#F7F1FC] text-[#29252F]'}">
+                    ${m.body}
+                  </div>
+                </div>
+              `;
+            }).join("")}
+          </div>
+          ${activeConv ? `
+            <form onsubmit="sendMobileMsg(event, ${activeConv.id})" class="flex gap-2 bg-white p-2 rounded-2xl border border-[#E9E2EF]">
+              <input id="m-chat-input" type="text" placeholder="${t("msg_ph")}" class="flex-1 text-xs px-2 focus:outline-none" required />
+              <button type="submit" class="px-4 py-2 rounded-xl bg-[#8B43F5] text-white text-xs font-bold">${t("send_btn")}</button>
+            </form>
+          ` : ""}
+        `;
+      } else if (mState.tab === "profile") {
+        const u = mState.user || {};
+        vp.innerHTML = `
+          <div class="bg-gradient-to-br from-[#25083F] to-[#461278] text-white p-5 rounded-2xl shadow-md space-y-3">
+            <div class="flex items-center gap-3">
+              <img src="${u.avatar_url || '/assets/logos/logo-white-purple.png'}" class="w-14 h-14 rounded-full object-cover border-2 border-[#C879F5]" />
+              <div>
+                <h2 class="font-headline font-extrabold text-base">${u.full_name || 'Utilisateur Intalent'}</h2>
+                <p class="text-xs text-[#C879F5]">${u.headline || ''} • ${u.wilaya || '16 - Alger'}</p>
+              </div>
+            </div>
+            <div class="bg-white/10 p-3.5 rounded-xl flex items-center justify-between">
+              <div>
+                <div class="text-[10px] uppercase tracking-wider text-white/75">${t("wallet_label")}</div>
+                <div class="font-headline text-xl font-extrabold text-white">${formatDZD(u.wallet_balance_dzd || 148500)}</div>
+              </div>
+              <span class="px-3 py-1.5 rounded-lg bg-[#8B43F5] text-white text-[11px] font-bold">${t("withdraw_btn")}</span>
+            </div>
+          </div>
+
+          <!-- 1-TAP DEMO ACCOUNT SWITCHER -->
+          <div class="bg-white p-4 rounded-2xl border border-[#E9E2EF] space-y-2.5">
+            <div class="text-xs font-extrabold text-[#25083F]">${t("demo_switch_title")}</div>
+            <div class="grid grid-cols-2 gap-2">
+              <button onclick="quickLogin('amine@intalent.dz','Password123!')" class="p-2.5 rounded-xl bg-[#F7F1FC] text-[#25083F] text-xs font-bold border border-[#8B43F5]/30">👨‍💻 Freelance Pro (Amine)</button>
+              <button onclick="quickLogin('client@intalent.dz','Password123!')" class="p-2.5 rounded-xl bg-[#F7F1FC] text-[#25083F] text-xs font-bold border border-[#8B43F5]/30">🛒 Client (Sofiane)</button>
+              <button onclick="quickLogin('business@intalent.dz','Password123!')" class="p-2.5 rounded-xl bg-[#F7F1FC] text-[#25083F] text-xs font-bold border border-[#8B43F5]/30">🏢 Entreprise (Nadia)</button>
+              <button onclick="quickLogin('admin@intalent.dz','AdminPassword123!')" class="p-2.5 rounded-xl bg-[#F7F1FC] text-[#25083F] text-xs font-bold border border-[#8B43F5]/30">🛡️ Admin (Karim)</button>
+            </div>
+          </div>
+
+          <a href="/" class="block text-center w-full py-3 rounded-xl bg-[#25083F] text-white font-headline font-bold text-xs">
+            ${t("open_web_btn")} →
+          </a>
+        `;
+      }
+    }
+
+    function renderMobileServiceCard(s) {
+      return `
+        <div class="bg-white rounded-2xl border border-[#E9E2EF] overflow-hidden shadow-2xs flex gap-3 p-3 items-center">
+          <img src="${s.cover_image}" class="w-24 h-20 rounded-xl object-cover shrink-0" />
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center gap-1.5 mb-0.5">
+              <span class="text-[11px] font-bold text-[#25083F] truncate">${s.freelancer_name}</span>
+              ${s.freelancer_is_pro ? `<span class="px-1.5 py-0.5 rounded bg-[#25083F] text-[#C879F5] text-[9px] font-extrabold">PRO</span>` : ""}
+            </div>
+            <h3 class="font-headline font-bold text-xs text-[#29252F] line-clamp-2 mb-1.5">${s.title}</h3>
+            <div class="flex items-center justify-between">
+              <div>
+                <span class="text-[9px] text-[#77717F] block">${t("from_price")}</span>
+                <span class="font-headline font-extrabold text-xs text-[#25083F]">${formatDZD(s.starting_price_dzd)}</span>
+              </div>
+              <a href="/#service?slug=${encodeURIComponent(s.slug)}" class="px-3 py-1.5 rounded-lg bg-[#8B43F5] text-white text-[11px] font-bold">
+                ${t("order_btn")}
+              </a>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    async function sendMobileMsg(e, convId) {
+      e.preventDefault();
+      const inp = document.getElementById("m-chat-input");
+      if (!inp || !inp.value.trim()) return;
+      await apiFetch("/api/messages", {
+        method: "POST",
+        body: JSON.stringify({ conversation_id: convId, body: inp.value.trim() })
+      });
+      inp.value = "";
+      renderCurrentTab();
+    }
+
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("/sw.js").catch(() => {});
+    }
+
+    initMobileApp();
+  </script>
+</body>
+</html>

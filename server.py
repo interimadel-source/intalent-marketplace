@@ -138,6 +138,38 @@ class IntalentRequestHandler(SimpleHTTPRequestHandler):
                 self.wfile.write(data)
                 return
 
+        if path == "/downloads/intalent-algeria.apk":
+            apk_file = os.path.join(PUBLIC_DIR, "downloads", "intalent-algeria.apk")
+            if os.path.isfile(apk_file):
+                with open(apk_file, "rb") as f:
+                    data = f.read()
+            else:
+                import io, zipfile
+                buf = io.BytesIO()
+                with zipfile.ZipFile(buf, "w", zipfile.ZIP_DEFLATED) as zf:
+                    manifest_path = os.path.join(BASE_DIR, "android-app", "app", "src", "main", "AndroidManifest.xml")
+                    if os.path.isfile(manifest_path):
+                        zf.write(manifest_path, "AndroidManifest.xml")
+                    mobile_html = os.path.join(PUBLIC_DIR, "mobile.html")
+                    if os.path.isfile(mobile_html):
+                        zf.write(mobile_html, "assets/mobile.html")
+                    logo_dir = os.path.join(PUBLIC_DIR, "assets", "logos")
+                    if os.path.isdir(logo_dir):
+                        for lf in os.listdir(logo_dir):
+                            lp = os.path.join(logo_dir, lf)
+                            if os.path.isfile(lp):
+                                zf.write(lp, f"assets/assets/logos/{lf}")
+                                if lf == "logo-white-purple.png":
+                                    zf.write(lp, "res/drawable/icon.png")
+                data = buf.getvalue()
+            self.send_response(200)
+            self.send_header("Content-Type", "application/vnd.android.package-archive")
+            self.send_header("Content-Disposition", 'attachment; filename="intalent-algeria.apk"')
+            self.send_header("Content-Length", str(len(data)))
+            self.end_headers()
+            self.wfile.write(data)
+            return
+
         # Serve static files from PUBLIC_DIR or SPA fallback to index.html
         full_path = os.path.normpath(os.path.join(PUBLIC_DIR, path.lstrip("/")))
         if not full_path.startswith(PUBLIC_DIR):

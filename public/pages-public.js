@@ -327,6 +327,43 @@ window.IntalentPages = window.IntalentPages || {};
             </div>
           </section>
 
+          <!-- INTALENT ANDROID MOBILE APP BANNER (APK DOWNLOAD + 3 LANGUAGES FR / AR / EN) -->
+          <section class="mt-space-2xl w-full rounded-3xl bg-gradient-to-r from-[#25083F] via-[#2B0B45] to-[#8B43F5] text-white p-space-xl lg:p-space-2xl relative overflow-hidden shadow-xl">
+            <div class="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-space-xl">
+              <div class="max-w-2xl space-y-4">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/15 text-secondary-fixed font-label-md text-xs font-extrabold uppercase tracking-wider">
+                  <span class="material-symbols-outlined text-base">android</span>
+                  <span>APPLICATION MOBILE ANDROID OFFICIELLE • FR | العربية | EN</span>
+                </div>
+                <h2 class="font-headline-xl text-2xl lg:text-4xl font-extrabold leading-tight">
+                  Téléchargez l'Application Intalent APK sur votre Smartphone Android
+                </h2>
+                <p class="text-white/85 text-sm lg:text-base leading-relaxed">
+                  Commandez des services, suivez vos livraisons Escrow en DZD, discutez en direct avec vos clients et retirez vos gains BaridiMob / CCP où que vous soyez à travers les 58 Wilayas — disponible en <strong>Français, العربية et English</strong>.
+                </p>
+                <div class="flex flex-wrap items-center gap-3 pt-2">
+                  <a href="/downloads/intalent-algeria.apk" download="intalent-algeria.apk" class="px-6 py-3.5 rounded-full bg-white text-[#25083F] hover:bg-secondary-fixed font-headline font-extrabold text-sm shadow-lg transition-all inline-flex items-center gap-2">
+                    <span class="material-symbols-outlined text-xl text-[#8B43F5]">download</span>
+                    <span>Télécharger l'APK Android (v2.4.0)</span>
+                  </a>
+                  <button type="button" onclick="window.IntalentApp.navigate('mobile-app')" class="px-6 py-3.5 rounded-full bg-white/15 hover:bg-white/25 text-white border border-white/25 font-headline font-bold text-sm transition-all inline-flex items-center gap-2">
+                    <span class="material-symbols-outlined text-lg">smartphone</span>
+                    <span>Tester l'App Mobile en Direct (FR / AR / EN)</span>
+                  </button>
+                </div>
+              </div>
+              <div class="flex items-center gap-4 bg-white/10 backdrop-blur-md p-5 rounded-2xl border border-white/15">
+                <img src="/assets/logos/logo-white-purple.png" alt="Intalent Mobile" class="w-20 h-20 rounded-2xl object-contain bg-[#25083F] p-2 border border-[#C879F5]/40">
+                <div class="space-y-1">
+                  <div class="font-headline font-extrabold text-base text-white">Intalent Algérie APK</div>
+                  <div class="text-xs text-secondary-fixed">Version 2.4.0 • Android 7.0+</div>
+                  <div class="text-xs text-white/80">✓ Français • ✓ العربية • ✓ English</div>
+                  <div class="text-xs text-emerald-300 font-bold">✓ Certifié Sécurisé • 58 Wilayas</div>
+                </div>
+              </div>
+            </div>
+          </section>
+
           <!-- HOW IT WORKS ("Comment fonctionne Intalent") -->
           <section class="mt-space-2xl w-full">
             <div class="text-center max-w-2xl mx-auto mb-space-2xl">
@@ -1794,5 +1831,86 @@ window.IntalentPages = window.IntalentPages || {};
         }
       });
     }
+  };
+
+  // =========================================================================
+  // 7. DEDICATED MOBILE APP DOWNLOAD & INTERACTIVE SIMULATOR PAGE (#mobile-app)
+  // =========================================================================
+  window.IntalentPages["mobile-app"] = async function (main) {
+    main.innerHTML = `
+      <div class="max-w-[1360px] mx-auto px-margin-mobile lg:px-margin-desktop py-10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          
+          <!-- LEFT COLUMN: DOWNLOAD APK & FEATURES (FR / AR / EN) -->
+          <div class="lg:col-span-7 space-y-6">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-secondary-fixed text-primary-container font-label-md text-xs font-extrabold uppercase tracking-wider">
+              <span class="material-symbols-outlined text-secondary text-base">android</span>
+              <span>APPLICATION OFFICIELLE INTALENT ANDROID • v2.4.0</span>
+            </div>
+
+            <div class="flex items-center gap-4">
+              <img src="/assets/logos/logo-dark.png" alt="Intalent" class="h-12 w-auto object-contain">
+              <span class="px-3 py-1 rounded-full bg-[#25083F] text-[#C879F5] text-xs font-extrabold">FR • العربية • EN</span>
+            </div>
+
+            <h1 class="font-headline text-3xl sm:text-4xl font-extrabold text-primary-container leading-tight">
+              Téléchargez l'Application Mobile Intalent Algérie (APK)
+            </h1>
+
+            <p class="text-on-surface-variant text-base leading-relaxed">
+              Emportez tout l'écosystème <strong>Intalent</strong> dans votre poche. Conçue avec l'identité visuelle officielle Intalent (<code>#25083F</code> & <code>#8B43F5</code>), l'application mobile supporte intégralement les <strong>3 langues (Français, العربية RTL, English)</strong>, les paiements Escrow en <strong>DZD (CIB, Edahabia, BaridiMob / CCP)</strong> et la messagerie temps réel.
+            </p>
+
+            <!-- DOWNLOAD BUTTONS -->
+            <div class="flex flex-wrap items-center gap-4 pt-2">
+              <a href="/downloads/intalent-algeria.apk" download="intalent-algeria.apk" class="px-7 py-4 rounded-2xl bg-gradient-to-r from-[#25083F] to-[#8B43F5] text-white font-headline font-extrabold text-sm shadow-lg hover:opacity-95 transition-all inline-flex items-center gap-3">
+                <span class="material-symbols-outlined text-2xl">download</span>
+                <div class="text-left">
+                  <div class="text-[11px] uppercase tracking-wider text-[#C879F5]">Téléchargement Direct</div>
+                  <div class="text-base">Télécharger intalent-algeria.apk</div>
+                </div>
+              </a>
+
+              <a href="/mobile.html" target="_blank" class="px-6 py-4 rounded-2xl bg-surface-container-lowest border-2 border-[#8B43F5] text-[#25083F] hover:bg-secondary-fixed/40 font-headline font-bold text-sm transition-all inline-flex items-center gap-2.5">
+                <span class="material-symbols-outlined text-xl text-[#8B43F5]">open_in_new</span>
+                <span>Ouvrir l'App Plein Écran (PWA)</span>
+              </a>
+            </div>
+
+            <!-- 3 LANGUAGE FEATURE CARDS -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
+              <div class="p-4 rounded-2xl bg-surface-container-lowest border border-outline-variant/30 shadow-2xs">
+                <div class="font-headline font-extrabold text-sm text-[#25083F] mb-1">🇫🇷 Interface Française</div>
+                <p class="text-xs text-on-surface-variant">Catalogue complet, filtres par Wilaya, suivi de commandes et facturation DZD.</p>
+              </div>
+              <div class="p-4 rounded-2xl bg-surface-container-lowest border border-outline-variant/30 shadow-2xs" dir="rtl">
+                <div class="font-headline font-extrabold text-sm text-[#25083F] mb-1">🇩🇿 واجهة عربية كاملة</div>
+                <p class="text-xs text-on-surface-variant">دعم كامل للغة العربية (RTL)، الدفع بالدينار الجزائري، والرسائل الفورية.</p>
+              </div>
+              <div class="p-4 rounded-2xl bg-surface-container-lowest border border-outline-variant/30 shadow-2xs">
+                <div class="font-headline font-extrabold text-sm text-[#25083F] mb-1">🇬🇧 English Interface</div>
+                <p class="text-xs text-on-surface-variant">Full English mode for international clients and enterprise teams in Algeria.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT COLUMN: LIVE INTERACTIVE ANDROID PHONE SIMULATOR -->
+          <div class="lg:col-span-5 flex flex-col items-center">
+            <div class="w-full max-w-[390px] rounded-[42px] bg-[#25083F] p-3.5 shadow-[0_24px_60px_rgba(37,8,63,0.35)] border-4 border-[#C879F5]/40">
+              <div class="w-28 h-5 bg-black/50 rounded-full mx-auto mb-2.5 flex items-center justify-center">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#8B43F5]/60"></span>
+              </div>
+              <div class="rounded-[30px] overflow-hidden bg-white h-[680px] border border-white/10">
+                <iframe src="/mobile.html" title="Aperçu Interactif Intalent APK" class="w-full h-full border-0"></iframe>
+              </div>
+            </div>
+            <p class="text-xs text-on-surface-variant mt-3 text-center">
+              👆 <strong>Simulateur Interactif en Direct :</strong> Testez l'application et changez la langue (<code>FR | العربية | EN</code>) directement ci-dessus !
+            </p>
+          </div>
+
+        </div>
+      </div>
+    `;
   };
 })();

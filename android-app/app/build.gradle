@@ -1,0 +1,32 @@
+apply plugin: 'com.android.application'
+
+android {
+    namespace 'dz.intalent.mobile'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "dz.intalent.mobile"
+        minSdk 24
+        targetSdk 34
+        versionCode 24
+        versionName "2.4.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.debug
+        }
+        debug {
+            applicationIdSuffix ""
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+
+dependencies {
+}

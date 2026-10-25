@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+
+<html class="h-full bg-slate-900" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<title>Intalent - Plateforme Freelance en Algérie</title>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Plus Jakarta Sans for refined mobile typography -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Custom Configuration -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              dark: '#140E2D',      // Deep indigo dark base from Intalent logo
+              purple: '#281358',    // Rich plum purple
+              accent: '#B04BFF',    // Vivid purple accent
+              neon: '#CEF238',      // High-contrast Lime/Chartreuse CTA
+              neonHover: '#BCE521',
+              surface: '#F8F9FA',   // Off-white canvas background
+              card: '#FFFFFF',
+              olive: '#24301B',
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+          },
+          boxShadow: {
+            'soft': '0 4px 20px -2px rgba(20, 14, 45, 0.05)',
+            'card': '0 2px 10px rgba(0, 0, 0, 0.04)',
+            'nav': '0 -4px 25px rgba(0, 0, 0, 0.06)',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="h-full font-sans antialiased text-slate-800 flex justify-center items-center p-0 sm:p-4 bg-slate-950">
+<!-- BEGIN: MobileDeviceWrapper -->
+<!-- Constrains layout to typical iOS iPhone proportions -->
+<div class="relative w-full max-w-[420px] h-full sm:h-[915px] max-h-screen bg-brand-surface sm:rounded-[48px] overflow-hidden shadow-2xl flex flex-col border border-slate-800/40">
+<!-- BEGIN: iOSStatusBar -->
+<header class="sticky top-0 z-50 bg-brand-surface/95 backdrop-blur-md pt-3 px-6 pb-2 select-none" data-purpose="status-bar">
+<div class="flex justify-between items-center text-xs font-semibold tracking-tight text-slate-900">
+<!-- iOS Time -->
+<span class="text-sm font-bold pl-1">9:41</span>
+<!-- Dynamic Island Silhouette -->
+<div class="w-24 h-5 bg-black rounded-full flex items-center justify-end pr-2 space-x-1.5">
+<div class="w-2.5 h-2.5 rounded-full bg-slate-900/90 border border-slate-800"></div>
+<div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
+</div>
+<!-- System Icons: Cellular, WiFi, Battery -->
+<div class="flex items-center space-x-1.5 text-slate-900">
+<svg class="w-4 h-4 fill-current" viewbox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L4.35 18.25a.75.75 0 001.06 1.06l.64-.64C7.93 19.9 9.88 20.5 12 20.5s4.07-.6 5.95-1.83l.64.64a.75.75 0 001.06-1.06l-.62-.64C20.26 16.07 21 14.12 21 12c0-4.97-4.03-9-9-9zm0 2c3.87 0 7 3.13 7 7 0 1.62-.55 3.12-1.48 4.32l-9.84-9.84C8.88 5.55 10.38 5 12 5z"></path></svg>
+<svg class="w-4 h-4 fill-current" viewbox="0 0 24 24"><path d="M12 4C7.31 4 3.07 5.9 0 8.98L12 21 24 8.98A17.93 17.93 0 0012 4z"></path></svg>
+<div class="w-5 h-2.5 border border-slate-900 rounded-sm p-0.5 flex items-center">
+<div class="h-full w-full bg-slate-900 rounded-2xs"></div>
+</div>
+</div>
+</div>
+</header>
+<!-- END: iOSStatusBar -->
+<!-- BEGIN: ScrollableContentContainer -->
+<main class="flex-1 overflow-y-auto px-4 pb-28 pt-1 space-y-5 scroll-smooth no-scrollbar" data-purpose="main-content">
+<!-- BEGIN: UserGreetingSection -->
+<section class="flex items-center justify-between pt-1" data-purpose="user-header">
+<div class="flex items-center space-x-3">
+<!-- Profile Avatar with Online Status Indicator -->
+<div class="relative">
+<div class="w-11 h-11 rounded-full bg-gradient-to-tr from-brand-purple to-brand-dark p-0.5">
+<div class="w-full h-full rounded-full bg-brand-surface flex items-center justify-center font-bold text-brand-dark text-sm border-2 border-white">
+                KB
+              </div>
+</div>
+<span class="absolute bottom-0 right-0 w-3 h-3 bg-emerald-500 border-2 border-white rounded-full"></span>
+</div>
+<!-- Greeting Text & Location -->
+<div>
+<div class="flex items-center space-x-1.5">
+<h1 class="text-sm font-bold text-slate-900">Salam, Karim</h1>
+<span class="text-xs">🇩🇿</span>
+</div>
+<p class="text-xs text-slate-500 flex items-center gap-1">
+<svg class="w-3 h-3 text-emerald-600 inline" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+              Alger • <span class="text-emerald-700 font-medium">Disponible</span>
+</p>
+</div>
+</div>
+<!-- Right Quick Action Controls (Support & Notifications) -->
+<div class="flex items-center space-x-2">
+<!-- Customer Support Icon -->
+<button aria-label="Support client" class="w-10 h-10 rounded-full bg-white border border-slate-200/80 shadow-card flex items-center justify-center text-slate-600 hover:text-slate-900 active:scale-95 transition-transform">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path>
+</svg>
+</button>
+<!-- Notification Bell with Notification Badge -->
+<button aria-label="Notifications" class="relative w-10 h-10 rounded-full bg-white border border-slate-200/80 shadow-card flex items-center justify-center text-slate-600 hover:text-slate-900 active:scale-95 transition-transform">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path>
+</svg>
+<span class="absolute top-2 right-2 w-2 h-2 bg-rose-500 rounded-full ring-2 ring-white"></span>
+</button>
+</div>
+</section>
+<!-- END: UserGreetingSection -->
+<!-- BEGIN: SearchBarSection -->
+<section class="flex items-center space-x-2" data-purpose="search-input-group">
+<div class="relative flex-1">
+<div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"></path>
+</svg>
+</div>
+<input class="w-full bg-white border border-slate-200/90 rounded-2xl py-3 pl-10 pr-4 text-xs font-medium placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-purple/20 focus:border-brand-purple shadow-sm" placeholder="Rechercher un service, talent ou mission..." type="text"/>
+</div>
+<!-- Filter Action Button -->
+<button aria-label="Filtres avancés" class="w-11 h-11 bg-brand-dark rounded-2xl flex items-center justify-center text-brand-neon hover:bg-slate-900 transition-colors shadow-sm active:scale-95">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+</section>
+<!-- END: SearchBarSection -->
+<!-- BEGIN: HeroPromoBanner -->
+<!-- High contrast hero promo banner matching reference design aesthetics -->
+<section class="relative rounded-3xl bg-gradient-to-br from-brand-dark via-brand-purple to-slate-950 text-white p-5 overflow-hidden shadow-lg" data-purpose="hero-banner">
+<!-- Abstract glowing background elements -->
+<div class="absolute -right-10 -bottom-10 w-44 h-44 bg-brand-accent/20 rounded-full blur-2xl pointer-events-none"></div>
+<div class="absolute right-0 top-0 w-36 h-36 bg-brand-neon/10 rounded-full blur-xl pointer-events-none"></div>
+<div class="relative z-10 flex flex-col justify-between min-h-[145px]">
+<!-- Top Row: Mini Logo Branding & Escrow Badge -->
+<div class="flex items-center justify-between">
+<img alt="Intalent Logo" class="h-6 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZqEzY0TvNkt_tQPMtjWV7G5ahRVmG6sjiu7PGaWqSZwGViHlsLBcEszXoJA1-WPH1QYHdvh86qlhybrwMKGyAzVJRQR7vKbfdc1-Dm3OD4kiXmRmGJ-LB_BlfM_EZeaqS3rxoe55XjLKnbHFqb0bXW8Cl3ziamq9EdXZHjFoiIzy85jgrniAFXb4-RRp3kz8yPzrd-dlMIy5W14v9RnIQXtdwIj52KYC5jT6CpFMOhvsRPGCS3-aiVvJfBuxJOLbS0g"/>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-white/10 text-brand-neon backdrop-blur-sm border border-white/10">
+              ⚡ BaridiMob &amp; CIB Sécurisé
+            </span>
+</div>
+<!-- Hero Headline & Subtitle -->
+<div class="mt-3">
+<h2 class="text-base font-extrabold tracking-tight leading-snug">
+              Trouvez un talent certifié en 24h
+            </h2>
+<p class="text-xs text-slate-300 mt-1 max-w-[260px] leading-relaxed">
+              Paiement sous séquestre DZD garanti jusqu'à validation de vos livrables.
+            </p>
+</div>
+<!-- Action Button & Carousel Indicator Dots -->
+<div class="mt-4 flex items-center justify-between">
+<button class="bg-brand-neon hover:bg-brand-neonHover text-brand-dark px-4 py-2 rounded-xl text-xs font-bold transition-all transform active:scale-95 shadow-md flex items-center gap-1.5">
+<span>Publier une mission</span>
+<svg class="w-3.5 h-3.5 stroke-2" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+<!-- 3 Dots Indicator -->
+<div class="flex items-center space-x-1.5">
+<span class="w-4 h-1.5 bg-brand-neon rounded-full"></span>
+<span class="w-1.5 h-1.5 bg-white/40 rounded-full"></span>
+<span class="w-1.5 h-1.5 bg-white/40 rounded-full"></span>
+</div>
+</div>
+</div>
+</section>
+<!-- END: HeroPromoBanner -->
+<!-- BEGIN: QuickCategoriesGrid -->
+<section data-purpose="services-grid">
+<div class="flex items-center justify-between mb-3 px-1">
+<h2 class="text-sm font-bold text-slate-900 tracking-tight">Services Populaires</h2>
+<a class="text-xs font-semibold text-brand-purple hover:underline flex items-center gap-0.5" href="#">
+            Voir tout 
+            <svg class="w-3 h-3 inline" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</a>
+</div>
+<!-- 6-Cell Grid with Soft Cards -->
+<div class="grid grid-cols-3 gap-2.5">
+<!-- Item 1: Web & Mobile -->
+<button class="bg-white p-3 rounded-2xl border border-slate-100 shadow-soft flex flex-col items-center text-center group hover:border-brand-purple/30 transition-all">
+<div class="w-11 h-11 rounded-xl bg-purple-50 text-brand-purple flex items-center justify-center mb-2 group-hover:scale-105 transition-transform">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path>
+</svg>
+</div>
+<span class="text-[11px] font-semibold text-slate-800 leading-tight">Dev Web &amp; Mobile</span>
+</button>
+<!-- Item 2: UI/UX & Design -->
+<button class="bg-white p-3 rounded-2xl border border-slate-100 shadow-soft flex flex-col items-center text-center group hover:border-brand-purple/30 transition-all">
+<div class="w-11 h-11 rounded-xl bg-lime-50 text-emerald-800 flex items-center justify-center mb-2 group-hover:scale-105 transition-transform">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path>
+</svg>
+</div>
+<span class="text-[11px] font-semibold text-slate-800 leading-tight">UI/UX &amp; Design</span>
+</button>
+<!-- Item 3: Marketing & Ads -->
+<button class="bg-white p-3 rounded-2xl border border-slate-100 shadow-soft flex flex-col items-center text-center group hover:border-brand-purple/30 transition-all">
+<div class="w-11 h-11 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center mb-2 group-hover:scale-105 transition-transform">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path>
+</svg>
+</div>
+<span class="text-[11px] font-semibold text-slate-800 leading-tight">Marketing &amp; Ads</span>
+</button>
+<!-- Item 4: Audit & Sécurité -->
+<button class="bg-white p-3 rounded-2xl border border-slate-100 shadow-soft flex flex-col items-center text-center group hover:border-brand-purple/30 transition-all">
+<div class="w-11 h-11 rounded-xl bg-blue-50 text-blue-700 flex items-center justify-center mb-2 group-hover:scale-105 transition-transform">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path>
+</svg>
+</div>
+<span class="text-[11px] font-semibold text-slate-800 leading-tight">Cybersécurité</span>
+</button>
+<!-- Item 5: Traduction & Rédaction -->
+<button class="bg-white p-3 rounded-2xl border border-slate-100 shadow-soft flex flex-col items-center text-center group hover:border-brand-purple/30 transition-all">
+<div class="w-11 h-11 rounded-xl bg-rose-50 text-rose-700 flex items-center justify-center mb-2 group-hover:scale-105 transition-transform">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path>
+</svg>
+</div>
+<span class="text-[11px] font-semibold text-slate-800 leading-tight">Traduction DZ</span>
+</button>
+<!-- Item 6: Plus de services -->
+<button class="bg-white p-3 rounded-2xl border border-slate-100 shadow-soft flex flex-col items-center text-center group hover:border-brand-purple/30 transition-all">
+<div class="w-11 h-11 rounded-xl bg-slate-100 text-slate-700 flex items-center justify-center mb-2 group-hover:scale-105 transition-transform">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path>
+</svg>
+</div>
+<span class="text-[11px] font-semibold text-slate-800 leading-tight">Tous (+30)</span>
+</button>
+</div>
+</section>
+<!-- END: QuickCategoriesGrid -->
+<!-- BEGIN: FeaturedMissionsCarousel -->
+<!-- Styled to replicate the card carousel from reference 2 (Featured Events) -->
+<section data-purpose="featured-missions">
+<div class="flex items-center justify-between mb-3 px-1">
+<div>
+<h2 class="text-sm font-bold text-slate-900 tracking-tight">Missions en Vedette</h2>
+<p class="text-[11px] text-slate-400">Projets vérifiés avec dépôts garantis</p>
+</div>
+<a class="text-xs font-semibold text-brand-purple hover:underline flex items-center gap-0.5" href="#">
+            Voir tout
+            <svg class="w-3 h-3 inline" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</a>
+</div>
+<!-- Horizontal Scroll Cards Container -->
+<div class="flex space-x-3.5 overflow-x-auto pb-2 -mx-4 px-4 scrollbar-none snap-x snap-mandatory">
+<!-- Mission Card 1 -->
+<article class="min-w-[275px] max-w-[285px] bg-white rounded-3xl p-3 border border-slate-100 shadow-soft snap-start flex flex-col justify-between" data-purpose="mission-card">
+<div>
+<!-- Visual Card Header with Badge & Bookmark -->
+<div class="relative h-28 w-full rounded-2xl bg-gradient-to-tr from-brand-dark to-brand-purple p-3 flex flex-col justify-between overflow-hidden">
+<!-- Background visual pattern -->
+<div class="absolute -right-4 -top-4 w-24 h-24 bg-brand-accent/30 rounded-full blur-xl"></div>
+<div class="relative z-10 flex items-center justify-between">
+<span class="bg-rose-500/90 text-white font-extrabold text-[9px] uppercase tracking-wider px-2 py-0.5 rounded-full backdrop-blur-sm">
+                    URGENT DZ
+                  </span>
+<button class="w-7 h-7 rounded-full bg-black/40 backdrop-blur-md flex items-center justify-center text-white hover:bg-black/60 transition">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+</div>
+<!-- Mission Category Tag -->
+<div class="relative z-10">
+<span class="text-[10px] text-brand-neon font-medium">Fintech &amp; Paiement Algérien</span>
+</div>
+</div>
+<!-- Mission Details -->
+<div class="mt-2.5">
+<div class="flex items-baseline justify-between">
+<h3 class="text-xs font-bold text-slate-900 leading-tight line-clamp-1">
+                    Refonte Mobile App BaridiMob &amp; CIB
+                  </h3>
+</div>
+<p class="text-[11px] text-slate-500 mt-0.5 flex items-center gap-1">
+<svg class="w-3 h-3 text-slate-400" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+                  Délai: 3 semaines • Alger (Télétravail)
+                </p>
+</div>
+</div>
+<!-- Footer: Price & Applicants Avatars -->
+<div class="mt-3 pt-2.5 border-t border-slate-100 flex items-center justify-between">
+<div>
+<span class="text-[10px] text-slate-400 block font-medium">Budget alloué</span>
+<span class="text-xs font-extrabold text-brand-purple">180,000 DZD</span>
+</div>
+<!-- Mini applicant stack -->
+<div class="flex items-center -space-x-1.5">
+<div class="w-5 h-5 rounded-full bg-slate-300 border border-white text-[9px] flex items-center justify-center font-bold">A</div>
+<div class="w-5 h-5 rounded-full bg-slate-400 border border-white text-[9px] flex items-center justify-center font-bold text-white">S</div>
+<div class="w-5 h-5 rounded-full bg-brand-dark border border-white text-[8px] flex items-center justify-center font-bold text-brand-neon">+6</div>
+</div>
+</div>
+</article>
+<!-- Mission Card 2 -->
+<article class="min-w-[275px] max-w-[285px] bg-white rounded-3xl p-3 border border-slate-100 shadow-soft snap-start flex flex-col justify-between" data-purpose="mission-card">
+<div>
+<div class="relative h-28 w-full rounded-2xl bg-gradient-to-tr from-slate-900 via-emerald-950 to-slate-800 p-3 flex flex-col justify-between overflow-hidden">
+<div class="relative z-10 flex items-center justify-between">
+<span class="bg-emerald-500/90 text-white font-extrabold text-[9px] uppercase tracking-wider px-2 py-0.5 rounded-full backdrop-blur-sm">
+                    RECRUTEMENT DIRECT
+                  </span>
+<button class="w-7 h-7 rounded-full bg-black/40 backdrop-blur-md flex items-center justify-center text-white hover:bg-black/60 transition">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+</div>
+<div class="relative z-10">
+<span class="text-[10px] text-emerald-300 font-medium">E-commerce DZ &amp; Meta Ads</span>
+</div>
+</div>
+<div class="mt-2.5">
+<h3 class="text-xs font-bold text-slate-900 leading-tight line-clamp-1">
+                  Stratégie Acquisition Yalidine / Yalix
+                </h3>
+<p class="text-[11px] text-slate-500 mt-0.5 flex items-center gap-1">
+<svg class="w-3 h-3 text-slate-400" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+                  Délai: 1 mois • Oran / Remote
+                </p>
+</div>
+</div>
+<div class="mt-3 pt-2.5 border-t border-slate-100 flex items-center justify-between">
+<div>
+<span class="text-[10px] text-slate-400 block font-medium">Budget alloué</span>
+<span class="text-xs font-extrabold text-emerald-700">75,000 DZD</span>
+</div>
+<div class="flex items-center -space-x-1.5">
+<div class="w-5 h-5 rounded-full bg-slate-300 border border-white text-[9px] flex items-center justify-center font-bold">K</div>
+<div class="w-5 h-5 rounded-full bg-slate-400 border border-white text-[9px] flex items-center justify-center font-bold text-white">R</div>
+<div class="w-5 h-5 rounded-full bg-slate-800 border border-white text-[8px] flex items-center justify-center font-bold text-white">+3</div>
+</div>
+</div>
+</article>
+</div>
+</section>
+<!-- END: FeaturedMissionsCarousel -->
+<!-- BEGIN: TopFreelancersSection -->
+<!-- Modeled on reference 2 & 3: category tabs filter with detailed talent list -->
+<section class="space-y-3" data-purpose="top-talents">
+<div class="flex items-center justify-between px-1">
+<div>
+<h2 class="text-sm font-bold text-slate-900 tracking-tight">Top Talents en Algérie</h2>
+<p class="text-[11px] text-slate-400">Profils vérifiés avec avis clients certifiés</p>
+</div>
+<a class="text-xs font-semibold text-brand-purple hover:underline flex items-center gap-0.5" href="#">
+            Voir tout
+            <svg class="w-3 h-3 inline" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</a>
+</div>
+<!-- Filter Chips (Horizontal Pill Filter) -->
+<div class="flex space-x-2 overflow-x-auto pb-1 scrollbar-none text-xs font-medium">
+<button class="px-3.5 py-1.5 rounded-full bg-brand-dark text-white font-semibold shadow-xs whitespace-nowrap">
+            Tous les talents
+          </button>
+<button class="px-3.5 py-1.5 rounded-full bg-white text-slate-600 border border-slate-200/80 hover:bg-slate-50 whitespace-nowrap">
+            Développeurs
+          </button>
+<button class="px-3.5 py-1.5 rounded-full bg-white text-slate-600 border border-slate-200/80 hover:bg-slate-50 whitespace-nowrap">
+            Designers UI/UX
+          </button>
+<button class="px-3.5 py-1.5 rounded-full bg-white text-slate-600 border border-slate-200/80 hover:bg-slate-50 whitespace-nowrap">
+            Marketing &amp; Growth
+          </button>
+</div>
+<!-- Talent Cards List -->
+<div class="space-y-2.5">
+<!-- Talent 1 -->
+<article class="bg-white p-3.5 rounded-2xl border border-slate-100 shadow-soft flex items-center justify-between gap-3 group hover:border-brand-purple/20 transition-all">
+<div class="flex items-center space-x-3 min-w-0">
+<!-- Avatar with verification checkmark -->
+<div class="relative shrink-0">
+<div class="w-13 h-13 w-12 h-12 rounded-xl bg-gradient-to-tr from-brand-purple to-slate-900 text-white font-bold text-sm flex items-center justify-center">
+                  AK
+                </div>
+<div class="absolute -bottom-1 -right-1 bg-brand-neon text-brand-dark rounded-full p-0.5 border border-white">
+<svg class="w-2.5 h-2.5 stroke-[3]" fill="currentColor" viewbox="0 0 20 20">
+<path clip-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill-rule="evenodd"></path>
+</svg>
+</div>
+</div>
+<!-- Info -->
+<div class="min-w-0">
+<div class="flex items-center space-x-1.5">
+<span class="text-[9px] font-bold uppercase tracking-wider bg-purple-50 text-brand-purple px-1.5 py-0.5 rounded">
+                    UI/UX LEAD
+                  </span>
+<span class="text-[10px] text-amber-500 font-bold flex items-center">
+                    ★ 5.0 <span class="text-slate-400 font-normal ml-0.5">(142)</span>
+</span>
+</div>
+<h3 class="text-xs font-bold text-slate-900 truncate mt-0.5">Amine Kaci</h3>
+<p class="text-[11px] text-slate-500 truncate">Alger • Taux: <strong class="text-slate-800">6,500 DZD/h</strong></p>
+</div>
+</div>
+<!-- Bookmark Action -->
+<button aria-label="Enregistrer ce profil" class="p-2 text-slate-400 hover:text-brand-purple shrink-0 active:scale-95 transition">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path>
+</svg>
+</button>
+</article>
+<!-- Talent 2 -->
+<article class="bg-white p-3.5 rounded-2xl border border-slate-100 shadow-soft flex items-center justify-between gap-3 group hover:border-brand-purple/20 transition-all">
+<div class="flex items-center space-x-3 min-w-0">
+<div class="relative shrink-0">
+<div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-800 text-white font-bold text-sm flex items-center justify-center">
+                  SM
+                </div>
+<div class="absolute -bottom-1 -right-1 bg-brand-neon text-brand-dark rounded-full p-0.5 border border-white">
+<svg class="w-2.5 h-2.5 stroke-[3]" fill="currentColor" viewbox="0 0 20 20">
+<path clip-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill-rule="evenodd"></path>
+</svg>
+</div>
+</div>
+<div class="min-w-0">
+<div class="flex items-center space-x-1.5">
+<span class="text-[9px] font-bold uppercase tracking-wider bg-emerald-50 text-emerald-700 px-1.5 py-0.5 rounded">
+                    FULLSTACK NODE &amp; REACT
+                  </span>
+<span class="text-[10px] text-amber-500 font-bold flex items-center">
+                    ★ 4.9 <span class="text-slate-400 font-normal ml-0.5">(89)</span>
+</span>
+</div>
+<h3 class="text-xs font-bold text-slate-900 truncate mt-0.5">Sarah Meziane</h3>
+<p class="text-[11px] text-slate-500 truncate">Oran • Taux: <strong class="text-slate-800">5,000 DZD/h</strong></p>
+</div>
+</div>
+<button aria-label="Enregistrer ce profil" class="p-2 text-slate-400 hover:text-brand-purple shrink-0 active:scale-95 transition">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path>
+</svg>
+</button>
+</article>
+<!-- Talent 3 -->
+<article class="bg-white p-3.5 rounded-2xl border border-slate-100 shadow-soft flex items-center justify-between gap-3 group hover:border-brand-purple/20 transition-all">
+<div class="flex items-center space-x-3 min-w-0">
+<div class="relative shrink-0">
+<div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-slate-700 to-slate-900 text-white font-bold text-sm flex items-center justify-center">
+                  YB
+                </div>
+<div class="absolute -bottom-1 -right-1 bg-brand-neon text-brand-dark rounded-full p-0.5 border border-white">
+<svg class="w-2.5 h-2.5 stroke-[3]" fill="currentColor" viewbox="0 0 20 20">
+<path clip-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill-rule="evenodd"></path>
+</svg>
+</div>
+</div>
+<div class="min-w-0">
+<div class="flex items-center space-x-1.5">
+<span class="text-[9px] font-bold uppercase tracking-wider bg-blue-50 text-blue-700 px-1.5 py-0.5 rounded">
+                    DEVOPS &amp; CLOUD AWS
+                  </span>
+<span class="text-[10px] text-amber-500 font-bold flex items-center">
+                    ★ 4.8 <span class="text-slate-400 font-normal ml-0.5">(56)</span>
+</span>
+</div>
+<h3 class="text-xs font-bold text-slate-900 truncate mt-0.5">Yacine Bouzid</h3>
+<p class="text-[11px] text-slate-500 truncate">Constantine • Forfait: <strong class="text-slate-800">8,500 DZD/j</strong></p>
+</div>
+</div>
+<button aria-label="Enregistrer ce profil" class="p-2 text-slate-400 hover:text-brand-purple shrink-0 active:scale-95 transition">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path>
+</svg>
+</button>
+</article>
+</div>
+</section>
+<!-- END: TopFreelancersSection -->
+<!-- BEGIN: TrustGuaranteeRibbon -->
+<!-- Replicating the 4 trust guarantees from Reference Image 3 footer badges -->
+<section class="bg-white rounded-2xl p-3 border border-slate-100 shadow-soft" data-purpose="trust-guarantees">
+<div class="grid grid-cols-4 gap-1 text-center">
+<div class="flex flex-col items-center">
+<div class="w-7 h-7 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center mb-1">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<span class="text-[9px] font-semibold text-slate-700 leading-tight">Profils Vérifiés NIF/NIS</span>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-7 h-7 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center mb-1">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<span class="text-[9px] font-semibold text-slate-700 leading-tight">Séquestre Sécurisé DZD</span>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-7 h-7 rounded-full bg-amber-50 text-amber-600 flex items-center justify-center mb-1">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<span class="text-[9px] font-semibold text-slate-700 leading-tight">BaridiMob Instantané</span>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-7 h-7 rounded-full bg-purple-50 text-brand-purple flex items-center justify-center mb-1">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<span class="text-[9px] font-semibold text-slate-700 leading-tight">58 Wilayas Couvertes</span>
+</div>
+</div>
+</section>
+<!-- END: TrustGuaranteeRibbon -->
+</main>
+<!-- END: ScrollableContentContainer -->
+<!-- BEGIN: FixedBottomNavigationBar -->
+<!-- Matches modern iOS navigation bar with highlight on active Home tab -->
+<nav class="absolute bottom-0 inset-x-0 bg-white/95 backdrop-blur-lg border-t border-slate-200/80 px-4 pt-2.5 pb-6 z-40 shadow-nav" data-purpose="tab-bar">
+<div class="flex justify-around items-center">
+<!-- Tab 1: Accueil (Active) -->
+<a class="flex flex-col items-center group" href="#home">
+<div class="w-10 h-7 rounded-full bg-brand-neon flex items-center justify-center text-brand-dark transition-all">
+<svg class="w-4 h-4 fill-current" viewbox="0 0 24 24">
+<path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path>
+</svg>
+</div>
+<span class="text-[10px] font-bold text-slate-900 mt-1">Accueil</span>
+</a>
+<!-- Tab 2: Missions / Offres -->
+<a class="flex flex-col items-center group text-slate-400 hover:text-slate-900" href="#missions">
+<div class="w-10 h-7 flex items-center justify-center">
+<svg class="w-5 h-5 stroke-[1.8]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<span class="text-[10px] font-medium mt-1">Missions</span>
+</a>
+<!-- Tab 3: Projets Enregistrés -->
+<a class="flex flex-col items-center group text-slate-400 hover:text-slate-900" href="#saved">
+<div class="w-10 h-7 flex items-center justify-center">
+<svg class="w-5 h-5 stroke-[1.8]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<span class="text-[10px] font-medium mt-1">Favoris</span>
+</a>
+<!-- Tab 4: Wallet DZD -->
+<a class="flex flex-col items-center group text-slate-400 hover:text-slate-900 relative" href="#wallet">
+<div class="w-10 h-7 flex items-center justify-center">
+<svg class="w-5 h-5 stroke-[1.8]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<span class="text-[10px] font-medium mt-1">DZD Wallet</span>
+<!-- Micro Pill Indicator -->
+<span class="absolute top-0 right-1 w-2 h-2 bg-brand-accent rounded-full"></span>
+</a>
+<!-- Tab 5: Profil -->
+<a class="flex flex-col items-center group text-slate-400 hover:text-slate-900" href="#profile">
+<div class="w-10 h-7 flex items-center justify-center">
+<svg class="w-5 h-5 stroke-[1.8]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<span class="text-[10px] font-medium mt-1">Compte</span>
+</a>
+</div>
+<!-- iOS Home Indicator bar -->
+<div class="w-32 h-1 bg-slate-900/40 rounded-full mx-auto mt-2"></div>
+</nav>
+<!-- END: FixedBottomNavigationBar -->
+</div>
+<!-- END: MobileDeviceWrapper -->
+</body></html>

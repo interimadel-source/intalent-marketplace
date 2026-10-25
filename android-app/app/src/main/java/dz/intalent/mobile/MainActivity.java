@@ -19,7 +19,7 @@ public class MainActivity extends Activity {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
-            window.setStatusBarColor(Color.parseColor("#25083F"));
+            window.setStatusBarColor(Color.parseColor("#140E2D"));
             window.setNavigationBarColor(Color.parseColor("#FFFFFF"));
         }
 
@@ -28,15 +28,17 @@ public class MainActivity extends Activity {
         settings.setJavaScriptEnabled(true);
         settings.setDomStorageEnabled(true);
         settings.setAllowFileAccess(true);
+        settings.setAllowContentAccess(true);
         settings.setLoadsImagesAutomatically(true);
         settings.setUseWideViewPort(true);
         settings.setLoadWithOverviewMode(true);
+        settings.setUserAgentString(settings.getUserAgentString() + " IntalentAndroid/2.0");
 
         webView.setWebViewClient(new WebViewClient());
         webView.setWebChromeClient(new WebChromeClient());
 
-        // Load bundled trilingual (FR / AR / EN) Intalent Mobile interface
-        webView.loadUrl("file:///android_asset/mobile.html");
+        // Load mobile SPA
+        webView.loadUrl("file:///android_asset/m/index.html");
         setContentView(webView);
     }
 

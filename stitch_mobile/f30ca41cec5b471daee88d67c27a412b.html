@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-surface": "#171b26", "primary-fixed": "#e8deff", "outline-variant": "#cac4cf", "on-error-container": "#93000a", "on-surface-variant": "#48454e", "tertiary": "#000000", "tertiary-fixed": "#f0dbff", "error": "#ba1a1a", "secondary-container": "#caee2f", "on-background": "#171b26", "outline": "#79757f", "secondary-fixed-dim": "#b1d403", "on-tertiary-container": "#ac59fb", "surface-container-high": "#e5e7f7", "error-container": "#ffdad6", "on-tertiary-fixed-variant": "#6900b3", "secondary": "#546500", "surface-container-lowest": "#ffffff", "primary-container": "#1e143e", "on-secondary": "#ffffff", "surface": "#faf8ff", "inverse-on-surface": "#eef0ff", "on-tertiary-fixed": "#2c0051", "on-secondary-container": "#576a00", "primary-fixed-dim": "#ccbff4", "on-secondary-fixed": "#171e00", "surface-container-low": "#f2f3ff", "on-secondary-fixed-variant": "#3e4c00", "background": "#faf8ff", "surface-variant": "#dfe2f1", "surface-dim": "#d6d9e9", "tertiary-container": "#2c0051", "tertiary-fixed-dim": "#ddb7ff", "on-primary-fixed": "#1e143e", "on-primary": "#ffffff", "inverse-primary": "#ccbff4", "on-primary-fixed-variant": "#4a406d", "surface-tint": "#625886", "on-error": "#ffffff", "on-primary-container": "#897dae", "secondary-fixed": "#cdf133", "surface-bright": "#faf8ff", "surface-container": "#eaedfd", "primary": "#000000", "surface-container-highest": "#dfe2f1", "on-tertiary": "#ffffff", "inverse-surface": "#2c303c" }, "borderRadius": { "DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px" }, "spacing": { "space-xl": "2rem", "gutter": "1rem", "space-xs": "0.25rem", "space-sm": "0.5rem", "space-md": "1rem", "margin": "1.25rem", "gutter-mobile": "0.75rem", "margin-mobile": "1rem", "space-lg": "1.5rem" }, "fontFamily": { "label-sm": ["Space Grotesk"], "label-md": ["Space Grotesk"], "label-lg": ["Space Grotesk"], "body-md": ["Plus Jakarta Sans"], "headline-md": ["Space Grotesk"], "body-lg": ["Plus Jakarta Sans"], "body-sm": ["Plus Jakarta Sans"], "display-hero": ["Space Grotesk"], "headline-lg": ["Space Grotesk"], "headline-sm": ["Space Grotesk"], "display-hero-mobile": ["Space Grotesk"] }, "fontSize": { "label-sm": ["10px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "700" }], "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }], "label-lg": ["14px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "700" }], "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }], "headline-md": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.015em", "fontWeight": "600" }], "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "500" }], "body-sm": ["12px", { "lineHeight": "18px", "fontWeight": "400" }], "display-hero": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }], "headline-lg": ["26px", { "lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "600" }], "headline-sm": ["16px", { "lineHeight": "22px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "display-hero-mobile": ["30px", { "lineHeight": "36px", "letterSpacing": "-0.025em", "fontWeight": "700" }] } } } };</script><style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface text-on-surface font-body-md min-h-screen flex flex-col antialiased selection:bg-secondary-container"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/85 backdrop-blur-xl shadow-[0_4px_20px_rgba(23,27,38,0.03)]"><div class="h-16 px-margin flex items-center justify-between gap-3"><div class="flex items-center gap-2"><div class="w-9 h-9 rounded-full bg-primary flex items-center justify-center text-surface"><span class="material-symbols-outlined text-[20px] text-secondary-fixed">bolt</span></div><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-on-surface tracking-tight leading-none">Intalent</span><span class="font-label-sm text-label-sm text-on-surface-variant leading-tight">Post A Job</span></div></div><div class="flex items-center gap-2"><button aria-label="Search" class="w-11 h-11 flex items-center justify-center rounded-full text-on-surface hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[22px]">search</span></button><button aria-label="Notifications" class="w-11 h-11 flex items-center justify-center rounded-full text-on-surface hover:bg-surface-container transition-colors relative"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-secondary-fixed-dim ring-2 ring-surface"></span></button><a class="flex items-center justify-center p-0.5 rounded-full ring-1 ring-surface-variant hover:ring-primary transition-all" data-path="portfolio-profile" href="#"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1UrSps3G2NlDz_pBxk-xSCB6pyyjLChn9Mz85OZ4tH70c-t5mioiV7Y2jNJ2fZioiHKY1QJ3Aa63h1AULEOoJRHi7aPpm6Frp73E10PzofmOHsQcWLKMxJyw66PJRBezhvaqYzuUIkFTD3SLW2ssLo2lgbZkS_fuhWCPPbp0H6QiGHmbcELzRe8GTSoTEl3o1T6BfOheVjBt-NP9JmObjlvAgvD6mJt_vvjvKNouQgQRfhADw-HyS9KwdHp0ESdX4pzW_R9S8X3"/></a></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 pb-28 bg-surface"><div class="flex flex-col w-full pb-8">
+<!-- Mission Creation Top Context & Micro Stepper -->
+<div class="px-margin pt-4 pb-2">
+<div class="flex items-center justify-between mb-3">
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-high text-on-surface">
+<span class="w-2 h-2 rounded-full bg-secondary-fixed-dim animate-pulse"></span>
+<span class="font-label-sm text-label-sm tracking-wider uppercase">Mission Builder</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant font-medium">Step 2 of 3</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight leading-tight">Create New Mission</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Connect with vetted top-tier talent in minutes</p>
+<!-- Progress indicator bar -->
+<div class="w-full bg-surface-container-high h-1.5 rounded-full mt-4 overflow-hidden flex">
+<div class="bg-secondary-fixed h-full w-2/3 rounded-full transition-all duration-500"></div>
+</div>
+</div>
+<div class="px-margin flex flex-col gap-4 mt-3">
+<!-- Card 1: Project Title & Intent -->
+<div class="bg-surface-container-lowest p-5 rounded-lg shadow-sm flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<label class="font-headline-sm text-headline-sm text-on-surface flex items-center gap-2" for="project-title-input">
+<span class="material-symbols-outlined text-[20px] text-on-tertiary-container">edit_document</span>
+          Mission Title
+        </label>
+<span class="font-label-sm text-label-sm text-on-surface-variant bg-surface-container px-2 py-0.5 rounded-full">Required</span>
+</div>
+<div class="relative">
+<input class="w-full px-4 py-3.5 rounded-DEFAULT bg-surface-container-low text-on-surface font-body-md text-body-md placeholder:text-outline focus:outline-none focus:bg-surface-container-lowest transition-all" id="project-title-input" placeholder="e.g. Design Lead for DeFi Staking Protocol" type="text" value="Redesign Mobile Crypto Wallet app"/>
+<div class="absolute right-3 top-3.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">auto_awesome</span>
+</div>
+</div>
+<!-- Category selection (Inspired by pill filter clusters) -->
+<div class="mt-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider block mb-2">Category Focus</span>
+<div class="flex flex-wrap gap-2" id="category-pills">
+<button class="category-pill px-3.5 py-2 rounded-full font-label-md text-label-md transition-all bg-primary-container text-primary-fixed shadow-sm flex items-center gap-1.5" data-selected="true" type="button">
+<span class="material-symbols-outlined text-[16px] text-secondary-fixed">draw</span>
+<span>Design</span>
+</button>
+<button class="category-pill px-3.5 py-2 rounded-full font-label-md text-label-md transition-all bg-surface-container text-on-surface-variant hover:text-on-surface flex items-center gap-1.5" data-selected="false" type="button">
+<span class="material-symbols-outlined text-[16px]">terminal</span>
+<span>Development</span>
+</button>
+<button class="category-pill px-3.5 py-2 rounded-full font-label-md text-label-md transition-all bg-surface-container text-on-surface-variant hover:text-on-surface flex items-center gap-1.5" data-selected="false" type="button">
+<span class="material-symbols-outlined text-[16px]">campaign</span>
+<span>Marketing</span>
+</button>
+<button class="category-pill px-3.5 py-2 rounded-full font-label-md text-label-md transition-all bg-surface-container text-on-surface-variant hover:text-on-surface flex items-center gap-1.5" data-selected="false" type="button">
+<span class="material-symbols-outlined text-[16px]">neurology</span>
+<span>AI &amp; Web3</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 2: Budgeting Model & Calculator (Stylized Dark Midnight Palette contrast) -->
+<div class="bg-on-surface text-surface p-5 rounded-lg shadow-md flex flex-col gap-4 relative overflow-hidden">
+<!-- Glow ambient accent -->
+<div class="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-secondary-fixed-dim/15 blur-2xl pointer-events-none"></div>
+<div class="flex items-center justify-between relative z-10">
+<div>
+<h2 class="font-headline-sm text-headline-sm text-surface tracking-tight">Contract &amp; Budget Scope</h2>
+<p class="font-body-sm text-body-sm text-surface-variant">Choose your payment milestone cadence</p>
+</div>
+<span class="material-symbols-outlined text-secondary-fixed text-[24px]">payments</span>
+</div>
+<!-- Segmented switch inspired by the flight search UI in inspiration -->
+<div class="p-1 bg-surface-variant/20 rounded-full flex gap-1 relative z-10">
+<button class="flex-1 py-2 rounded-full font-label-md text-label-md text-on-surface bg-secondary-fixed transition-all text-center font-bold shadow-sm" id="btn-fixed-price" type="button">
+          Fixed Price
+        </button>
+<button class="flex-1 py-2 rounded-full font-label-md text-label-md text-surface-variant hover:text-surface transition-all text-center" id="btn-hourly-rate" type="button">
+          Hourly Rate
+        </button>
+</div>
+<!-- Budget Range Metric Cards (3-column style from inspiration) -->
+<div class="grid grid-cols-3 gap-2 pt-1 relative z-10">
+<div class="bg-surface-variant/10 rounded-DEFAULT p-2.5 flex flex-col items-center justify-center text-center">
+<span class="font-label-sm text-label-sm text-surface-variant uppercase">Min Target</span>
+<span class="font-headline-sm text-headline-sm text-surface mt-0.5" id="min-display">$3,000</span>
+<span class="font-label-sm text-label-sm text-secondary-fixed mt-1">Starting</span>
+</div>
+<div class="bg-secondary-fixed text-on-surface rounded-DEFAULT p-2.5 flex flex-col items-center justify-center text-center shadow-sm">
+<span class="font-label-sm text-label-sm uppercase opacity-75">Max Cap</span>
+<span class="font-headline-sm text-headline-sm font-bold mt-0.5" id="max-display">$6,500</span>
+<span class="font-label-sm text-label-sm bg-on-surface/10 px-1.5 py-0.5 rounded-full mt-1 font-bold">Optimal</span>
+</div>
+<div class="bg-surface-variant/10 rounded-DEFAULT p-2.5 flex flex-col items-center justify-center text-center">
+<span class="font-label-sm text-label-sm text-surface-variant uppercase">Est. Time</span>
+<span class="font-headline-sm text-headline-sm text-surface mt-0.5">2-4</span>
+<span class="font-label-sm text-label-sm text-surface-variant mt-1">Weeks</span>
+</div>
+</div>
+<!-- Range Slider slider micro-interaction -->
+<div class="flex flex-col gap-2 pt-1 relative z-10">
+<div class="flex justify-between items-center text-surface-variant font-label-sm text-label-sm">
+<span>Scale target budget</span>
+<span class="text-secondary-fixed" id="slider-hint">Standard senior allocation</span>
+</div>
+<input class="w-full accent-secondary-fixed h-2 bg-surface-variant/30 rounded-lg appearance-none cursor-pointer" id="budget-range-input" max="12000" min="1500" step="500" type="range" value="6500"/>
+</div>
+</div>
+<!-- Card 3: Experience Level Tier Selector -->
+<div class="bg-surface-container-lowest p-5 rounded-lg shadow-sm flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<label class="font-headline-sm text-headline-sm text-on-surface">Target Experience Tier</label>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Select 1</span>
+</div>
+<div class="flex flex-col gap-2.5" id="experience-tiers">
+<!-- Tier Option 1 -->
+<label class="tier-card cursor-pointer p-3.5 rounded-DEFAULT bg-surface-container-low hover:bg-surface-container flex items-center justify-between transition-all" data-checked="false">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined text-[20px]">person</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface">Intermediate</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">3-5 yrs experience · Rapid delivery</span>
+</div>
+</div>
+<span class="radio-indicator w-5 h-5 rounded-full bg-surface-container-highest flex items-center justify-center">
+<span class="w-2 h-2 rounded-full bg-transparent"></span>
+</span>
+</label>
+<!-- Tier Option 2 (Vetted / Highlighted) -->
+<label class="tier-card cursor-pointer p-3.5 rounded-DEFAULT bg-primary-container text-surface flex items-center justify-between transition-all shadow-sm" data-checked="true">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">verified</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm text-surface">Expert (Top 1% Vetted)</span>
+<span class="font-label-sm text-label-sm bg-secondary-fixed text-on-secondary-fixed px-1.5 py-0.2 rounded-full font-bold">Pro</span>
+</div>
+<span class="font-body-sm text-body-sm text-primary-fixed-dim">Lead level architects &amp; design principals</span>
+</div>
+</div>
+<span class="radio-indicator w-5 h-5 rounded-full bg-secondary-fixed flex items-center justify-center">
+<span class="w-2.5 h-2.5 rounded-full bg-on-surface"></span>
+</span>
+</label>
+<!-- Tier Option 3 -->
+<label class="tier-card cursor-pointer p-3.5 rounded-DEFAULT bg-surface-container-low hover:bg-surface-container flex items-center justify-between transition-all" data-checked="false">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined text-[20px]">groups</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface">Enterprise Studio Team</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Cross-functional squad with Tech PM</span>
+</div>
+</div>
+<span class="radio-indicator w-5 h-5 rounded-full bg-surface-container-highest flex items-center justify-center">
+<span class="w-2 h-2 rounded-full bg-transparent"></span>
+</span>
+</label>
+</div>
+</div>
+<!-- Card 4: Required Deliverables & Tags Checklist -->
+<div class="bg-surface-container-lowest p-5 rounded-lg shadow-sm flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<label class="font-headline-sm text-headline-sm text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-secondary">checklist</span>
+          Core Deliverables
+        </label>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Tap to toggle</span>
+</div>
+<div class="flex flex-wrap gap-2" id="deliverables-container">
+<button class="deliv-tag px-3 py-1.5 rounded-full font-label-md text-label-md bg-secondary-container text-on-secondary-container flex items-center gap-1.5 transition-all" data-active="true" type="button">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+<span>Figma Design System</span>
+</button>
+<button class="deliv-tag px-3 py-1.5 rounded-full font-label-md text-label-md bg-secondary-container text-on-secondary-container flex items-center gap-1.5 transition-all" data-active="true" type="button">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+<span>Interactive Micro-prototypes</span>
+</button>
+<button class="deliv-tag px-3 py-1.5 rounded-full font-label-md text-label-md bg-secondary-container text-on-secondary-container flex items-center gap-1.5 transition-all" data-active="true" type="button">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+<span>Dark Mode Assets</span>
+</button>
+<button class="deliv-tag px-3 py-1.5 rounded-full font-label-md text-label-md bg-surface-container-high text-on-surface-variant flex items-center gap-1.5 transition-all" data-active="false" type="button">
+<span class="material-symbols-outlined text-[16px]">add</span>
+<span>iOS Swift Hand-off</span>
+</button>
+<button class="deliv-tag px-3 py-1.5 rounded-full font-label-md text-label-md bg-surface-container-high text-on-surface-variant flex items-center gap-1.5 transition-all" data-active="false" type="button">
+<span class="material-symbols-outlined text-[16px]">add</span>
+<span>User Testing Sessions</span>
+</button>
+</div>
+</div>
+<!-- Escrow Protection & Trust Card (Lime High-contrast Callout inspired by TRU Premium banner) -->
+<div class="bg-secondary-fixed text-on-surface p-4 rounded-lg shadow-sm flex items-start gap-3.5">
+<div class="w-10 h-10 rounded-full bg-on-surface text-secondary-fixed flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[22px]">shield_locked</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm font-bold">Intalent Escrow Protection</span>
+<span class="font-label-sm text-label-sm bg-on-surface text-secondary-fixed px-1.5 py-0.2 rounded-full font-bold">Guaranteed</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface/80 mt-1 leading-relaxed">
+          Funds are held securely in smart-vault escrow. 100% money-back until you review and approve each design milestone.
+        </p>
+</div>
+</div>
+<!-- Social proof talent preview snapshot -->
+<div class="bg-surface-container p-4 rounded-lg flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="flex -space-x-2">
+<img class="w-8 h-8 rounded-full object-cover" data-alt="Editorial portrait of a high-end UI/UX product designer in a sleek architectural studio, studio lighting with neon violet highlights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaOQtSwS6c68Uc6GTEPLXTG0sywA5tdp2EqGoKvZh5eZNgD62c8ZpeL6x755Cyt1l7G2HcPa4wUibcRTT5kmbvgq9sx9bYbw3Cc_c2Wxkk59H1SYTgFPjRED25jIRqrP1WRK_kQyz1cNv9LwvDxCry8CqOaupTZ8MJH0tv_itHUS_HFyJWuHMASFlpvmAu3IiAq9UUqEmVT4yey1_06Bv18zJ8-Ls9TE1Q3gcnhLq3LHfAd0baRz-4"/>
+<img class="w-8 h-8 rounded-full object-cover" data-alt="Portrait of a senior mobile frontend engineer wearing headphones, soft warm spotlight with modern minimal interior backdrop" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCX41dnsaYEAfhoNOoJP9QLrgHwNXZIDF7c5tnT3RzH93H9KfCg26rpGi-g60ZS6LIB49ijHhJrMaHSaTndT2gFuq0Mz6Eah8g1FU2yoY0C6ZsnthCg2ZdqS_JpSKJCNepunXNNJJXM3alN2Io9AmPeFTbqOEnnmqX0h2MuULis5jmHMRfDsgYbbCcH4MFsn7l_T3kBy49FI3FtYRIP-bk1q0i9aah5q_lbzGOCLAHm5pGBS0U2gOmU"/>
+<img class="w-8 h-8 rounded-full object-cover" data-alt="Close up photograph of a creative digital art director smiling confidently, deep indigo tones with subtle lime-green rim light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVQIXAdYMJqOdELoMznUKXitdMKvsUpcVcn2QIVxIFu3u9QDMkpUPmI0C7KEc_dJyy414XupFSvuCf9Rp1hPTrKxA_rbUce4EAQq9owBXsbF14qaMb0Mj-6qzJc6x79nFncIGQGtgr3f40VS4NOYeixDwPeevHyP4Oz1DwV6-mp51T4rKPNqQYBxwWt5ayuOzIiLLIKurL8TvHiTCjYPD0hZCMa9RfIb4FuHDAVe1HB6iC4095d60d"/>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-bold">14 Available Vetted Leads</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Ready to match immediately</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface text-[20px]">chevron_right</span>
+</div>
+<!-- Sticky Bottom CTA trigger (Styled with Electric Lime & Midnight Purple) -->
+<div class="mt-3">
+<button class="w-full min-h-[52px] py-3.5 px-6 rounded-full bg-secondary-fixed text-on-surface font-headline-sm text-headline-sm font-bold flex items-center justify-center gap-2 shadow-lg active:scale-95 transition-transform" id="publish-mission-btn" type="button">
+<span>Continue to Review &amp; Publish</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+<p class="text-center font-label-sm text-label-sm text-on-surface-variant mt-2.5">
+        Draft auto-saved 2 seconds ago · No charges until project activation
+      </p>
+</div>
+</div>
+</div>
+<script>
+  // Category Pill Selector Logic
+  const categoryPills = document.querySelectorAll('.category-pill');
+  categoryPills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      categoryPills.forEach(p => {
+        p.dataset.selected = 'false';
+        p.classList.remove('bg-primary-container', 'text-primary-fixed', 'shadow-sm');
+        p.classList.add('bg-surface-container', 'text-on-surface-variant');
+      });
+      pill.dataset.selected = 'true';
+      pill.classList.remove('bg-surface-container', 'text-on-surface-variant');
+      pill.classList.add('bg-primary-container', 'text-primary-fixed', 'shadow-sm');
+    });
+  });
+
+  // Fixed Price vs Hourly Rate Segmented Toggle
+  const btnFixed = document.getElementById('btn-fixed-price');
+  const btnHourly = document.getElementById('btn-hourly-rate');
+  const minDisplay = document.getElementById('min-display');
+  const maxDisplay = document.getElementById('max-display');
+  const slider = document.getElementById('budget-range-input');
+  const sliderHint = document.getElementById('slider-hint');
+
+  let mode = 'fixed';
+
+  btnFixed.addEventListener('click', () => {
+    mode = 'fixed';
+    btnFixed.className = "flex-1 py-2 rounded-full font-label-md text-label-md text-on-surface bg-secondary-fixed transition-all text-center font-bold shadow-sm";
+    btnHourly.className = "flex-1 py-2 rounded-full font-label-md text-label-md text-surface-variant hover:text-surface transition-all text-center";
+    slider.min = "1500";
+    slider.max = "12000";
+    slider.step = "500";
+    slider.value = "6500";
+    minDisplay.textContent = "$3,000";
+    maxDisplay.textContent = "$6,500";
+    sliderHint.textContent = "Standard senior milestone";
+  });
+
+  btnHourly.addEventListener('click', () => {
+    mode = 'hourly';
+    btnHourly.className = "flex-1 py-2 rounded-full font-label-md text-label-md text-on-surface bg-secondary-fixed transition-all text-center font-bold shadow-sm";
+    btnFixed.className = "flex-1 py-2 rounded-full font-label-md text-label-md text-surface-variant hover:text-surface transition-all text-center";
+    slider.min = "50";
+    slider.max = "250";
+    slider.step = "5";
+    slider.value = "95";
+    minDisplay.textContent = "$75/hr";
+    maxDisplay.textContent = "$110/hr";
+    sliderHint.textContent = "Estimated 30-40 hrs / week";
+  });
+
+  // Budget Range Slider Update
+  slider.addEventListener('input', (e) => {
+    const val = Number(e.target.value);
+    if (mode === 'fixed') {
+      const minVal = Math.round(val * 0.5);
+      minDisplay.textContent = `$${minVal.toLocaleString()}`;
+      maxDisplay.textContent = `$${val.toLocaleString()}`;
+    } else {
+      const minVal = Math.max(40, val - 20);
+      minDisplay.textContent = `$${minVal}/hr`;
+      maxDisplay.textContent = `$${val}/hr`;
+    }
+  });
+
+  // Experience Tier Cards Radio Toggle
+  const tierCards = document.querySelectorAll('.tier-card');
+  tierCards.forEach(card => {
+    card.addEventListener('click', () => {
+      tierCards.forEach(c => {
+        c.dataset.checked = 'false';
+        c.className = "tier-card cursor-pointer p-3.5 rounded-DEFAULT bg-surface-container-low hover:bg-surface-container flex items-center justify-between transition-all";
+        const title = c.querySelector('span.font-headline-sm');
+        if (title) title.className = "font-headline-sm text-headline-sm text-on-surface";
+        const ind = c.querySelector('.radio-indicator');
+        if (ind) {
+          ind.className = "radio-indicator w-5 h-5 rounded-full bg-surface-container-highest flex items-center justify-center";
+          ind.innerHTML = '<span class="w-2 h-2 rounded-full bg-transparent"></span>';
+        }
+      });
+      card.dataset.checked = 'true';
+      card.className = "tier-card cursor-pointer p-3.5 rounded-DEFAULT bg-primary-container text-surface flex items-center justify-between transition-all shadow-sm";
+      const title = card.querySelector('span.font-headline-sm');
+      if (title) title.className = "font-headline-sm text-headline-sm text-surface";
+      const ind = card.querySelector('.radio-indicator');
+      if (ind) {
+        ind.className = "radio-indicator w-5 h-5 rounded-full bg-secondary-fixed flex items-center justify-center";
+        ind.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-on-surface"></span>';
+      }
+    });
+  });
+
+  // Deliverable Tags Checklist Toggle
+  const delivTags = document.querySelectorAll('.deliv-tag');
+  delivTags.forEach(tag => {
+    tag.addEventListener('click', () => {
+      const isActive = tag.dataset.active === 'true';
+      const icon = tag.querySelector('.material-symbols-outlined');
+      if (isActive) {
+        tag.dataset.active = 'false';
+        tag.className = 'deliv-tag px-3 py-1.5 rounded-full font-label-md text-label-md bg-surface-container-high text-on-surface-variant flex items-center gap-1.5 transition-all';
+        if (icon) icon.textContent = 'add';
+      } else {
+        tag.dataset.active = 'true';
+        tag.className = 'deliv-tag px-3 py-1.5 rounded-full font-label-md text-label-md bg-secondary-container text-on-secondary-container flex items-center gap-1.5 transition-all';
+        if (icon) icon.textContent = 'check_circle';
+      }
+    });
+  });
+
+  // CTA Submit Feedback
+  const publishBtn = document.getElementById('publish-mission-btn');
+  publishBtn.addEventListener('click', () => {
+    publishBtn.innerHTML = `
+      <span class="material-symbols-outlined animate-spin text-[20px]">sync</span>
+      <span>Generating Mission Brief...</span>
+    `;
+    setTimeout(() => {
+      publishBtn.innerHTML = `
+        <span class="material-symbols-outlined text-[20px]">check</span>
+        <span>Scope Saved & Ready!</span>
+      `;
+      publishBtn.classList.remove('bg-secondary-fixed');
+      publishBtn.classList.add('bg-secondary-fixed-dim');
+    }, 900);
+  });
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe pointer-events-none" data-active-classes="text-on-surface bg-surface-container-high font-semibold shadow-sm"><div class="px-margin pb-3 pt-1 flex justify-center"><div class="pointer-events-auto w-full max-w-md bg-surface-container-lowest/90 backdrop-blur-2xl rounded-full shadow-[0_12px_32px_rgba(24,13,56,0.14)] p-1.5 flex items-center justify-between gap-1"><a class="flex-1 min-h-[48px] py-1.5 px-2 flex flex-col items-center justify-center rounded-full text-on-surface-variant hover:text-on-surface transition-all gap-0.5" data-path="discovery-explore" href="#"><span class="material-symbols-outlined text-[22px]">explore</span><span class="font-label-sm text-label-sm">Explore</span></a><a class="flex-1 min-h-[48px] py-1.5 px-2 flex flex-col items-center justify-center rounded-full text-on-surface-variant hover:text-on-surface transition-all gap-0.5" data-path="messages-and-projects" href="#"><span class="material-symbols-outlined text-[22px]">work_history</span><span class="font-label-sm text-label-sm">Projects</span></a><a aria-current="page" class="flex-1 min-h-[48px] py-1.5 px-2 flex flex-col items-center justify-center rounded-full transition-all gap-0.5 text-on-surface bg-surface-container-high font-semibold shadow-sm" data-path="post-a-job" href="#"><span class="material-symbols-outlined text-[22px] font-bold">add_circle</span><span class="font-label-sm text-label-sm font-bold">Post</span></a><a class="flex-1 min-h-[48px] py-1.5 px-2 flex flex-col items-center justify-center rounded-full text-on-surface-variant hover:text-on-surface transition-all gap-0.5" data-path="portfolio-profile" href="#"><span class="material-symbols-outlined text-[22px]">person</span><span class="font-label-sm text-label-sm">Profile</span></a></div></div></nav></body></html>

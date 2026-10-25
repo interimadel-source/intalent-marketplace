@@ -1,0 +1,14 @@
+[build]
+  publish = "public"
+
+# SPA client-side routing fallback
+[[redirects]]
+  from = "/api/*"
+  to = "http://localhost:8000/api/:splat"
+  status = 200
+  force = false
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

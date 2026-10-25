@@ -1,0 +1,715 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_dashboard" name="shell-type"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"tertiary-fixed-dim":"#b0d500","on-background":"#1d1928","surface-container-lowest":"#ffffff","secondary-fixed-dim":"#d5baff","on-primary-fixed-variant":"#563a71","on-secondary-container":"#fffbff","surface-variant":"#e8dff4","primary":"#000000","tertiary-container":"#171e00","on-error-container":"#93000a","surface-container-high":"#ede5fa","on-tertiary":"#ffffff","primary-fixed":"#f0dbff","error":"#ba1a1a","inverse-surface":"#332e3e","primary-container":"#280c42","surface-container-highest":"#e8dff4","on-tertiary-container":"#758d00","on-error":"#ffffff","surface-container":"#f3eaff","on-secondary":"#ffffff","secondary-fixed":"#ecdcff","surface-container-low":"#f8f1ff","inverse-on-surface":"#f6eeff","surface":"#fdf7ff","surface-dim":"#dfd6eb","on-surface-variant":"#4b454e","secondary":"#7627e0","tertiary":"#000000","background":"#fdf7ff","surface-tint":"#6f528a","on-secondary-fixed-variant":"#5e00c1","secondary-container":"#9049fa","on-tertiary-fixed":"#171e00","on-primary":"#ffffff","tertiary-fixed":"#caf300","on-tertiary-fixed-variant":"#3e4c00","inverse-primary":"#dbb9f9","error-container":"#ffdad6","on-surface":"#1d1928","on-primary-fixed":"#280c42","surface-bright":"#fdf7ff","on-primary-container":"#9677b3","outline-variant":"#cdc3cf","outline":"#7c757f","primary-fixed-dim":"#dbb9f9","on-secondary-fixed":"#270057"},borderRadius:{DEFAULT:"0.25rem",lg:"0.5rem",xl:"0.75rem",full:"9999px"},spacing:{"space-sm":"0.5rem","space-xl":"2.5rem",gutter:"1.5rem","margin-mobile":"1.25rem","space-lg":"1.5rem","gutter-sm":"1rem",margin:"2rem","space-xs":"0.25rem","space-md":"1rem"},fontFamily:{"headline-sm":["Plus Jakarta Sans"],"label-md":["Plus Jakarta Sans"],"headline-md":["Plus Jakarta Sans"],"label-lg":["Plus Jakarta Sans"],"title-md":["Plus Jakarta Sans"],"display-lg":["Plus Jakarta Sans"],"display-lg-mobile":["Plus Jakarta Sans"],"headline-xl":["Plus Jakarta Sans"],"headline-lg":["Plus Jakarta Sans"],"headline-xl-mobile":["Plus Jakarta Sans"],"label-xs":["Plus Jakarta Sans"],"body-sm":["Plus Jakarta Sans"],"body-md":["Plus Jakarta Sans"],"body-lg":["Plus Jakarta Sans"]},fontSize:{"headline-sm":["20px",{lineHeight:"28px",letterSpacing:"-0.01em",fontWeight:"600"}],"label-md":["12px",{lineHeight:"16px",letterSpacing:"0.02em",fontWeight:"600"}],"headline-md":["24px",{lineHeight:"32px",letterSpacing:"-0.015em",fontWeight:"600"}],"label-lg":["14px",{lineHeight:"20px",letterSpacing:"0.01em",fontWeight:"600"}],"title-md":["18px",{lineHeight:"24px",fontWeight:"600"}],"display-lg":["56px",{lineHeight:"64px",letterSpacing:"-0.03em",fontWeight:"800"}],"display-lg-mobile":["36px",{lineHeight:"44px",letterSpacing:"-0.025em",fontWeight:"800"}],"headline-xl":["40px",{lineHeight:"48px",letterSpacing:"-0.025em",fontWeight:"700"}],"headline-lg":["32px",{lineHeight:"40px",letterSpacing:"-0.02em",fontWeight:"700"}],"headline-xl-mobile":["28px",{lineHeight:"36px",letterSpacing:"-0.02em",fontWeight:"700"}],"label-xs":["10px",{lineHeight:"14px",letterSpacing:"0.04em",fontWeight:"700"}],"body-sm":["13px",{lineHeight:"18px",fontWeight:"400"}],"body-md":["15px",{lineHeight:"22px",fontWeight:"400"}],"body-lg":["18px",{lineHeight:"28px",fontWeight:"400"}]}}}};</script></head><body class="bg-surface text-on-surface font-body-md text-body-md antialiased selection:bg-tertiary-fixed selection:text-on-tertiary-fixed"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-lowest shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50 flex flex-col justify-between py-6"><div class="flex flex-col"><div class="px-6 mb-8 flex items-center gap-3"><div class="w-10 h-10 rounded-xl bg-primary-container flex items-center justify-center text-tertiary-fixed shadow-md shadow-primary-container/20"><span class="material-symbols-outlined text-2xl font-bold">hub</span></div><div class="flex flex-col"><div class="flex items-center gap-1.5"><span class="font-headline-sm text-headline-sm font-bold tracking-tight text-on-surface">Intalent</span><span class="px-1.5 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-xs text-label-xs uppercase tracking-wider font-bold">PRO</span></div><span class="font-label-md text-label-md text-on-surface-variant">Portail Affaires &amp; Algérie</span></div></div><div class="px-6 mb-3"><span class="font-label-xs text-label-xs uppercase tracking-wider font-bold text-on-surface-variant">Navigation Centrale</span></div><nav class="flex flex-col gap-1 px-4" data-active-classes="bg-primary-container text-on-primary-container font-bold shadow-sm"><a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="vue-d-ensemble" href="#"><span class="material-symbols-outlined text-xl">dashboard</span><span class="font-label-lg text-label-lg">Vue d'ensemble</span></a><a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="productivite-equipe" href="#"><span class="material-symbols-outlined text-xl">speed</span><span class="font-label-lg text-label-lg">Productivité Équipe</span></a><a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="gestion-collaborateurs-acces" href="#"><span class="material-symbols-outlined text-xl">badge</span><span class="font-label-lg text-label-lg">Gestion Collaborateurs &amp; Accès</span></a><a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="espace-entreprises-b2b" href="#"><span class="material-symbols-outlined text-xl">corporate_fare</span><span class="font-label-lg text-label-lg">Espace Entreprises &amp; B2B</span></a><a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="finances-sequestre" href="#"><span class="material-symbols-outlined text-xl">account_balance_wallet</span><span class="font-label-lg text-label-lg">Finances &amp; Séquestre</span></a><a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="parametres-securite" href="#"><span class="material-symbols-outlined text-xl">verified_user</span><span class="font-label-lg text-label-lg">Paramètres &amp; Sécurité</span></a></nav></div><div class="px-4 flex flex-col gap-3"><div class="p-4 rounded-xl bg-surface-container-low border-0 shadow-[0_10px_30px_-10px_rgba(37,8,63,0.04)] flex flex-col gap-2"><div class="flex items-center justify-between"><span class="font-label-xs text-label-xs font-bold text-on-surface-variant uppercase tracking-wider">Passerelle SATIM</span><span class="flex h-2 w-2 rounded-full bg-tertiary-fixed-dim ring-2 ring-surface-container-lowest animate-pulse"></span></div><div class="flex items-baseline justify-between"><span class="font-title-md text-title-md font-bold text-on-surface">100% Opérationnel</span><span class="font-label-xs text-label-xs text-secondary font-bold">99.98%</span></div><div class="w-full bg-surface-container-high h-1.5 rounded-full overflow-hidden"><div class="bg-tertiary-fixed h-full rounded-full" style="width: 98%"></div></div></div><div class="px-3 py-2 flex items-center justify-between text-on-surface-variant"><span class="font-label-xs text-label-xs">Intalent Enterprise v2.4</span><span class="font-label-xs text-label-xs font-bold">DZ-ALG-01</span></div></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 z-40 bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-20 w-full px-8 flex items-center justify-between gap-6"><div class="flex items-center gap-4 flex-1 max-w-xl"><div class="relative w-full"><span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-on-surface-variant text-xl">search</span><input class="w-full pl-11 pr-4 py-2.5 rounded-full bg-surface-container-lowest text-on-surface placeholder:text-on-surface-variant font-body-md text-body-md shadow-[0_2px_6px_0_rgba(37,8,63,0.04)] focus:outline-none focus:ring-2 focus:ring-secondary/30" placeholder="Rechercher des talents, contrats B2B, paiements DZD..." type="text"></div></div><div class="flex items-center gap-4 shrink-0"><div class="hidden xl:flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container-lowest shadow-[0_1px_4px_rgba(0,0,0,0.03)]"><span class="flex h-2 w-2 rounded-full bg-tertiary-fixed-dim ring-2 ring-surface-container-lowest"></span><span class="font-label-md text-label-md text-on-surface font-bold">Hub Alger 01</span><span class="text-on-surface-variant font-label-md text-label-md">•</span><span class="font-label-md text-label-md text-on-surface-variant">SATIM Live</span></div><div class="flex items-center bg-surface-container-lowest p-1 rounded-full shadow-[0_1px_4px_rgba(0,0,0,0.03)]"><button class="px-2.5 py-1 rounded-full bg-primary-container text-tertiary-fixed font-label-xs text-label-xs font-bold shadow-sm" type="button">DZD</button><button class="px-2.5 py-1 rounded-full text-on-surface-variant hover:text-on-surface font-label-xs text-label-xs font-bold transition-colors" type="button">EUR</button></div><button aria-label="Notifications" class="relative p-2.5 rounded-full bg-surface-container-lowest text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors shadow-[0_1px_4px_rgba(0,0,0,0.03)]" type="button"><span class="material-symbols-outlined text-xl">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-tertiary-fixed ring-2 ring-surface-container-lowest"></span></button><div class="flex items-center gap-3 pl-2 py-1"><div class="flex flex-col text-right hidden sm:flex"><span class="font-label-lg text-label-lg font-bold text-on-surface leading-tight">Karim B.</span><span class="font-label-xs text-label-xs text-on-surface-variant leading-tight">Direction des Opérations / Admin</span></div><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-2 ring-tertiary-fixed shadow-sm" src="https://lh3.googleusercontent.com/aida/AEtjO1XIDO2hv7F8ZmyzcTOUYgA6ZJ_dA4Ytxl2x9eSoSVz7BQ0ZB9-YtGmjvR-t0HCzCddu-vUS8B_1sr6BfZGi3qrtNgEmMiT1HR4CFFsKQoUhxTsjAfUkNENCQUgOVTX2rNWWhzJA4LjB-Ab6lXtxxl04AwxXBH9d3JUMSVIes9QbpqXUPQVV_7iFTpTWyYdXiurKll-2AHRvpbYEPYAQntwKhFgrcAS1mRaIdmASM1LnUJ-uPR7Rbm6lC3tOBRW25a7VfIF0TSHc"></div></div></div></header><main class="relative w-full pt-20 bg-surface min-h-screen px-8 pb-12"><div class="flex flex-col w-full gap-8">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div class="flex flex-col max-w-2xl">
+<div class="flex items-center gap-2 mb-2">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-high text-secondary font-label-xs text-label-xs uppercase font-bold tracking-wider">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+          Gouvernance &amp; IAM Algérie
+        </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-xs text-label-xs font-bold">
+<span class="material-symbols-outlined text-xs">verified</span>
+          FIDO2 Strict
+        </span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight">Gestion des Collaborateurs &amp; Matrice des Accès (RBAC)</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1.5">Contrôle des habilitations de sécurité, gestion des rôles internes et audits des permissions conformes aux normes bancaires et réglementations SATIM / Banque d'Algérie.</p>
+</div>
+<div class="flex items-center gap-3 shrink-0">
+<button class="flex items-center gap-2 px-5 py-3 rounded-full bg-surface-container-lowest text-on-surface font-label-lg text-label-lg shadow-sm hover:bg-surface-container transition-all" type="button">
+<span class="material-symbols-outlined text-lg">download</span>
+<span>Rapport d'Audit ISO</span>
+</button>
+<button class="flex items-center gap-2.5 px-6 py-3 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-lg text-label-lg font-bold shadow-md hover:shadow-lg hover:brightness-105 transition-all" type="button">
+<span class="material-symbols-outlined text-xl">person_add</span>
+<span>+ Inviter un Collaborateur</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col lg:flex-row gap-4 p-3 rounded-2xl bg-surface-container-lowest shadow-sm">
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant text-xl">search</span>
+<input class="w-full pl-12 pr-4 py-3 rounded-xl bg-surface-container-low text-on-surface placeholder:text-on-surface-variant font-body-md text-body-md focus:outline-none focus:bg-surface-container transition-colors" id="collaboratorSearch" placeholder="Rechercher un collaborateur par nom, matricule ou rôle..." type="text">
+</div>
+<div class="flex flex-wrap sm:flex-nowrap gap-3 shrink-0">
+<div class="relative">
+<select class="appearance-none pl-4 pr-10 py-3 rounded-xl bg-surface-container-low text-on-surface font-label-lg text-label-lg font-medium focus:outline-none cursor-pointer">
+<option value="">Tous les Rôles (6)</option>
+<option value="super-admin">Super Admin DZ</option>
+<option value="sequestre">Superviseur Séquestre BDL</option>
+<option value="kyc">Modérateur KYC &amp; Statut ANA</option>
+<option value="support">Support Clientèle</option>
+<option value="b2b">Gestionnaire Comptes B2B</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none text-lg">expand_more</span>
+</div>
+<div class="relative">
+<select class="appearance-none pl-4 pr-10 py-3 rounded-xl bg-surface-container-low text-on-surface font-label-lg text-label-lg font-medium focus:outline-none cursor-pointer">
+<option value="">Tous les Départements</option>
+<option value="operations">Direction des Opérations</option>
+<option value="finances">Finances &amp; Séquestre BDL</option>
+<option value="compliance">Conformité &amp; Légal</option>
+<option value="tech">Ingénierie &amp; SRE</option>
+<option value="growth">Relations Entreprises</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none text-lg">expand_more</span>
+</div>
+<button class="p-3 rounded-xl bg-surface-container-low text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" type="button">
+<span class="material-symbols-outlined text-xl">filter_list</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+<div class="p-6 rounded-3xl bg-surface-container-lowest shadow-sm flex flex-col justify-between relative overflow-hidden group hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between">
+<span class="font-label-xs text-label-xs uppercase font-bold text-on-surface-variant tracking-wider">Hiérarchie Sécurisée</span>
+<div class="w-9 h-9 rounded-xl bg-primary-container text-tertiary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-lg">admin_panel_settings</span>
+</div>
+</div>
+<div class="mt-4">
+<div class="font-headline-md text-headline-md font-bold text-on-surface">4 Niveaux Actifs</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Super Admin, Séquestre, KYC &amp; Support</p>
+</div>
+<div class="mt-4 pt-3 flex items-center justify-between text-on-surface-variant">
+<span class="font-label-xs text-label-xs font-semibold">18 collaborateurs habilités</span>
+<span class="material-symbols-outlined text-secondary text-sm">shield</span>
+</div>
+</div>
+<div class="p-6 rounded-3xl bg-surface-container-lowest shadow-sm flex flex-col justify-between relative overflow-hidden group hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between">
+<span class="font-label-xs text-label-xs uppercase font-bold text-on-surface-variant tracking-wider">Authentification 2FA</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-xs text-label-xs font-bold">FIDO2</span>
+</div>
+<div class="mt-4">
+<div class="flex items-baseline gap-2">
+<span class="font-headline-md text-headline-md font-bold text-on-surface">100% Validé</span>
+<span class="font-label-xs text-label-xs text-secondary font-bold">Zéro brèche</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Clé matérielle YubiKey ou TOTP obligatoire</p>
+</div>
+<div class="mt-4 pt-3 flex items-center gap-2">
+<div class="flex-1 bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="bg-tertiary-fixed h-full rounded-full" style="width: 100%"></div>
+</div>
+<span class="font-label-xs text-label-xs font-bold text-on-surface">18/18</span>
+</div>
+</div>
+<div class="p-6 rounded-3xl bg-surface-container-lowest shadow-sm flex flex-col justify-between relative overflow-hidden group hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between">
+<span class="font-label-xs text-label-xs uppercase font-bold text-on-surface-variant tracking-wider">Révision d'Accès</span>
+<div class="w-9 h-9 rounded-xl bg-secondary/10 text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-lg">history_edu</span>
+</div>
+</div>
+<div class="mt-4">
+<div class="font-headline-md text-headline-md font-bold text-on-surface">Il y a 3 jours</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Audit automatique ISO/IEC 27001 &amp; SATIM</p>
+</div>
+<div class="mt-4 pt-3 flex items-center justify-between">
+<span class="font-label-xs text-label-xs text-on-surface-variant font-medium">Prochaine révision : J+27</span>
+<span class="font-label-xs text-label-xs font-bold text-secondary">Conforme</span>
+</div>
+</div>
+<div class="p-6 rounded-3xl bg-primary-container text-on-primary-container shadow-md flex flex-col justify-between relative overflow-hidden">
+<div class="flex items-center justify-between">
+<span class="font-label-xs text-label-xs uppercase font-bold text-surface-variant tracking-wider">Sessions Actives</span>
+<span class="flex h-2.5 w-2.5 rounded-full bg-tertiary-fixed animate-ping"></span>
+</div>
+<div class="mt-4">
+<div class="font-headline-md text-headline-md font-bold text-surface-bright">34 Chiffrées</div>
+<p class="font-body-sm text-body-sm text-surface-variant mt-1">IP vérifiées DZ (Alger, Oran, Constantine)</p>
+</div>
+<div class="mt-4 pt-3 flex items-center justify-between text-surface-bright">
+<span class="font-label-xs text-label-xs flex items-center gap-1 font-semibold">
+<span class="material-symbols-outlined text-sm text-tertiary-fixed">lock</span>
+          TLS 1.3 mTLS Bank-Grade
+        </span>
+<span class="font-label-xs text-label-xs px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-bold">DZ-NET</span>
+</div>
+</div>
+</div>
+<div class="p-6 md:p-8 rounded-3xl bg-surface-container-lowest shadow-sm flex flex-col gap-6">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div>
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-secondary text-2xl">table_chart</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Matrice Interactive des Privilèges &amp; Données Sensibles</h2>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Délégation granulaire par rôle métier pour les flux DZD, les identifiants fiscaux NIF/NIS et le séquestre bancaire.</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-label-xs text-label-xs text-on-surface-variant">Légende :</span>
+<span class="px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-xs text-label-xs font-bold">Plein Accès</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-xs text-label-xs font-bold">Lecture</span>
+<span class="px-2 py-0.5 rounded-full bg-error-container text-on-error-container font-label-xs text-label-xs font-bold">Refusé</span>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse min-w-[760px]">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant font-label-xs text-label-xs uppercase tracking-wider">
+<th class="py-3.5 px-4 rounded-l-2xl">Périmètre / Donnée Sensible</th>
+<th class="py-3.5 px-4 font-bold text-on-surface">Super Admin DZ</th>
+<th class="py-3.5 px-4 font-bold text-on-surface">Superviseur Séquestre BDL</th>
+<th class="py-3.5 px-4 font-bold text-on-surface">Modérateur KYC &amp; ANA</th>
+<th class="py-3.5 px-4 rounded-r-2xl font-bold text-on-surface">Support Clientèle</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-high">
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-4 px-4">
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg font-bold text-on-surface">Accès aux soldes séquestre BDL &amp; Coffre-Fort DZD</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Comptes pivots domiciliés Banque de Développement Local</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-xs text-label-xs font-bold">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+                Plein Accès
+              </span>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-xs text-label-xs font-bold">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+                Plein Accès
+              </span>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-error-container text-on-error-container font-label-xs text-label-xs font-bold">
+<span class="material-symbols-outlined text-sm">block</span>
+                Refusé
+              </span>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-error-container text-on-error-container font-label-xs text-label-xs font-bold">
+<span class="material-symbols-outlined text-sm">block</span>
+                Refusé
+              </span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-4 px-4">
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg font-bold text-on-surface">Déblocage manuel des fonds SATIM / CIB</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Virements exceptionnels et arbitrage des litiges de facturation</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-xs text-label-xs font-bold">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+                Plein Accès
+              </span>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-xs text-label-xs font-bold">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+                Plein Accès (4-Eyes)
+              </span>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-error-container text-on-error-container font-label-xs text-label-xs font-bold">
+<span class="material-symbols-outlined text-sm">block</span>
+                Refusé
+              </span>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-error-container text-on-error-container font-label-xs text-label-xs font-bold">
+<span class="material-symbols-outlined text-sm">block</span>
+                Refusé
+              </span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-4 px-4">
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg font-bold text-on-surface">Validation cartes Auto-Entrepreneur (ANA / CNAS)</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Vérification NIF fiscal, registres du commerce et attestations</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-xs text-label-xs font-bold">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+                Plein Accès
+              </span>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-high text-on-surface font-label-xs text-label-xs font-bold">
+<span class="material-symbols-outlined text-sm">visibility</span>
+                Lecture Seule
+              </span>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-xs text-label-xs font-bold">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+                Plein Accès
+              </span>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-high text-on-surface font-label-xs text-label-xs font-bold">
+<span class="material-symbols-outlined text-sm">visibility</span>
+                Lecture Seule
+              </span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-4 px-4">
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg font-bold text-on-surface">Lecture messagerie chiffrée &amp; Contrats de mission</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Accords de confidentialité et livrables de code source</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-high text-on-surface font-label-xs text-label-xs font-bold">
+<span class="material-symbols-outlined text-sm">visibility</span>
+                Sur Réquisition
+              </span>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-high text-on-surface font-label-xs text-label-xs font-bold">
+<span class="material-symbols-outlined text-sm">visibility</span>
+                Lecture Seule
+              </span>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-high text-on-surface font-label-xs text-label-xs font-bold">
+<span class="material-symbols-outlined text-sm">visibility</span>
+                Lecture Seule
+              </span>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-high text-on-surface font-label-xs text-label-xs font-bold">
+<span class="material-symbols-outlined text-sm">visibility</span>
+                Tickets Actifs
+              </span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-4 px-4">
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg font-bold text-on-surface">Suspension / Blocage immédiat de compte</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Procédure anti-fraude, gel de portefeuille ou infraction légale</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-xs text-label-xs font-bold">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+                Plein Accès
+              </span>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-xs text-label-xs font-bold">
+<span class="material-symbols-outlined text-sm">lock</span>
+                Gel Financier
+              </span>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-xs text-label-xs font-bold">
+<span class="material-symbols-outlined text-sm">shield</span>
+                Gel Profil KYC
+              </span>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-error-container text-on-error-container font-label-xs text-label-xs font-bold">
+<span class="material-symbols-outlined text-sm">block</span>
+                Refusé
+              </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="p-6 md:p-8 rounded-3xl bg-surface-container-lowest shadow-sm flex flex-col gap-6">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div>
+<div class="flex items-center gap-2">
+<h2 class="font-headline-md text-headline-md text-on-surface">Annuaire des Collaborateurs</h2>
+<span class="px-2.5 py-0.5 rounded-full bg-primary-container text-tertiary-fixed font-label-xs text-label-xs font-bold">5 Utilisateurs Clés</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Équipes habilitées opérant depuis les hubs Alger-Centre, Sidi Abdellah et Oran.</p>
+</div>
+<div class="flex items-center gap-2">
+<button class="px-3.5 py-2 rounded-xl bg-surface-container-low text-on-surface-variant hover:text-on-surface font-label-sm text-label-md font-semibold transition-colors" type="button">Exporter CSV</button>
+<button class="px-3.5 py-2 rounded-xl bg-secondary-container text-on-secondary-container font-label-sm text-label-md font-bold hover:brightness-110 transition-all flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-sm">sync_saved_locally</span>
+          Synchroniser AD
+        </button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse min-w-[920px]">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant font-label-xs text-label-xs uppercase tracking-wider">
+<th class="py-3.5 px-4 rounded-l-2xl">Collaborateur</th>
+<th class="py-3.5 px-4">Pôle &amp; Département</th>
+<th class="py-3.5 px-4">Rôle Attribué</th>
+<th class="py-3.5 px-4">Statut &amp; Session</th>
+<th class="py-3.5 px-4">Dernière Activité</th>
+<th class="py-3.5 px-4 rounded-r-2xl text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-high">
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-4 px-4">
+<div class="flex items-center gap-3">
+<div class="relative shrink-0">
+<img class="w-11 h-11 rounded-2xl object-cover" data-alt="Portrait of Karim B, Algerian male operations director in a dark navy tailored blazer, sharp studio softbox lighting, modern tech office background in Algiers." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRB3KePu2v8Gsb3ivUd0l1wog74FIlvIoCVXjMxSd-HnBzQhRQIvM__WoA3YLMwnCI9q9jJk7JBn3pZDUhMzXECltW32GyQcM_q_BDpY3ijA4LGUbP14g-5yF9WbmIbN77zMbzSfTAfRgb4d8cj54inN_en5pV_qLc8ldHfUEhBUDLMRhJDm9m1c1Oooy_NZO8VquLW31P19c53JxtZwCDchttCh4gNL5DHS28DOZL2X20TyHsH2O5">
+<span class="absolute -bottom-1 -right-1 w-3.5 h-3.5 rounded-full bg-tertiary-fixed border-2 border-surface-container-lowest"></span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-label-lg text-label-lg font-bold text-on-surface">Karim B.</span>
+<span class="px-1.5 py-0.2 rounded bg-primary-container text-tertiary-fixed font-label-xs text-label-xs font-bold">DZ-001</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">karim.b@intalent.dz</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-bold text-on-surface">Direction des Opérations</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Hub Alger Centre</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary-container text-tertiary-fixed font-label-xs text-label-xs font-bold">
+<span class="material-symbols-outlined text-xs">local_police</span>
+                Super Admin DZ
+              </span>
+</td>
+<td class="py-4 px-4">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-tertiary-fixed animate-pulse"></span>
+<span class="font-label-md text-label-md font-bold text-on-surface">En Ligne</span>
+<span class="text-on-surface-variant font-label-xs text-label-xs">(FIDO2)</span>
+</div>
+</td>
+<td class="py-4 px-4 font-body-sm text-body-sm text-on-surface-variant">
+              À l'instant (Validation audit)
+            </td>
+<td class="py-4 px-4 text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-2 rounded-xl text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" title="Éditer Permissions" type="button">
+<span class="material-symbols-outlined text-lg">tune</span>
+</button>
+<button class="p-2 rounded-xl text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" title="Journal d'audit" type="button">
+<span class="material-symbols-outlined text-lg">policy</span>
+</button>
+<button class="p-2 rounded-xl text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" title="Options" type="button">
+<span class="material-symbols-outlined text-lg">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-4 px-4">
+<div class="flex items-center gap-3">
+<div class="relative shrink-0">
+<img class="w-11 h-11 rounded-2xl object-cover" data-alt="Portrait of Amina Zerrouki, Algerian female financial officer wearing an elegant dark violet blazer, crisp lighting, high trust fintech executive look." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC42Gv69hxjKm_41Y4ww5Oy5eaaNmtpHe8ZimWZofk2o0sIpmj5a5KgR5_KuCsTQzWbHvj8PuizXeMiLW-MxJB59wtGCx8zi1zgH4a_lSP_jW2C6Fvmesg2-VJ6wh3lL_m6ZKHZoYS3U_f6rHVMPSaEUOza4WWYkR7shUmCNhvhtY_nDeDkncUVdB2Pjtb-xuelG8MS_1Pe_5ms52NIB01icji6nw31cZ8GUmEsfCV1lvPXPcqI1D4g">
+<span class="absolute -bottom-1 -right-1 w-3.5 h-3.5 rounded-full bg-tertiary-fixed border-2 border-surface-container-lowest"></span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-label-lg text-label-lg font-bold text-on-surface">Amina Zerrouki</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container-high text-on-surface font-label-xs text-label-xs font-bold">DZ-014</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">amina.zerrouki@intalent.dz</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-bold text-on-surface">Finances &amp; Séquestre BDL</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Pôle DZD &amp; Trésorerie</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary/15 text-secondary font-label-xs text-label-xs font-bold">
+<span class="material-symbols-outlined text-xs">account_balance</span>
+                Superviseur Séquestre BDL
+              </span>
+</td>
+<td class="py-4 px-4">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-tertiary-fixed"></span>
+<span class="font-label-md text-label-md font-bold text-on-surface">En Ligne</span>
+<span class="text-on-surface-variant font-label-xs text-label-xs">(YubiKey)</span>
+</div>
+</td>
+<td class="py-4 px-4 font-body-sm text-body-sm text-on-surface-variant">
+              Il y a 14 min (Rapprochement SATIM)
+            </td>
+<td class="py-4 px-4 text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-2 rounded-xl text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" title="Éditer Permissions" type="button">
+<span class="material-symbols-outlined text-lg">tune</span>
+</button>
+<button class="p-2 rounded-xl text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" title="Journal d'audit" type="button">
+<span class="material-symbols-outlined text-lg">policy</span>
+</button>
+<button class="p-2 rounded-xl text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" title="Options" type="button">
+<span class="material-symbols-outlined text-lg">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-4 px-4">
+<div class="flex items-center gap-3">
+<div class="relative shrink-0">
+<img class="w-11 h-11 rounded-2xl object-cover" data-alt="Portrait of Mehdi Benali, young Algerian male KYC analyst in dark minimalist polo shirt, soft rim lighting, modern startup office interior." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUNifpWc6Nbq_BY-jMHMduh2kgvYhnl3cxPGP9tLB8N3cKW2ioU2g5IUBULFOBSy3uy_4f9NSwAR2CH0xPvReKge8YbCuXOmIjcer3528X49XK1XVL7Hpr-zi3UP0Xm9doVBaFPXgH8dppyxq4H_wQLenmceqbD2-tjtckIbwu5hw7PJ2qMhRZ6UXtkq6l2SZNKx6jQU--Ar_-IqBZ5HwsNtgRDyhFRR1SmT7B_Othl4Ledobcgwfj">
+<span class="absolute -bottom-1 -right-1 w-3.5 h-3.5 rounded-full bg-tertiary-fixed border-2 border-surface-container-lowest"></span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-label-lg text-label-lg font-bold text-on-surface">Mehdi Benali</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container-high text-on-surface font-label-xs text-label-xs font-bold">DZ-027</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">mehdi.benali@intalent.dz</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-bold text-on-surface">Conformité Réglementaire</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Unité ANA &amp; Vérification ID</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-high text-on-surface font-label-xs text-label-xs font-bold">
+<span class="material-symbols-outlined text-xs">how_to_reg</span>
+                Modérateur KYC &amp; Statut ANA
+              </span>
+</td>
+<td class="py-4 px-4">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-tertiary-fixed"></span>
+<span class="font-label-md text-label-md font-bold text-on-surface">En Ligne</span>
+<span class="text-on-surface-variant font-label-xs text-label-xs">(TOTP)</span>
+</div>
+</td>
+<td class="py-4 px-4 font-body-sm text-body-sm text-on-surface-variant">
+              Il y a 32 min (Validation 12 profils ANA)
+            </td>
+<td class="py-4 px-4 text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-2 rounded-xl text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" title="Éditer Permissions" type="button">
+<span class="material-symbols-outlined text-lg">tune</span>
+</button>
+<button class="p-2 rounded-xl text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" title="Journal d'audit" type="button">
+<span class="material-symbols-outlined text-lg">policy</span>
+</button>
+<button class="p-2 rounded-xl text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" title="Options" type="button">
+<span class="material-symbols-outlined text-lg">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-4 px-4">
+<div class="flex items-center gap-3">
+<div class="relative shrink-0">
+<img class="w-11 h-11 rounded-2xl object-cover" data-alt="Portrait of Ines Mansour, North African professional woman with modern stylish business attire, confident smile, clean background with subtle purple hues." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAWHmvo7W_WqFl_8LRUwXLRLJfyhNCdQ-xgx9inJ1OHQIbp2GTM0NOUv_Mq-CYTeuKZLjN5yM8WczwioOO5FTTYr62Wp8f-q2MRIjikimxfRSlBDpor-D09Fr2x8XXKtuiXBs9Zcs_Wdvz73Q83iJt-bpyMuFiLVzfFJz1ohutVdK_aun4Bj85qGI-XdC9wwGQxbXIheqwlA59MqHRyXD8amttRSPKxRct9wfGiwqZxYmnUigInYPb">
+<span class="absolute -bottom-1 -right-1 w-3.5 h-3.5 rounded-full bg-outline border-2 border-surface-container-lowest"></span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-label-lg text-label-lg font-bold text-on-surface">Inès Mansour</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container-high text-on-surface font-label-xs text-label-xs font-bold">DZ-033</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">ines.mansour@intalent.dz</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-bold text-on-surface">Relations Entreprises &amp; B2B</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Grands Comptes &amp; ESN</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-high text-on-surface font-label-xs text-label-xs font-bold">
+<span class="material-symbols-outlined text-xs">domain</span>
+                Gestionnaire Comptes B2B
+              </span>
+</td>
+<td class="py-4 px-4">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-outline"></span>
+<span class="font-label-md text-label-md font-semibold text-on-surface-variant">Hors Ligne</span>
+</div>
+</td>
+<td class="py-4 px-4 font-body-sm text-body-sm text-on-surface-variant">
+              Hier à 18:20 (Revue contrat Sonatrach Hub)
+            </td>
+<td class="py-4 px-4 text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-2 rounded-xl text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" title="Éditer Permissions" type="button">
+<span class="material-symbols-outlined text-lg">tune</span>
+</button>
+<button class="p-2 rounded-xl text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" title="Journal d'audit" type="button">
+<span class="material-symbols-outlined text-lg">policy</span>
+</button>
+<button class="p-2 rounded-xl text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" title="Options" type="button">
+<span class="material-symbols-outlined text-lg">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-4 px-4">
+<div class="flex items-center gap-3">
+<div class="relative shrink-0">
+<img class="w-11 h-11 rounded-2xl object-cover" data-alt="Portrait of Yacine K, tech infrastructure engineer with glasses, casual dark hoodie, server room glow in deep purple background, focused expression." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfk0ENnlXAwpYtV0M2Xdf6gFDB9qg2xj-S43ZYTa9MFJwTdF8_W9CLYK4h6G_UllXfWDxmxmTq-X3fpYHLGINk_EmMZsDa58SLxcBBe_SQPJfS3gJ5R6d3u7RsZkka2tvienfzMvjumww6EtRJeCCbGrr4yTm8a-uo89NDf0S_h_t8AE36oqTS9KQIWkGf_fJg3_NGz5e5NzzwkFxPI-fS_mtDOAI6Du9y84ous8br0uvwyqH5xhgd">
+<span class="absolute -bottom-1 -right-1 w-3.5 h-3.5 rounded-full bg-tertiary-fixed border-2 border-surface-container-lowest"></span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-label-lg text-label-lg font-bold text-on-surface">Yacine K.</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container-high text-on-surface font-label-xs text-label-xs font-bold">DZ-008</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">yacine.k@intalent.dz</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-bold text-on-surface">Ingénierie Sécurité &amp; SRE</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Infrastructure Cloud DZ &amp; VPN</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-xs text-label-xs font-bold">
+<span class="material-symbols-outlined text-xs">terminal</span>
+                Admin Système &amp; Passerelle
+              </span>
+</td>
+<td class="py-4 px-4">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-tertiary-fixed animate-pulse"></span>
+<span class="font-label-md text-label-md font-bold text-on-surface">En Ligne</span>
+<span class="text-on-surface-variant font-label-xs text-label-xs">(Clé YubiKey 5C)</span>
+</div>
+</td>
+<td class="py-4 px-4 font-body-sm text-body-sm text-on-surface-variant">
+              Il y a 4 min (Contrôle passerelle SATIM)
+            </td>
+<td class="py-4 px-4 text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-2 rounded-xl text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" title="Éditer Permissions" type="button">
+<span class="material-symbols-outlined text-lg">tune</span>
+</button>
+<button class="p-2 rounded-xl text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" title="Journal d'audit" type="button">
+<span class="material-symbols-outlined text-lg">policy</span>
+</button>
+<button class="p-2 rounded-xl text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" title="Options" type="button">
+<span class="material-symbols-outlined text-lg">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-4 border-t border-surface-container-high text-on-surface-variant font-body-sm text-body-sm">
+<span>Affichage de 5 collaborateurs sur 18 membres d'équipe enregistrés</span>
+<div class="flex items-center gap-2">
+<button class="p-2 rounded-xl bg-surface-container-low text-on-surface-variant hover:text-on-surface transition-colors" type="button">
+<span class="material-symbols-outlined text-base">chevron_left</span>
+</button>
+<span class="px-3 py-1 rounded-xl bg-primary-container text-tertiary-fixed font-label-xs text-label-xs font-bold">1</span>
+<button class="p-2 rounded-xl bg-surface-container-low text-on-surface-variant hover:text-on-surface transition-colors" type="button">
+<span class="material-symbols-outlined text-base">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<div class="lg:col-span-2 p-6 md:p-8 rounded-3xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-xl bg-secondary/10 text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-lg">manage_history</span>
+</div>
+<h3 class="font-title-md text-title-md font-bold text-on-surface">Journal des Événements de Sécurité &amp; RBAC</h3>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-surface-container-high text-on-surface font-label-xs text-label-xs font-bold">Temps Réel</span>
+</div>
+<div class="flex flex-col gap-4">
+<div class="flex items-start gap-4 p-3.5 rounded-2xl bg-surface-container-low/70">
+<div class="w-9 h-9 rounded-xl bg-tertiary-fixed text-on-tertiary-fixed flex items-center justify-center shrink-0 mt-0.5 font-bold">
+<span class="material-symbols-outlined text-lg">upgrade</span>
+</div>
+<div class="flex-1 flex flex-col">
+<div class="flex items-center justify-between gap-2">
+<span class="font-label-md text-label-md font-bold text-on-surface">Élévation de Privilège Séquestre</span>
+<span class="font-label-xs text-label-xs text-on-surface-variant">Il y a 2h</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+<strong class="text-on-surface">Karim B.</strong> a promu <strong class="text-on-surface">Amina Zerrouki</strong> au rôle <span class="text-secondary font-semibold">Superviseur Séquestre BDL</span> suite à l'extension du plafond de déblocage (N° AUT-2025-412).
+            </p>
+</div>
+</div>
+<div class="flex items-start gap-4 p-3.5 rounded-2xl bg-surface-container-low/70">
+<div class="w-9 h-9 rounded-xl bg-primary-container text-tertiary-fixed flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-lg">shield_lock</span>
+</div>
+<div class="flex-1 flex flex-col">
+<div class="flex items-center justify-between gap-2">
+<span class="font-label-md text-label-md font-bold text-on-surface">Mise à jour de la politique IAM / Mots de Passe</span>
+<span class="font-label-xs text-label-xs text-on-surface-variant">Il y a 1 jour</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+              Rotation imposée tous les 60 jours + renouvellement des clés matérielles FIDO2 pour les accès aux serveurs passerelle SATIM. Approuvé par la Direction Technique.
+            </p>
+</div>
+</div>
+<div class="flex items-start gap-4 p-3.5 rounded-2xl bg-surface-container-low/70">
+<div class="w-9 h-9 rounded-xl bg-secondary-container text-on-secondary-container flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-lg">vpn_key_alert</span>
+</div>
+<div class="flex-1 flex flex-col">
+<div class="flex items-center justify-between gap-2">
+<span class="font-label-md text-label-md font-bold text-on-surface">Tentative de Connexion Filtrée</span>
+<span class="font-label-xs text-label-xs text-on-surface-variant">Il y a 2 jours</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+              Connexion bloquée depuis une adresse IP hors DZ non whitelistée pour le compte <span class="font-mono text-xs">mehdi.benali@intalent.dz</span>. Déclenchement automatique de la quarantaine temporaire.
+            </p>
+</div>
+</div>
+</div>
+</div>
+<div class="p-6 md:p-8 rounded-3xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-title-md text-title-md font-bold text-on-surface">Garantie Réglementaire</h3>
+<span class="material-symbols-outlined text-tertiary-fixed text-2xl">verified_user</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+          Plateforme opérant en conformité stricte avec la loi 18-07 relative à la protection des données personnelles en Algérie et les protocoles de cryptographie bancaire BDL/SATIM.
+        </p>
+<div class="mt-6 flex flex-col gap-3">
+<div class="flex items-center justify-between p-3 rounded-2xl bg-surface-container-low">
+<span class="font-label-sm text-label-md text-on-surface font-semibold">Chiffrement en transit</span>
+<span class="font-label-xs text-label-xs font-bold text-secondary">mTLS 1.3 Strict</span>
+</div>
+<div class="flex items-center justify-between p-3 rounded-2xl bg-surface-container-low">
+<span class="font-label-sm text-label-md text-on-surface font-semibold">Stockage Données Fiscales</span>
+<span class="font-label-xs text-label-xs font-bold text-on-surface">AES-256 (DZ Hub)</span>
+</div>
+<div class="flex items-center justify-between p-3 rounded-2xl bg-surface-container-low">
+<span class="font-label-sm text-label-md text-on-surface font-semibold">Validation double signature</span>
+<span class="font-label-xs text-label-xs font-bold text-tertiary-fixed-dim">Actif (&gt; 500k DZD)</span>
+</div>
+</div>
+</div>
+<div class="mt-6 pt-4 border-t border-surface-container-high flex items-center justify-between">
+<span class="font-label-xs text-label-xs text-on-surface-variant">Centre de Réponse Incidents : 24/7</span>
+<button class="font-label-xs text-label-xs font-bold text-secondary hover:underline" type="button">Voir les certificats</button>
+</div>
+</div>
+</div>
+</div></main></div></body></html>

@@ -714,6 +714,32 @@ def seed():
             "requirements": "Secondary wholesale B2B portal landing page and inventory API endpoint.",
             "delivery_msg": None,
             "review": None
+        },
+        {
+            "order_number": "INT-2026-1007",
+            "service_slug": "full-stack-web-app-saas-cib-edahabia",
+            "client": "atlastech_dz",
+            "freelancer": "amine_fullstack",
+            "tier": "premium",
+            "package_name": "Enterprise SaaS / Marketplace",
+            "subtotal": 85000,
+            "status": "delivered",
+            "requirements": "Module passerelle de paiement SATIM CIB / Edahabia + Dashboard de réconciliation financière BDL.",
+            "delivery_msg": "Salam Nadia ! J'ai soumis la livraison finale : code source complet Next.js + API FastAPI + certificat de test SATIM Sandbox + documentation d'architecture PDF.",
+            "review": None
+        },
+        {
+            "order_number": "INT-2026-1008",
+            "service_slug": "full-stack-web-app-saas-cib-edahabia",
+            "client": "sofiane_client",
+            "freelancer": "amine_fullstack",
+            "tier": "standard",
+            "package_name": "Production iOS & Android App",
+            "subtotal": 75000,
+            "status": "delivered",
+            "requirements": "Application mobile Casbah Artisanat (Android APK + iOS) avec suivi de livraison Yalidine et paiement Edahabia.",
+            "delivery_msg": "Voici la release v1.0 de l'application Flutter (APK signé + code source complet) prête pour validation finale !",
+            "review": None
         }
     ]
 
@@ -745,7 +771,8 @@ def seed():
         if o["delivery_msg"]:
             cur.execute("INSERT INTO order_deliveries (order_id, freelancer_id, message, files_json, created_at) VALUES (?, ?, ?, ?, ?)",
                         (oid, fid, o["delivery_msg"], json.dumps(["/assets/logos/logo-dark.png"]), now))
-            cur.execute("INSERT INTO order_status_history (order_id, status, note, actor_id, created_at) VALUES (?, 'completed', 'Delivery accepted by client', ?, ?)", (oid, cid, now))
+            cur.execute("INSERT INTO order_status_history (order_id, status, note, actor_id, created_at) VALUES (?, ?, 'Deliverables submitted by freelancer', ?, ?)",
+                        (oid, "delivered" if o["status"] == "delivered" else "completed", fid, now))
 
         if o["review"]:
             r_score, r_text = o["review"]
@@ -755,14 +782,132 @@ def seed():
             """, (oid, sid, cid, fid, r_score, r_text, now))
             recalculate_service_rating(conn, sid)
 
+    # 6B. Seed 96 Additional Verified Algerian Freelancers (Total = 100 Freelancers!) with Real Portrait Avatars, Services & Portfolios
+    first_names_m = ["Yacine", "Karim", "Walid", "Riad", "Hamza", "Tarek", "Adel", "Nabil", "Farid", "anis", "chakib", "mourad", " Reda", "Bilel", "Oussama", " Zakaria", "Ilyes", "Youcef", "Samir", "Hichem", "Djamel", "Lotfi", "Malik", "Salim"]
+    first_names_f = ["Amira", "Meriem", "Sarah", "Nour", "Kenza", "Ines", "Rania", "Nesrine", "Sabrina", "Dalia", "Imane", "Chaima", "Manel", "Lynda", "Asma", "Farah", "Selma", "Nawel", "Souad", "Amina", "Hiba", "Lamia", "Chiraz", "Wissam"]
+    last_names_dz = ["Benali", "Khelifati", "Benslimane", "Mansouri", "Toumi", "Zerrouki", "Chaoui", "Boudiaf", "Brahimi", "Meziane", "Khelifi", "Touati", "Belkacem", "Dahmani", "Hadjadj", "Ouali", "Mebarki", "Saadi", "Amrani", "Belaid", "Bouzid", "Cherif", "Derradji", "Ferhat"]
+    wilayas_sample = [
+        "16 - Alger", "31 - Oran", "25 - Constantine", "19 - Sétif", "06 - Béjaïa",
+        "09 - Blida", "13 - Tlemcen", "23 - Annaba", "15 - Tizi Ouzou", "35 - Boumerdès",
+        "05 - Batna", "30 - Ouargla", "47 - Ghardaïa", "10 - Bouira", "27 - Mostaganem",
+        "42 - Tipaza", "22 - Sidi Bel Abbès", "07 - Biskra", "18 - Jijel", "21 - Skikda"
+    ]
+    specialties_pool = [
+        ("programming-tech", "web-development", "Ingénieur Full-Stack Next.js, React & Intégration SATIM CIB", "Je vais développer votre plateforme web SaaS ou e-commerce avec paiement CIB & Edahabia", ["React & Next.js", "TypeScript", "SATIM CIB / Edahabia API"], 28000, "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=900&q=80"),
+        ("programming-tech", "mobile-apps", "Architecte Mobile Flutter iOS & Android Multi-Wilayas", "Je vais concevoir et programmer votre application mobile iOS et Android en Flutter avec API temps réel", ["Flutter & Dart", "Python & FastAPI"], 35000, "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=900&q=80"),
+        ("graphics-design", "ui-ux-design", "Lead Product Designer UI/UX Figma & Bento 3D", "Je vais créer la maquette UI/UX complète et le Design System Figma 3D de votre application", ["Figma UI/UX", "3D Blender & Cinema4D"], 22000, "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?auto=format&fit=crop&w=900&q=80"),
+        ("graphics-design", "logo-brand-identity", "Directeur Artistique — Identité Visuelle Bilingue (AR/FR) & 3D", "Je vais concevoir l'identité visuelle complète, charte graphique et logo 3D premium de votre marque", ["Brand Identity & Illustrator", "3D Blender & Cinema4D"], 18000, "https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=900&q=80"),
+        ("digital-marketing", "social-media-ads", "Expert Growth Marketing, Meta Ads & TikTok ROAS Algérie", "Je vais gérer et optimiser vos campagnes publicitaires Meta Ads et TikTok pour doubler vos ventes en Algérie", ["Meta & TikTok Ads", "Technical SEO"], 24000, "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80"),
+        ("ai-data-services", "ai-chatbots", "Ingénieur IA, RAG & Agents WhatsApp (Darija / Arabe / Français)", "Je vais déployer un agent IA intelligent sur WhatsApp et Web comprenant le Darija, l'Arabe et le Français", ["LLM & LangChain Agents", "Python & FastAPI"], 42000, "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=900&q=80"),
+        ("video-animation", "motion-graphics", "Motion Designer 3D & Réalisateur Vidéos Publicitaires UGC", "Je vais réaliser une vidéo motion design 3D ou un spot publicitaire haute conversion pour votre marque", ["After Effects & Premiere Pro", "3D Blender & Cinema4D"], 26000, "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=900&q=80"),
+        ("writing-translation", "translation", "Traducteur Certifié & Rédacteur Juridique (Arabe / Français / Anglais)", "Je vais traduire et rédiger vos contrats, cahiers des charges et contenus web en Arabe, Français et Anglais", ["Arabic / French Translation", "Technical SEO"], 12000, "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=900&q=80"),
+        ("business-consulting", "erp-odoo", "Consultant ERP Odoo, Comptabilité SCF & Auto-Entrepreneur ANA", "Je vais configurer votre ERP Odoo et la facturation conforme aux normes fiscales algériennes (NIF/NIS/RC)", ["Odoo ERP Customization", "PostgreSQL & SQLite"], 45000, "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=80"),
+    ]
+
+    default_fl_hash = hash_password("Password123!")
+    for idx in range(1, 97):
+        is_female = (idx % 2 == 0)
+        fn = (first_names_f[(idx // 2) % len(first_names_f)] if is_female else first_names_m[(idx // 2) % len(first_names_m)]).strip().capitalize()
+        ln = last_names_dz[(idx * 3) % len(last_names_dz)]
+        full_name = "Yacine Benali" if idx == 1 else f"{fn} {ln}"
+        uname = "yacine_benali" if idx == 1 else f"{fn.lower()}_{ln.lower()}_{idx}"
+        email = "yacine@intalent.dz" if idx == 1 else f"{uname}@intalent.dz"
+        portrait_id = (idx % 85) + 5
+        avatar_url = f"https://randomuser.me/api/portraits/{'women' if is_female else 'men'}/{portrait_id}.jpg"
+        wilaya_val = wilayas_sample[idx % len(wilayas_sample)]
+        cat_slug, sub_slug, headline_txt, svc_title_base, sk_list, base_price, cover_img = specialties_pool[idx % len(specialties_pool)]
+        is_pro_flag = 1 if (idx <= 30 or idx % 3 == 0) else 0
+        rating_val = round(4.7 + ((idx % 4) * 0.08), 2)
+        rev_count = 6 + (idx % 28)
+
+        cur.execute("""
+            INSERT INTO users (
+                email, password_hash, full_name, username, role, active_role, roles_enabled,
+                avatar_url, headline, bio, wilaya, languages, hourly_rate_dzd,
+                availability, is_verified, is_pro, pro_status, wallet_balance_dzd,
+                status, is_demo, created_at
+            ) VALUES (?, ?, ?, ?, 'freelancer', 'freelancer', ?, ?, ?, ?, ?, ?, ?, 'available', 1, ?, ?, ?, 'active', 1, ?)
+        """, (
+            email, default_fl_hash, full_name, uname,
+            json.dumps(["freelancer", "client"]),
+            avatar_url,
+            headline_txt,
+            f"Expert certifié basé à {wilaya_val}. Plus de {3 + (idx % 7)} ans d'expérience dans l'accompagnement des startups, PME et grands comptes en Algérie avec garantie séquestre SATIM/CIB et facturation Auto-Entrepreneur ANA.",
+            wilaya_val,
+            json.dumps(["Français", "العربية", "English"]),
+            2500 + ((idx % 8) * 500),
+            is_pro_flag,
+            "approved" if is_pro_flag else "none",
+            35000 + (idx * 2500),
+            now
+        ))
+        new_uid = cur.lastrowid
+        user_ids[uname] = new_uid
+
+        for sk_name in sk_list:
+            cur.execute("INSERT INTO user_skills (user_id, skill_name, level) VALUES (?, ?, 'Expert')", (new_uid, sk_name))
+
+        cur.execute("""
+            INSERT INTO portfolio_projects (user_id, title, category, description, image_url, project_url, created_at)
+            VALUES (?, ?, ?, ?, ?, 'https://intalent.dz', ?)
+        """, (
+            new_uid,
+            f"Projet {full_name} — Transformation Digitale ({wilaya_val})",
+            cat_slug,
+            f"Réalisation complète livrée avec succès et validée par séquestre Intalent pour un client basé à {wilaya_val}.",
+            cover_img,
+            now
+        ))
+
+        svc_slug = f"service-{uname}-{idx}"
+        cur.execute("""
+            INSERT INTO services (
+                freelancer_id, category_id, subcategory_id, title, slug, description,
+                skills_tags, cover_image, gallery_images, faqs, status,
+                is_featured, is_sponsored, is_pro_listing, starting_price_dzd, delivery_days,
+                rating_avg, review_count, is_demo, created_at, updated_at
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, '[]', 'approved', ?, 0, ?, ?, ?, ?, ?, 1, ?, ?)
+        """, (
+            new_uid, cat_map[cat_slug], sub_map.get(sub_slug),
+            f"{svc_title_base} — par {full_name}",
+            svc_slug,
+            f"Prestation professionnelle clé en main assurée par {full_name} ({wilaya_val}). Livrables complets, code source / fichiers maîtres inclus, et paiement 100% protégé par séquestre DZD.",
+            json.dumps(sk_list),
+            cover_img,
+            json.dumps([cover_img]),
+            1 if idx <= 12 else 0,
+            is_pro_flag,
+            base_price,
+            3 + (idx % 5),
+            rating_val,
+            rev_count,
+            now,
+            now
+        ))
+        new_sid = cur.lastrowid
+        for t_tier, t_name, t_mult, t_days, t_revs in [
+            ("basic", "Pack Essentiel", 1.0, 3, 2),
+            ("standard", "Pack Pro Recommandé", 1.8, 5, 4),
+            ("premium", "Pack Entreprise VIP 3D", 3.0, 8, 99),
+        ]:
+            cur.execute("""
+                INSERT INTO service_packages (service_id, tier, name, description, price_dzd, delivery_days, revisions, features)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+            """, (
+                new_sid, t_tier, t_name,
+                f"Formule {t_name} avec livrables vérifiés et support dédié.",
+                int(base_price * t_mult), t_days, t_revs,
+                json.dumps(["Fichiers sources inclus", "Usage commercial", "Garantie Séquestre SATIM"])
+            ))
+
     # 7. Project Requests & Proposals (Custom Briefs & Business Hiring)
     projects_seed = [
         {
             "code": "PRJ-DZ-901",
             "client": "atlastech_dz",
             "category": "programming-tech",
-            "title": "Enterprise Logistics & Fleet Tracking Dashboard (48 Wilayas)",
-            "description": "Atlas Tech SPA is looking for a senior full-stack developer or squad to build a real-time logistics tracking web dashboard with driver mobile view and automated delivery manifests.",
+            "title": "Enterprise Logistics & Fleet Tracking Dashboard (58 Wilayas)",
+            "description": "Atlas Tech SPA recherche un architecte full-stack ou une Squad Clé en Main pour concevoir un cockpit de suivi logistique temps réel avec application chauffeur et API SATIM.",
             "skills": ["React & Next.js", "Python & FastAPI", "PostgreSQL & SQLite"],
             "min": 180000,
             "max": 320000,
@@ -774,14 +919,27 @@ def seed():
             "code": "PRJ-DZ-902",
             "client": "sofiane_client",
             "category": "graphics-design",
-            "title": "3D Product Renders & Ramadan Gift Box Packaging Design",
-            "description": "We need luxury gift box dielines and photorealistic 3D product renders for our upcoming artisan collection launch.",
+            "title": "Identité Visuelle 3D & Packaging Coffret Artisanat Algérien",
+            "description": "Conception complète des maquettes 3D Blender et charte d'emballage premium pour notre nouvelle gamme export.",
             "skills": ["Brand Identity & Illustrator", "3D Blender & Cinema4D"],
             "min": 35000,
             "max": 60000,
             "days": 10,
             "level": "Intermediate",
-            "wilaya": "All Algeria"
+            "wilaya": "16 - Alger"
+        },
+        {
+            "code": "PRJ-DZ-903",
+            "client": "atlastech_dz",
+            "category": "ai-data-services",
+            "title": "Déploiement Agent IA RAG Darija / Français pour Support Client B2B",
+            "description": "Mise en place d'un pipeline RAG connecté à notre base documentaire et WhatsApp Business API avec latence < 2s.",
+            "skills": ["LLM & LangChain Agents", "Python & FastAPI"],
+            "min": 120000,
+            "max": 210000,
+            "days": 14,
+            "level": "Expert",
+            "wilaya": "31 - Oran"
         }
     ]
     for p in projects_seed:
@@ -795,29 +953,63 @@ def seed():
             json.dumps(p["skills"]), p["min"], p["max"], p["days"], p["level"], p["wilaya"], now
         ))
         pid = cur.lastrowid
-        if p["code"] == "PRJ-DZ-901":
-            cur.execute("""
-                INSERT INTO proposals (project_id, freelancer_id, bid_amount_dzd, delivery_days, cover_letter, milestones_json, status, created_at)
-                VALUES (?, ?, 245000, 18, ?, ?, 'pending', ?)
-            """, (
-                pid, user_ids["amine_fullstack"],
-                "Bonjour Nadia, I have architected two multi-wilaya logistics platforms in Algiers. I can deliver the real-time GPS map, role-based dispatcher view, and REST API within 18 days.",
-                json.dumps([{"title": "Database & API Core", "amount_dzd": 95000}, {"title": "Dispatcher Web UI & Live Map", "amount_dzd": 150000}]),
-                now
-            ))
+        cur.execute("""
+            INSERT INTO proposals (project_id, freelancer_id, bid_amount_dzd, delivery_days, cover_letter, milestones_json, status, created_at)
+            VALUES (?, ?, ?, 15, ?, ?, 'pending', ?)
+        """, (
+            pid, user_ids["amine_fullstack"], int((p["min"] + p["max"]) / 2),
+            "Salam ! J'ai déjà livré plusieurs architectures similaires en Algérie avec garantie séquestre. Voici ma proposition détaillée en 2 jalons.",
+            json.dumps([{"title": "Jalon 1 : Architecture & Prototype", "amount_dzd": int(p["min"] * 0.5)}, {"title": "Jalon 2 : Mise en production & Tests", "amount_dzd": int(p["min"] * 0.5)}]),
+            now
+        ))
 
-    # 8. Conversations & Notifications
-    cur.execute("""
-        INSERT INTO conversations (user1_id, user2_id, order_id, subject, updated_at, created_at)
-        VALUES (?, ?, 1, 'Order #INT-2026-1001 & Wholesale API Discussion', ?, ?)
-    """, (user_ids["sofiane_client"], user_ids["amine_fullstack"], now, now))
-    conv_id = cur.lastrowid
-    cur.execute("""
-        INSERT INTO messages (conversation_id, sender_id, body, is_read, created_at)
-        VALUES
-        (?, ?, 'Salam Amine! Thank you again for the first platform. For the wholesale portal (#INT-2026-1006), can we include a CSV bulk import for inventory?', 1, ?),
-        (?, ?, 'Wa alaykoum salam Sofiane! Yes, absolutely. I am adding the CSV & Excel inventory importer today and will push a preview link by evening.', 0, ?)
-    """, (conv_id, user_ids["sofiane_client"], now, conv_id, user_ids["amine_fullstack"], now))
+    # 8. Rich Multi-Thread Conversations & Notifications
+    conv_threads = [
+        (
+            user_ids["sofiane_client"], user_ids["amine_fullstack"], 1,
+            "Commande #INT-2026-1006 — Portail B2B & Import CSV",
+            [
+                (user_ids["sofiane_client"], "Salam Amine ! Merci encore pour la première plateforme. Pour le portail B2B (#INT-2026-1006), peut-on ajouter l'import CSV automatique du stock ?"),
+                (user_ids["amine_fullstack"], "Wa alaykoum salam Sofiane ! Oui bien sûr, j'ai intégré le parseur CSV/Excel et la validation SATIM en sandbox."),
+                (user_ids["sofiane_client"], "Parfait ! Et pour la commande mobile Flutter #INT-2026-1008 que tu viens de livrer, je vérifie l'APK cet après-midi pour débloquer le séquestre.")
+            ]
+        ),
+        (
+            user_ids["atlastech_dz"], user_ids["amine_fullstack"], 7,
+            "Livraison #INT-2026-1007 — Passerelle SATIM CIB & Cockpit BDL",
+            [
+                (user_ids["atlastech_dz"], "Bonjour Amine, notre direction financière a besoin de la trace SHA-256 sur les factures DZD générées par le module."),
+                (user_ids["amine_fullstack"], "Bonjour Nadia, c'est déjà livré dans la commande #INT-2026-1007 ! Vous pouvez inspecter les livrables et valider le jalon final.")
+            ]
+        ),
+        (
+            user_ids["sofiane_client"], user_ids["yasmine_studio"], 2,
+            "Charte Graphique 3D & Packaging Casbah Artisanat",
+            [
+                (user_ids["yasmine_studio"], "Salam Sofiane, voici les rendus 3D haute définition du coffret avec dorure à chaud et calligraphie arabe."),
+                (user_ids["sofiane_client"], "Magnifique travail Yasmine, toute l'équipe a adoré !")
+            ]
+        ),
+        (
+            user_ids["atlastech_dz"], user_ids["lina_ai_motion"], 5,
+            "Déploiement Agent IA Darija / Français — Clinique & Helpdesk",
+            [
+                (user_ids["lina_ai_motion"], "Le modèle RAG répond maintenant en moins de 1.2 seconde en Darija algérienne et en Français."),
+                (user_ids["atlastech_dz"], "Excellent Lina, nous allons lancer un second appel d'offres pour notre filiale d'Oran.")
+            ]
+        )
+    ]
+    for u1, u2, ord_id, subj, msgs in conv_threads:
+        cur.execute("""
+            INSERT INTO conversations (user1_id, user2_id, order_id, subject, updated_at, created_at)
+            VALUES (?, ?, ?, ?, ?, ?)
+        """, (u1, u2, ord_id, subj, now, now))
+        cid_conv = cur.lastrowid
+        for sender, body_txt in msgs:
+            cur.execute("""
+                INSERT INTO messages (conversation_id, sender_id, body, is_read, created_at)
+                VALUES (?, ?, ?, 0, ?)
+            """, (cid_conv, sender, body_txt, now))
 
     cur.execute("""
         INSERT INTO notifications (user_id, title, message, link_route, is_read, created_at)

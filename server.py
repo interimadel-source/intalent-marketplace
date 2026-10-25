@@ -308,7 +308,7 @@ class IntalentRequestHandler(SimpleHTTPRequestHandler):
             freelancer_id = qs.get("freelancer_id", [""])[0]
             sort_by = qs.get("sort", ["recommended"])[0]
             page = max(1, int(qs.get("page", ["1"])[0] or 1))
-            per_page = min(50, max(1, int(qs.get("per_page", ["12"])[0] or 12)))
+            per_page = min(200, max(1, int(qs.get("per_page", ["120"])[0] or 120)))
 
             where_clauses = ["s.status = 'approved'"]
             params = []

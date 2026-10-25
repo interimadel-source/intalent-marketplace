@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Intalent — Plateforme Freelance & Services d'Entreprise en Algérie (DZD)</title>
-  <meta name="theme-color" content="#25083F">
+  <title>Intalent Algeria — Tech Talent & Escrow Marketplace (DZD)</title>
+  <meta name="theme-color" content="#280c42">
   <link rel="manifest" href="/manifest.json">
   <link rel="icon" type="image/png" href="/assets/logos/logo-white-purple.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script id="tailwind-config">
@@ -18,53 +18,53 @@
       theme: {
         extend: {
           colors: {
-            "primary-fixed": "#f0dbff",
-            "on-secondary-fixed": "#270057",
-            "on-secondary": "#ffffff",
-            "secondary-fixed-dim": "#d5baff",
-            "primary-container": "#280c42",
-            "on-primary-container": "#9677b3",
-            "on-tertiary-fixed": "#30004a",
-            "on-primary-fixed": "#280c42",
-            "on-primary-fixed-variant": "#563a71",
-            "on-surface-variant": "#4b454e",
-            "inverse-on-surface": "#f6eefc",
-            "tertiary": "#25083F",
-            "tertiary-container": "#30004a",
-            "on-background": "#1e1a23",
+            "on-tertiary-fixed-variant": "#3e4c00",
+            "surface-container-highest": "#e8dff4",
+            "on-surface": "#1d1928",
             "on-tertiary": "#ffffff",
-            "on-tertiary-container": "#af62dc",
-            "on-secondary-fixed-variant": "#5e00c1",
-            "surface-container-highest": "#e8dfed",
-            "surface-container-low": "#f9f1ff",
-            "background": "#fef7ff",
-            "on-primary": "#ffffff",
-            "surface-container-lowest": "#ffffff",
-            "surface": "#fef7ff",
-            "error": "#ba1a1a",
-            "primary-fixed-dim": "#dbb9f9",
-            "surface-variant": "#e8dfed",
-            "surface-container-high": "#eee5f3",
-            "surface-bright": "#fef7ff",
-            "outline": "#7c757f",
-            "surface-tint": "#6f528a",
-            "on-error": "#ffffff",
-            "secondary": "#7627e0",
-            "on-secondary-container": "#fffbff",
-            "tertiary-fixed": "#f5d9ff",
-            "on-tertiary-fixed-variant": "#6c1b98",
-            "surface-container": "#f3ebf9",
-            "on-surface": "#1e1a23",
-            "inverse-primary": "#dbb9f9",
-            "tertiary-fixed-dim": "#e6b4ff",
-            "error-container": "#ffdad6",
-            "surface-dim": "#dfd7e5",
-            "outline-variant": "#cdc3cf",
-            "inverse-surface": "#332f39",
-            "primary": "#25083F",
             "secondary-container": "#9049fa",
             "secondary-fixed": "#ecdcff",
-            "on-error-container": "#93000a"
+            "outline-variant": "#cdc3cf",
+            "surface-variant": "#e8dff4",
+            "on-tertiary-container": "#758d00",
+            "surface-container-low": "#f8f1ff",
+            "secondary-fixed-dim": "#d5baff",
+            "on-secondary-container": "#fffbff",
+            "on-error": "#ffffff",
+            "on-secondary": "#ffffff",
+            "primary-container": "#280c42",
+            "on-error-container": "#93000a",
+            "on-tertiary-fixed": "#171e00",
+            "tertiary-fixed-dim": "#b0d500",
+            "inverse-primary": "#dbb9f9",
+            "secondary": "#7627e0",
+            "outline": "#7c757f",
+            "primary-fixed-dim": "#dbb9f9",
+            "inverse-surface": "#332e3e",
+            "tertiary-fixed": "#caf300",
+            "on-secondary-fixed-variant": "#5e00c1",
+            "surface-tint": "#6f528a",
+            "on-background": "#1d1928",
+            "tertiary-container": "#171e00",
+            "surface-bright": "#fdf7ff",
+            "primary": "#25083F",
+            "on-secondary-fixed": "#270057",
+            "surface-container": "#f3eaff",
+            "inverse-on-surface": "#f6eeff",
+            "error-container": "#ffdad6",
+            "surface-dim": "#dfd6eb",
+            "on-primary": "#ffffff",
+            "tertiary": "#25083F",
+            "on-primary-fixed-variant": "#563a71",
+            "on-primary-fixed": "#280c42",
+            "surface": "#fdf7ff",
+            "on-primary-container": "#9677b3",
+            "error": "#ba1a1a",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-high": "#ede5fa",
+            "background": "#fdf7ff",
+            "primary-fixed": "#f0dbff",
+            "on-surface-variant": "#4b454e"
           },
           borderRadius: {
             "DEFAULT": "0.25rem",
@@ -75,63 +75,72 @@
             "full": "9999px"
           },
           spacing: {
-            "margin-mobile": "1rem",
-            "space-xs": "0.25rem",
-            "margin-desktop": "3rem",
-            "margin": "2rem",
-            "space-md": "1rem",
-            "space-2xl": "4rem",
             "gutter": "1.5rem",
-            "space-xl": "2.5rem",
-            "space-lg": "1.5rem",
             "space-sm": "0.5rem",
-            "gutter-sm": "1rem"
+            "space-xs": "0.25rem",
+            "space-xl": "2.5rem",
+            "space-2xl": "4rem",
+            "gutter-sm": "1rem",
+            "space-lg": "1.5rem",
+            "margin-mobile": "1.25rem",
+            "margin-desktop": "3rem",
+            "space-md": "1rem",
+            "margin": "2rem"
           },
           fontFamily: {
-            "label-lg": ["Inter", "Noto Sans Arabic", "sans-serif"],
-            "headline-sm": ["Plus Jakarta Sans", "Noto Sans Arabic", "sans-serif"],
+            "headline": ["Plus Jakarta Sans", "Noto Sans Arabic", "sans-serif"],
+            "display-lg": ["Plus Jakarta Sans", "Noto Sans Arabic", "sans-serif"],
+            "display-hero": ["Plus Jakarta Sans", "Noto Sans Arabic", "sans-serif"],
             "body-lg": ["Plus Jakarta Sans", "Noto Sans Arabic", "sans-serif"],
-            "display-hero-mobile": ["Plus Jakarta Sans", "Noto Sans Arabic", "sans-serif"],
+            "label-lg": ["Plus Jakarta Sans", "Noto Sans Arabic", "sans-serif"],
+            "body-md": ["Plus Jakarta Sans", "Noto Sans Arabic", "sans-serif"],
+            "display-lg-mobile": ["Plus Jakarta Sans", "Noto Sans Arabic", "sans-serif"],
+            "label-md": ["Plus Jakarta Sans", "Noto Sans Arabic", "sans-serif"],
+            "label-xs": ["Plus Jakarta Sans", "Noto Sans Arabic", "sans-serif"],
+            "title-md": ["Plus Jakarta Sans", "Noto Sans Arabic", "sans-serif"],
+            "headline-md": ["Plus Jakarta Sans", "Noto Sans Arabic", "sans-serif"],
+            "headline-xl-mobile": ["Plus Jakarta Sans", "Noto Sans Arabic", "sans-serif"],
+            "headline-xl": ["Plus Jakarta Sans", "Noto Sans Arabic", "sans-serif"],
             "headline-lg": ["Plus Jakarta Sans", "Noto Sans Arabic", "sans-serif"],
             "body-sm": ["Plus Jakarta Sans", "Noto Sans Arabic", "sans-serif"],
-            "label-md": ["Inter", "Noto Sans Arabic", "sans-serif"],
-            "body-md": ["Plus Jakarta Sans", "Noto Sans Arabic", "sans-serif"],
-            "currency-stat": ["Inter", "Noto Sans Arabic", "sans-serif"],
-            "display-hero": ["Plus Jakarta Sans", "Noto Sans Arabic", "sans-serif"],
-            "headline-xl-mobile": ["Plus Jakarta Sans", "Noto Sans Arabic", "sans-serif"],
-            "headline-xl": ["Plus Jakarta Sans", "Noto Sans Arabic", "sans-serif"]
+            "headline-sm": ["Plus Jakarta Sans", "Noto Sans Arabic", "sans-serif"],
+            "currency-stat": ["Inter", "Noto Sans Arabic", "sans-serif"]
           },
           fontSize: {
-            "label-lg": ["14px", { lineHeight: "20px", letterSpacing: "0.01em", fontWeight: "600" }],
-            "headline-sm": ["20px", { lineHeight: "28px", letterSpacing: "-0.01em", fontWeight: "600" }],
+            "display-lg": ["56px", { lineHeight: "64px", letterSpacing: "-0.03em", fontWeight: "800" }],
+            "display-hero": ["56px", { lineHeight: "64px", letterSpacing: "-0.02em", fontWeight: "800" }],
             "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
-            "display-hero-mobile": ["36px", { lineHeight: "44px", letterSpacing: "-0.015em", fontWeight: "800" }],
-            "headline-lg": ["30px", { lineHeight: "38px", letterSpacing: "-0.015em", fontWeight: "700" }],
-            "body-sm": ["13px", { lineHeight: "20px", fontWeight: "400" }],
+            "label-lg": ["14px", { lineHeight: "20px", letterSpacing: "0.01em", fontWeight: "600" }],
+            "body-md": ["15px", { lineHeight: "22px", fontWeight: "400" }],
+            "display-lg-mobile": ["36px", { lineHeight: "44px", letterSpacing: "-0.025em", fontWeight: "800" }],
             "label-md": ["12px", { lineHeight: "16px", letterSpacing: "0.02em", fontWeight: "600" }],
-            "body-md": ["15px", { lineHeight: "24px", fontWeight: "400" }],
-            "currency-stat": ["16px", { lineHeight: "22px", letterSpacing: "-0.01em", fontWeight: "700" }],
-            "display-hero": ["52px", { lineHeight: "60px", letterSpacing: "-0.02em", fontWeight: "800" }],
-            "headline-xl-mobile": ["28px", { lineHeight: "36px", letterSpacing: "-0.01em", fontWeight: "700" }],
-            "headline-xl": ["38px", { lineHeight: "46px", letterSpacing: "-0.02em", fontWeight: "700" }]
+            "label-xs": ["10px", { lineHeight: "14px", letterSpacing: "0.04em", fontWeight: "700" }],
+            "title-md": ["18px", { lineHeight: "24px", fontWeight: "600" }],
+            "headline-md": ["24px", { lineHeight: "32px", letterSpacing: "-0.015em", fontWeight: "600" }],
+            "headline-xl-mobile": ["28px", { lineHeight: "36px", letterSpacing: "-0.02em", fontWeight: "700" }],
+            "headline-xl": ["40px", { lineHeight: "48px", letterSpacing: "-0.025em", fontWeight: "700" }],
+            "headline-lg": ["32px", { lineHeight: "40px", letterSpacing: "-0.02em", fontWeight: "700" }],
+            "body-sm": ["13px", { lineHeight: "18px", fontWeight: "400" }],
+            "headline-sm": ["20px", { lineHeight: "28px", letterSpacing: "-0.01em", fontWeight: "600" }]
           }
         }
       }
     };
   </script>
   <link rel="stylesheet" href="/styles.css">
-  <style>
-    .material-symbols-outlined {
-      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-      vertical-align: middle;
-    }
-    .material-fill {
-      font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 24 !important;
-    }
-  </style>
 </head>
-<body class="bg-background font-body-md text-on-surface antialiased">
-  <div id="app-root"></div>
+<body class="bg-surface font-body-md text-on-surface antialiased selection:bg-tertiary-fixed selection:text-tertiary-container min-h-screen flex flex-col">
+  <div id="app-root" class="min-h-screen flex flex-col w-full">
+    <div id="app-header"></div>
+    <main id="app-main" class="flex-1 w-full"></main>
+    <div id="app-footer"></div>
+  </div>
+
+  <div id="app-modal-backdrop" class="modal-backdrop hidden">
+    <div id="app-modal-box" class="modal-box"></div>
+  </div>
+  <div id="app-toast" class="toast hidden"></div>
+
   <script src="/i18n.js"></script>
   <script src="/app.js"></script>
   <script src="/pages-public.js"></script>
